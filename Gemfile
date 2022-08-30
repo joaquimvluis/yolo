@@ -78,3 +78,9 @@ group :test do
 end
 
 gem "pundit", "~> 2.2"
+
+gem "faker"
+
+gem "cloudinary"
+
+gem "dotenv-rails", groups: [:development, :test]
