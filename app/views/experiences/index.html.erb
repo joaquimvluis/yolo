@@ -1,3 +1,14 @@
 <h1>Experiences</h1>
 
+<%# SEARCH FORM %>
+<%= form_with url: root_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "What do you want to do before you die?"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+<%# CARDS WITH EXPERIENCES %>
 <%= render partial: "list_experiences", locals: {experiences: @experiences} %>

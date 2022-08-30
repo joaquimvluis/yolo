@@ -83,4 +83,4 @@ gem "faker"
 
 gem "cloudinary"
 
-gem "dotenv-rails", groups: [:development, :test]
+gem "pg_search", "~> 2.3"
