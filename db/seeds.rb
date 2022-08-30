@@ -8,6 +8,7 @@
 require 'faker'
 require "open-uri"
 
+ExperienceCategory.destroy_all
 User.destroy_all
 Experience.destroy_all
 Category.destroy_all
