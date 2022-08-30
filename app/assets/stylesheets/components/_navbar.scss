@@ -1,7 +1,11 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
-}
+  top: 0px;
+  width:100%;
+  font-family: "Museo Sans 500";
+  font-size: 20px;
+  }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
@@ -9,4 +13,15 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.logo {
+  width: 200px;
+  padding-left: 10px;
+}
+.nav-link {
+  color: $grey;
+}
+.nav-link:hover {
+  color: $turquoise;
 }
