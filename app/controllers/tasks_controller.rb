@@ -8,11 +8,14 @@ class TasksController < ApplicationController
     @task.experience = @experience
     # authorize @task
     @task.save
-    raise
-    if @task.save
-      redirect_to experiences_path
-    else
-      render :show, status: :unprocessable_entity
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to experience_url(@experience), notice: "Task was successfully created." }
+        # format.json { render :show, status: :created, location: @experience }
+      else
+        format.html { render "experiences/show", status: :unprocessable_entity }
+        # format.json { render json: @experience.errors, status: :unprocessable_entity }
+      end
     end
   end
 
