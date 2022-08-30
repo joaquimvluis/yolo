@@ -1,0 +1,20 @@
+<div class="container">
+  <%= cl_image_tag @experience.photo.key, height: 300, width: 400, crop: :fill %>
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+      <div class="card">
+        <h1><%= @experience.title %></h1>
+        <% @experience.categories.each do |category| %>
+        <p><%= category.name %></p>
+        <% end %>
+        <p><%= @experience.description %></p>
+
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-8">
+      <div class="card">
+        <p>Here will be the form</p>
+      </div>
+    </div>
+  </div>
+</div>
