@@ -1,4 +1,13 @@
-<% experiences.each do |experience| %>
-  <h4><%= experience.title %></h4>
-  <p><%= experince.description %></p>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <div id="movies">
+        <% experiences.each do |experience| %>
+          <%= cl_image_tag experience.photo.key, width: 400, height: 300, crop: :fill %>
+          <h4><%= experience.title %></h4>
+          <p><%= experience.description %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
