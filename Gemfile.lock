@@ -282,11 +282,10 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
-  x86_64-darwin-18
   arm64-darwin-21
   x86_64-darwin-18
+  x86_64-darwin-18
   x86_64-linux
-
 
 DEPENDENCIES
   autoprefixer-rails
@@ -301,7 +300,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
-  pg_search
+  pg_search (~> 2.3)
   puma (~> 5.0)
   pundit (~> 2.2)
   rails (~> 7.0.3, >= 7.0.3.1)
