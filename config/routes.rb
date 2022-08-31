@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   resources :experiences, only: %i[index show new create] do
     resources :tasks, only: %i[show new create]
   end
+  resources :users, only: %i[show] do
+    resources :user_task, only: %i[index show new create]
+  end
 
 end
