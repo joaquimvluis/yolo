@@ -6,13 +6,6 @@ class ExperiencesController < ApplicationController
   def index
     @experiences = Experience.all
     @categories = Category.all
-
-    if params[:query].present?
-      raise
-      Experience.search_by_title_and_description(params[:query])
-    else
-      @experiences = Experience.all
-    end
   end
 
   def test
