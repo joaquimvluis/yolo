@@ -4,7 +4,9 @@ class ExperiencesController < ApplicationController
 
   def index
     @experiences = Experience.all
+    @experiences = policy_scope(Experience)
     @categories = Category.all
+    @categories = policy_scope(Category)
   end
 
   def results
