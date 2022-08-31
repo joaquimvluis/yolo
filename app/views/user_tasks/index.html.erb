@@ -1,11 +1,22 @@
-<div>
-  <h1>Here is your bucket-list:</h1>
-  <div class ="card">
-    <% @usertasks.each.with_index do |task, index| %>
-      <h4>Item <%=index +1%></h4>
-      <p><strong><%= task.task.experience.title %></p>
-      <p>Deadline: <%= task.task.deadline %></p>
-      <p><%= task.task.penalty %></p>
-    <% end %>
+<%# <div class="container"> %>
+  <div class="row justify-content-center">
+    <div class="col-2 card m-2">
+      <p>Here are the filter</p>
+    </div>
+    <div class="col-6 card m-2">
+      <h1>Here is your bucket-list:</h1>
+      <% @usertasks.each.with_index do |task, index| %>
+        <h4>Item <%=index +1%></h4>
+        <p><%= task.task.experience.title %></p>
+        <p>Deadline: <%= task.task.deadline %></p>
+        <p><%= task.task.penalty %></p>
+      <% end %>
+    </div>
+    <div class="col-2 card m-2 d-flex align-content-stretch">
+      <p class="d-flex justify-content-center">Welcome <%= @user.first_name.nil? ? "back!" : @user.first_name %> </p>
+      <div  class="d-flex justify-content-center">
+        <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+      </div>
+    </div>
   </div>
-</div>
+<%# </div> %>
