@@ -2,11 +2,10 @@
   <div class="row justify-content-center g-3">
     <% experiences.each do |experience| %>
       <div class="col-12 col-lg-3">
-        <div class="card" id="experiences">
+        <div class="card-main" id="experiences">
           <%= cl_image_tag experience.photo.key, class: "card-img" %>
-          <div class="card-body">
-            <h4 class="card-title"><%= experience.title %></h4>
-            <p class="card-text"><%= experience.description %></p>
+          <div class="card-main">
+            <h5 class="card-title"><%= experience.title %></h5>
             <%= link_to "Details", root_path, class: "btn btn-primary" %>
           </div>
         </div>
