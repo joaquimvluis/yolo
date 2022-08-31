@@ -79,4 +79,4 @@ end
 gem "pundit", "~> 2.2"
 gem "faker"
 gem "cloudinary"
-gem "pg_search"
+gem "pg_search", "~> 2.3"
