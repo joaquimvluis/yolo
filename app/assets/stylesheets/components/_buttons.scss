@@ -1,0 +1,60 @@
+// <button class="btn-main" role="button">Click me</button>
+
+/* CSS */
+.btn-main {
+  align-items: center;
+  background-color: #222222;
+  border: 2px solid #222222;
+  border-radius: 8px;
+  font-family: 'Museo Sans 500';
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  font-size: 25px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn-main:after {
+  background-color:#26AECC;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.btn-main:hover:after {
+  transform: translate(0, 0);
+}
+
+.btn-main:active {
+  background-color: #222222;
+  outline: 0;
+}
+
+.btn-main:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .btn-main {
+    padding: 0 40px;
+  }
+}

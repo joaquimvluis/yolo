@@ -1,0 +1,11 @@
+<div>
+  <h1>Here is your bucket-list:</h1>
+  <div class ="card">
+    <% @usertasks.each.with_index do |task, index| %>
+      <h4>Item <%=index +1%></h4>
+      <p><strong><%= task.task.experience.title %></p>
+      <p>Deadline: <%= task.task.deadline %></p>
+      <p><%= task.task.penalty %></p>
+    <% end %>
+  </div>
+</div>
