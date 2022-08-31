@@ -27,7 +27,6 @@
   text-align: left;
 }
 
-
 .card-main .card-main-infos {
   padding: 11px;
   display: flex;
@@ -41,4 +40,15 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+
+.card-menu {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px;
+
 }
