@@ -1,22 +1,21 @@
 class ExperiencesController < ApplicationController
-
   skip_before_action :authenticate_user!, only: %i[index show test]
   before_action :set_experience, only: %i[show]
 
   def index
     @experiences = Experience.all
     @categories = Category.all
-
-    if params[:query].present?
-      raise
-      Experience.search_by_title_and_description(params[:query])
-    else
-      @experiences = Experience.all
-    end
   end
 
-  def test
-    @experiences = Experience.search_by_title_and_description(params[:query])
+  def results
+    # @experiences = Experience.all
+    if params[:query].present?
+      @experiences = policy_scope(Experience).search_by_title_and_description(params[:query])
+    elsif params[:category].present?
+      @experiences = policy_scope(Experience).where(category: params[:category])
+    else
+      @experiences = policy_scope(Experience)
+    end
   end
 
   def show
@@ -32,5 +31,4 @@ class ExperiencesController < ApplicationController
   def task_params
     params.require(:task).permit(:name, :deadline, :location, :capacity, :category, :price, :photo)
   end
-
 end
