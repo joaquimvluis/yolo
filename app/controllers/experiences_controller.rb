@@ -1,6 +1,5 @@
 class ExperiencesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
-
+  skip_before_action :authenticate_user!, only: [:index, :test]
   def index
     @experiences = Experience.all
 
@@ -11,4 +10,9 @@ class ExperiencesController < ApplicationController
     end
 
   end
+
+  def test
+    @experiences = Experience.where("title ILIKE ?", "%#{params[:query]}%")
+  end
+
 end
