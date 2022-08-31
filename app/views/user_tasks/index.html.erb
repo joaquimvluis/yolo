@@ -15,8 +15,11 @@
     <div class="col-2 card m-2 d-flex align-content-stretch">
       <p class="d-flex justify-content-center">Welcome, <%= @user.first_name.nil? ? "User!" : @user.first_name %> </p>
       <div  class="d-flex justify-content-center">
-        <img src=<%= cl_image_path(@user.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %> class="card-trip-user avatar-bordered" />
-
+        <%if @user.photo.key.present? %>
+          <img src=<%= cl_image_path(@user.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %> class="card-trip-user avatar-bordered" />
+        <%else%>
+          <img src="https://picsum.photos/200?icon" class="card-trip-user avatar-bordered" />
+        <%end %>
       </div>
       <p class="d-flex justify-content-center"><%= @user.bio.nil? ? "Please add your bio!" : @user.bio %> </p>
       <%= link_to "Update your profile", edit_user_path(@user) %>
