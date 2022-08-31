@@ -9,6 +9,7 @@ class TasksController < ApplicationController
     @task.experience = @experience
     @usertask.task = @task
     @usertask.user = current_user
+    @usertask.owner = true
     # authorize @task
     @task.save
     @usertask.save
