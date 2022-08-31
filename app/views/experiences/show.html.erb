@@ -13,7 +13,14 @@
     </div>
     <div class="col-xs-12 col-sm-8">
       <div class="card">
-        <%= render "experiences/taskform" %>
+        <% if user_signed_in?%>
+          <%= render "experiences/taskform" %>
+        <% else %>
+          <%= form_with url: new_user_session_path, method: :get do |f| %>
+            <%= f.hidden_field :experience_id, value: @experience.id, class: "d-none" %>
+            <%= submit_tag "Please sign in first to add this experience to your bucketlist", class: "btn banner-btn mt-6" %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
