@@ -1,8 +1,8 @@
 class ExperiencesController < ApplicationController
 
-  skip_before_action :authenticate_user!, only: %i[index, show, test]
+  skip_before_action :authenticate_user!, only: %i[index show test]
   before_action :set_experience, only: %i[show]
- 
+
   def index
     @experiences = Experience.all
     @categories = Category.all
@@ -18,7 +18,7 @@ class ExperiencesController < ApplicationController
   def test
     @experiences = Experience.search_by_title_and_description(params[:query])
   end
-  
+
   def show
     @task = Task.new
   end
