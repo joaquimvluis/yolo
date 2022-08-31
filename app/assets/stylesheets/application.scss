@@ -10,3 +10,69 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f6f6f6;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 1.5;
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 1.5;
+  color: $dark-gray;
+  font-family: "Museo Sans 500";
+}
+
+h3 {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+h5 {
+  font-size: 18px;
+  color: $dark-gray;
+}
+
+h6 {
+  font-weight: bold;
+  font-size: 30px;
+  color: $turquoise;
+  font-family: "Museo Sans 500";
+}
+
+p{
+  font-size: 20px;
+  color: #8F8F8F;
+
+}
+
+.container_banner{
+  padding: 150px;
+  text-align: center;
+}
+
+.container {
+  text-align: center;
+  padding-top: 25px;
+}
+
+.container_category {
+  text-align: center;
+  padding-top: 50px;
+}
+
+#banner_main{
+  background-size: cover;
+  background-position: center;
+}
+
+#banner_main h1 {
+  color: white;
+}

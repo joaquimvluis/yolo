@@ -1,0 +1,55 @@
+<div class="container">
+  <h2 class= "d-inline">Your personalized results based on <h6 class="d-inline">[:query]</h2></h6>
+    <p class="text-grey">Select your experiences to add to your bucket list</p>
+
+
+
+
+  <div class="row experiences mt-3">
+
+    <% @experiences[0..7].each do |experience| %>
+      <div class="col-12 col-lg-3">
+        <%= link_to experience_path(experience), class:"text-decoration-none" do %>
+          <div class="card-main mb-4">
+            <%= cl_image_tag experience.photo.key, height: 300, width: 400, crop: :fill %>
+            <div class="card-main-infos text-black text-left">
+              <div>
+                <h5><%=experience.title%></h5>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+
+   <%# <% @experience.categories.each do |category| %>
+                <%# <p><%= category.name %></p>
+
+
+
+
+  <h2 class= "d-inline">Get inspirations from the community</h2>
+    <p class="text-grey"></p>
+
+  <section id="features" class="container text-center">
+    <div class="row">
+      <div class="card-menu col">
+        <h3>Most loved bucket lists</h3>
+        <p></p>
+        <button type="btn-main" class="btn-main" data-bs-toggle="modal" data-bs-target="#new_booking_modal">
+          Browse the community
+        </button>
+<%#
+        <%= link_to experience_path(experience), class:"btn-main"%>
+      </div>
+
+      <div class="card-menu col">
+        <h3>Your profile matches idol:</h3>
+        <p></p>
+        <button type="btn-main" class="btn-main" data-bs-toggle="modal" data-bs-target="#new_booking_modal">
+            See more idols
+        </button>
+      </div>
+    </div>

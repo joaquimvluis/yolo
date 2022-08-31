@@ -4,5 +4,9 @@
 
 // Define fonts for body and headers
 $body-font: "Museo Sans 500";
+
 $headers-font: 'Fonseca', sans-serif;
 
+.h2, h3, h4, h5, h6, p {
+  font-family: "Museo Sans 500";
+}
