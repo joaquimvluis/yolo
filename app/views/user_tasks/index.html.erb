@@ -1,6 +1,11 @@
 <div>
-<h1>Test</h1>
-<% @usertasks.each do |task| %>
-  <strong><%= task.task.deadline %></strong> & <%= task.task.penalty %>
-<% end %>
+  <h1>Here is your bucket-list:</h1>
+  <div class ="card">
+    <% @usertasks.each.with_index do |task, index| %>
+      <h4>Item <%=index +1%></h4>
+      <p><strong><%= task.task.experience.title %></p>
+      <p>Deadline: <%= task.task.deadline %></p>
+      <p><%= task.task.penalty %></p>
+    <% end %>
+  </div>
 </div>
