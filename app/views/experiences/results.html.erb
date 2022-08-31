@@ -1,18 +1,23 @@
-<div class="container">
-  <h2 class= "d-inline">Your personalized results based on <h6 class="d-inline">[:query]</h2></h6>
-    <p class="text-grey">Select your experiences to add to your bucket list</p>
+<div class="container text-left">
+  <h2 class= "d-inline">Your personalized results based on</h2>
 
+  <% if params[:query].present? %>
+    <h6 class="d-inline"><%= params[:query] %></h6>
+  <% else %>
+    <h2 class="d-inline">the </h2>
+    <u><h6 class="d-inline "><%= @category.name.downcase %></h6></u>
+    <h2 class="d-inline"> category </h2>
+  <% end %>
 
+  <p class="text-grey">Select your experiences to add to your bucket list</p>
 
-
-  <div class="row experiences mt-3">
-
-    <% @experiences[0..7].each do |experience| %>
-      <div class="col-12 col-lg-3">
+  <div class="row experiences mt-4">
+    <% @experiences[0..5].each do |experience| %>
+      <div class="col-12 col-lg-6 width: 300px;">
         <%= link_to experience_path(experience), class:"text-decoration-none" do %>
-          <div class="card-main mb-4">
-            <%= cl_image_tag experience.photo.key, height: 300, width: 400, crop: :fill %>
-            <div class="card-main-infos text-black text-left">
+          <div class="card-main mb-4 justify-content-center" style= "width: 450px;">
+            <%= cl_image_tag experience.photo.key, height: 300, width: 400 %>
+            <div class="card-main-infos text-black">
               <div>
                 <h5><%=experience.title%></h5>
               </div>
@@ -26,9 +31,6 @@
 
    <%# <% @experience.categories.each do |category| %>
                 <%# <p><%= category.name %></p>
-
-
-
 
   <h2 class= "d-inline">Get inspirations from the community</h2>
     <p class="text-grey"></p>
@@ -52,31 +54,3 @@
             See more idols
         </button>
       </div>
-  
-
-   <%# <% @experience.categories.each do |category| %>
-                <%# <p><%= category.name %></p>
-
-  <h2 class= "d-inline">Get inspirations from the community</h2>
-    <p class="text-grey"></p>
-
-  <section id="features" class="container text-center">
-    <div class="row">
-      <div class="card-menu col">
-        <h3>Most loved bucket lists</h3>
-        <p></p>
-        <button type="btn-main" class="btn-main" data-bs-toggle="modal" data-bs-target="#new_booking_modal">
-          Browse the community
-        </button>
-
-        <%# <%= link_to experience_path(experience), class:"btn-main"%>
-      </div>
-
-      <div class="card-menu col">
-        <h3>Your profile matches idol:</h3>
-        <p></p>
-        <button type="btn-main" class="btn-main" data-bs-toggle="modal" data-bs-target="#new_booking_modal">
-            See more idols
-        </button>
-      </div>
-    </div>

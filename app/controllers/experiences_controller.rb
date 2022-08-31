@@ -3,24 +3,22 @@ class ExperiencesController < ApplicationController
   before_action :set_experience, only: %i[show]
 
   def index
-    @experiences = Experience.all
     @experiences = policy_scope(Experience)
-    @categories = Category.all
     @categories = policy_scope(Category)
   end
 
   def results
-    # @experiences = Experience.all
     if params[:query].present?
-      # @experiences = policy_scope(Experience).search_by_title_and_description(params[:query]
       @experiences = Experience.search_by_title_and_description(params[:query])
-      authorize @experiences
-
     elsif params[:category].present?
-      @experiences = policy_scope(Experience).where(category: params[:category])
+      @category = Category.find(params[:category])
+      @experiences = Experience.includes(:experience_categories)
+        .where(experience_categories: { category_id: params[:category] })
     else
       @experiences = policy_scope(Experience)
     end
+
+    authorize @experiences
   end
 
   def show
