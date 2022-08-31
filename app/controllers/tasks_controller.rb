@@ -12,6 +12,7 @@ class TasksController < ApplicationController
     @usertask.owner = true
     # authorize @task
     @task.save
+    authorize @task
     @usertask.save
     respond_to do |format|
       if @task.save

@@ -25,12 +25,14 @@ class ExperiencesController < ApplicationController
 
   def show
     @task = Task.new
+    authorize @task
   end
 
   private
 
   def set_experience
     @experience = Experience.find(params[:id])
+    authorize @experience
   end
 
   def task_params

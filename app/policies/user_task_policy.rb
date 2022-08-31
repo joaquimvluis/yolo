@@ -1,4 +1,4 @@
-class ExperiencePolicy < ApplicationPolicy
+class UserTaskPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
@@ -6,11 +6,4 @@ class ExperiencePolicy < ApplicationPolicy
     end
   end
 
-  def results?
-    true
-  end
-
-  def show?
-    true
-  end
 end
