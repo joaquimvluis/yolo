@@ -1,0 +1,13 @@
+<div class="container text-center">
+  <ul class="list-group list-group-horizontal">
+    <% categories.each do |category| %>
+      <li class="list-group-item">
+        <%= link_to root_path do %>
+          <h5><%= category.name %></h5>
+          <i class="fa-solid fa-trees"></i>
+        <% end %>
+      </li>
+    <% end %>
+  </li>
+</ul>
+</div>

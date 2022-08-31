@@ -1,5 +1,6 @@
 <h1>Experiences</h1>
 
+
 <%# SEARCH FORM %>
 <%= form_with url: test_path, method: :get, class: "d-flex justify-center mb-5" do %>
   <%= text_field_tag :query,
@@ -9,6 +10,11 @@
   %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
+
+
+<%# FILTER %>
+<%= render partial: "filter", locals: {categories: @categories}%>
+
 
 <%# CARDS WITH EXPERIENCES %>
 <%= render partial: "list_experiences", locals: {experiences: @experiences} %>

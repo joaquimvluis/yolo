@@ -2,9 +2,11 @@ class ExperiencesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :test]
   def index
     @experiences = Experience.all
+    @categories = Category.all
 
     if params[:query].present?
-      @experiences = Experience.where(title: params[:query])
+      raise
+      Experience.search_by_title_and_description(params[:query])
     else
       @experiences = Experience.all
     end
@@ -12,7 +14,7 @@ class ExperiencesController < ApplicationController
   end
 
   def test
-    @experiences = Experience.where("title ILIKE ?", "%#{params[:query]}%")
+    @experiences = Experience.search_by_title_and_description(params[:query])
   end
 
 end
