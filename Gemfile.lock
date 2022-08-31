@@ -167,15 +167,11 @@ GEM
       timeout
     netrc (0.11.0)
     nio4r (2.5.8)
-<<<<<<< HEAD
-    nokogiri (1.13.8-x86_64-darwin)
-=======
     nokogiri (1.13.8-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.13.8-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.13.8-x86_64-linux)
->>>>>>> fef719ed58131dc8f228a093907b8c1986c609f8
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.4.3)
@@ -286,11 +282,10 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
-  x86_64-darwin-18
   arm64-darwin-21
   x86_64-darwin-18
+  x86_64-darwin-18
   x86_64-linux
-
 
 DEPENDENCIES
   autoprefixer-rails
@@ -305,7 +300,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
-  pg_search
+  pg_search (~> 2.3)
   puma (~> 5.0)
   pundit (~> 2.2)
   rails (~> 7.0.3, >= 7.0.3.1)

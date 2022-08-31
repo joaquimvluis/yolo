@@ -52,30 +52,7 @@
             See more idols
         </button>
       </div>
-    </div><div class="container">
-  <h2 class= "d-inline">Your personalized results based on <h6 class="d-inline">[:query]</h2></h6>
-    <p class="text-grey">Select your experiences to add to your bucket list</p>
-
-
-
-
-  <div class="row experiences mt-3">
-
-    <% @experiences[0..7].each do |experience| %>
-      <div class="col-12 col-lg-3">
-        <%= link_to experience_path(experience), class:"text-decoration-none" do %>
-          <div class="card-main mb-4">
-            <%= cl_image_tag experience.photo.key, height: 300, width: 400, crop: :fill %>
-            <div class="card-main-infos text-black text-left">
-              <div>
-                <h5><%=experience.title%></h5>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+  
 
    <%# <% @experience.categories.each do |category| %>
                 <%# <p><%= category.name %></p>
@@ -92,7 +69,7 @@
           Browse the community
         </button>
 
-        <%# <%= link_to experience_path(experience), class:"btn-main"%> 
+        <%# <%= link_to experience_path(experience), class:"btn-main"%>
       </div>
 
       <div class="card-menu col">

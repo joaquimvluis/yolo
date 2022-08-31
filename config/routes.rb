@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  get "/experiences", to: "experiences#index"
   # Defines the root path route ("/")
   # root "articles#index"
 
@@ -10,7 +8,7 @@ Rails.application.routes.draw do
 
   get 'results', to: "experiences#results", as: :results
 
-  resources :experiences, only: %i[index show new create] do
+  resources :experiences, only: %i[show new create] do
     resources :tasks, only: %i[show new create]
   end
 

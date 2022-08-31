@@ -4,13 +4,18 @@ class ExperiencesController < ApplicationController
 
   def index
     @experiences = Experience.all
+    @experiences = policy_scope(Experience)
     @categories = Category.all
+    @categories = policy_scope(Category)
   end
 
   def results
     # @experiences = Experience.all
     if params[:query].present?
-      @experiences = policy_scope(Experience).search_by_title_and_description(params[:query])
+      # @experiences = policy_scope(Experience).search_by_title_and_description(params[:query]
+      @experiences = Experience.search_by_title_and_description(params[:query])
+      authorize @experiences
+
     elsif params[:category].present?
       @experiences = policy_scope(Experience).where(category: params[:category])
     else
