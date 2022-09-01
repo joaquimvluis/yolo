@@ -3,8 +3,8 @@
     <% categories.each do |category| %>
       <li class="list-group-item ">
         <%= link_to results_path(category: category.id) do %>
-          <h5><%= category.name %></h5>
           <%= image_tag("categories/#{category.name.downcase}.png", width: 60) %>
+          <h5><%= category.name %></h5>
         <% end %>
       </li>
     <% end %>

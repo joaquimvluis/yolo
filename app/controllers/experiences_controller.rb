@@ -12,8 +12,7 @@ class ExperiencesController < ApplicationController
       @experiences = Experience.search_by_title_and_description(params[:query])
     elsif params[:category].present?
       @category = Category.find(params[:category])
-      @experiences = Experience.includes(:experience_categories)
-        .where(experience_categories: { category_id: params[:category] })
+      @experiences = Experience.includes(:experience_categories).where(experience_categories: { category_id: params[:category] })
     else
       @experiences = policy_scope(Experience)
     end
