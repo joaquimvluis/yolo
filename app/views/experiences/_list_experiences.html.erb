@@ -1,14 +1,18 @@
-<div class="container">
-  <div class="row justify-content-center g-3">
+<%# <div class="container"> %>
+  <div class="row justify-content-center p-5 g-3">
     <% experiences.each do |experience| %>
       <div class="col-12 col-lg-3">
-        <%= link_to experience_path(experience), class: "text-decoration-none card text-light rounded-4 position-relative shadow-lg" do %>
-          <%= cl_image_tag experience.photo.key, class: "card-img rounded-4", style: "filter: brightness(70%);" %>
-          <div class="card-img-overlay">
-            <h6 class="card-title position-absolute bottom-0"><%= experience.title %></h6>
+        <div class="card-main" id="experiences">
+          <%= link_to experience_path(experience), class: "text-decoration-none" do %>
+            <%= cl_image_tag experience.photo.key, class: "card-img rounded-2", style: "filter: brightness(70%);" %>
+            <div class="card-main">
+              <h5 class="card-title p-3 "><%= experience.title %></h5>
+              <%# <%= link_to "Details", root_path, class: "btn btn-primary" %>
+            </div>
           </div>
-        <% end %>
-      </div>
-    <% end %>
+      <% end %>
+        </div>
+<% end %>
   </div>
 </div>
+  <%# </div> %>
