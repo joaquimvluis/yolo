@@ -16,12 +16,12 @@ class ExperiencesController < ApplicationController
     else
       @experiences = policy_scope(Experience)
     end
-
     authorize @experiences
   end
 
   def show
     @task = Task.new
+    authorize @tasks
   end
 
   private

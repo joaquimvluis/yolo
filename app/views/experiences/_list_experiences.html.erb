@@ -3,13 +3,16 @@
     <% experiences.each do |experience| %>
       <div class="col-12 col-lg-3">
         <div class="card-main" id="experiences">
-          <%= cl_image_tag experience.photo.key, class: "card-img" %>
-          <div class="card-main">
-            <h3 class="card-title p-3 "><%= experience.title %></h3>
-            <%= link_to "Details", root_path, class: "btn btn-primary" %>
+          <%= link_to experience_path(experience), class: "text-decoration-none" do %>
+            <%= cl_image_tag experience.photo.key, class: "card-img rounded-2", style: "filter: brightness(70%);" %>
+            <div class="card-main">
+              <h5 class="card-title p-3 "><%= experience.title %></h5>
+              <%# <%= link_to "Details", root_path, class: "btn btn-primary" %>
+            </div>
           </div>
+      <% end %>
         </div>
-      </div>
-    <% end %>
+<% end %>
+  </div>
 </div>
   <%# </div> %>

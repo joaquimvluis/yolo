@@ -8,4 +8,8 @@ class ExperiencePolicy < ApplicationPolicy
   def results?
     true
   end
+
+  def show?
+    true
+  end
 end

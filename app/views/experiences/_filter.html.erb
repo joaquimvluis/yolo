@@ -4,10 +4,11 @@
       <li class="list-group-item ">
         <%= link_to results_path(category: category.id) do %>
           <%= image_tag("categories/#{category.name.downcase}.png", width: 60) %>
-          <h5><%= category.name %></h5>
+          <h4><%= category.name %></h4>
         <% end %>
       </li>
     <% end %>
   </li>
 </ul>
 </div>
+
