@@ -5,6 +5,24 @@ class UserTasksController < ApplicationController
     @user = current_user
     # authorize @usertasks
     # authorize @user
-    @usertasks = policy_scope(UserTask)
+    @usertasks = policy_scope(UserTask).order(:id).includes(task: :experience)
+  end
+
+  def completed?
+    usertask.completed
+  end
+
+  def update
+    @usertask = UserTask.find(params[:id])
+    @usertask.update(user_task_params)
+    authorize(@usertask)
+
+    head :ok
+  end
+
+  private
+
+  def user_task_params
+    params.require(:user_task).permit(:completed)
   end
 end

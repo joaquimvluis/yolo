@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import CompleteTaskController from "./complete_task_controller"
+application.register("complete-task", CompleteTaskController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
