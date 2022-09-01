@@ -1,12 +1,14 @@
 // Import Google fonts
 @import url(//db.onlinewebfonts.com/c/16697a764b01cdcc691b05f001046bc3?family=Museo+Sans+500);
 @import url('http://fonts.cdnfonts.com/css/fonseca');
+@import url(//db.onlinewebfonts.com/c/b1de76f2d448dcdf44d092114d6ba04a?family=Museo+Sans+700);
+
 
 // Define fonts for body and headers
 $body-font: "Museo Sans 500";
 
 $headers-font: 'Fonseca', sans-serif;
 
-.h2, h3, h4, h5, h6, p {
+.h2, h3, h4, h5, p {
   font-family: "Museo Sans 500";
 }

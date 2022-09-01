@@ -20,6 +20,7 @@ h1 {
   font-weight: bold;
   font-size: 40px;
   line-height: 1.5;
+  color: #8F8F8F;
 }
 
 h2 {
@@ -43,7 +44,7 @@ h6 {
   font-weight: bold;
   font-size: 30px;
   color: $turquoise;
-  font-family: "Museo Sans 500";
+  font-family: "Museo Sans 700";
 }
 
 p{
@@ -58,7 +59,6 @@ p{
 }
 
 .container {
-  text-align: center;
   padding-top: 25px;
 }
 
@@ -79,3 +79,8 @@ p{
 // .main-content {
 //   margin-top: 80px;
 // }
+
+.row{
+padding-top: 20px;
+
+}

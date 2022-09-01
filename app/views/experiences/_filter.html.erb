@@ -1,10 +1,10 @@
 <div class="container text-center">
-  <ul class="list-group list-group-horizontal">
+  <ul class="list-group list-group-horizontal justify-content-center">
     <% categories.each do |category| %>
-      <li class="list-group-item">
-        <%= link_to root_path do %>
+      <li class="list-group-item ">
+        <%= link_to results_path(category: category.id) do %>
           <h5><%= category.name %></h5>
-          <i class="fa-solid fa-trees"></i>
+          <%= image_tag("categories/#{category.name.downcase}.png", width: 60) %>
         <% end %>
       </li>
     <% end %>

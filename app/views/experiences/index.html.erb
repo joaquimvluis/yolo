@@ -1,5 +1,5 @@
-
-<h1>Experiences</h1>
+<div class="container">
+<h1 class ="text-left">Experiences</h1>
 
 <%# SEARCH FORM %>
 <%= form_with url: results_path, method: :get, class: "d-flex justify-center mb-5" do %>
@@ -18,3 +18,4 @@
 
 <%# CARDS WITH EXPERIENCES %>
 <%= render partial: "list_experiences", locals: {experiences: @experiences} %>
+</div>
