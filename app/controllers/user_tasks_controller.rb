@@ -5,7 +5,7 @@ class UserTasksController < ApplicationController
     @user = current_user
     # authorize @usertasks
     # authorize @user
-    @usertasks = policy_scope(UserTask).order(:completed, :id).includes(task: :experience)
+    @usertasks = policy_scope(UserTask).includes(task: :experience).order(:completed, 'tasks.deadline')
     @completed = UserTask.where(user: current_user, completed: true).count
   end
 
