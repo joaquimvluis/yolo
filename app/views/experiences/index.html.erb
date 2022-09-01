@@ -1,21 +1,26 @@
-<div class="container">
-<h1 class ="text-left">Experiences</h1>
+<%#https://www.youtube.com/watch?v=VL_GZMzJ-ig%>
 
-<%# SEARCH FORM %>
-<%= form_with url: results_path, method: :get, class: "d-flex justify-center mb-5" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "What do you want to do before you die?"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+<section id="title">
+    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.3)), url('<%= image_path "main .jpg" %>');">
+      <div class="container text-center">
+        <h1>Add new experiences to your life</h1>
 
+  <%# SEARCH FORM %>
+  <%= form_with url: results_path, method: :get, class: "d-flex justify-content-center mb-1" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control w-50 justify-content-center",
+      placeholder: "What do you want to do before you die?"%>
+      <%= link_to 'EXPLORE', root_path, class:"btn-main" %>
+    <% end %>
 
-<%# FILTER %>
-<%= render partial: "filter", locals: {categories: @categories}%>
+  <%# FILTER %>
+  <%= render partial: "filter", locals: {categories: @categories}%>
+    </div>
+  </div>
 
-
-<%# CARDS WITH EXPERIENCES %>
-<%= render partial: "list_experiences", locals: {experiences: @experiences} %>
+  <%# CARDS WITH EXPERIENCES %>
+  <%= render partial: "list_experiences", locals: {experiences: @experiences} %>
 </div>
+
+</section>
