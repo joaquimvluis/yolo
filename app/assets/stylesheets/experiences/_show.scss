@@ -8,9 +8,16 @@
   }
 
   .detail-img {
-    border-radius: 32px 0 0 32px;
+    border-radius: var(--bs-border-radius-xl) 0 var(--bs-border-radius-xl) 0;
+    // var(--bs-border-radius-xl) !important
   }
 
   .detail-container {
+    // background-color:#ECFAFD ;
+    background: white;
+  }
+
+  .detail-text {
+    background: white;
   }
 }
