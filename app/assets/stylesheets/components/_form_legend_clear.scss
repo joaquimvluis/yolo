@@ -8,3 +8,8 @@
 legend ~ div.form-check:first-of-type {
   clear: left;
 }
+
+.form-actions, .form-control, .form-inputs, .form-control, #user_password, #user_email {
+  color: gray;
+  font-family: "Museo Sans 500"
+}

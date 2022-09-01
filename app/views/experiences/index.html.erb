@@ -8,7 +8,7 @@
   <%= form_with url: results_path, method: :get, class: "d-flex justify-content-center mb-1" do %>
     <%= text_field_tag :query,
       params[:query],
-      class: "form-control w-50 justify-content-center",
+      class: "form-control w-50 justify-content-center text-gray",
       placeholder: "What do you want to do before you die?" %>
       <%= button_to 'EXPLORE', root_path, role: 'button', class: "btn-main" %>
     <% end %>
