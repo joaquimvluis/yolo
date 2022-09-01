@@ -7,4 +7,7 @@ class UserTaskPolicy < ApplicationPolicy
     end
   end
 
+  def update?
+    record.user == user
+  end
 end
