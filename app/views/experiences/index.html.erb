@@ -9,7 +9,8 @@
     <%= text_field_tag :query,
       params[:query],
       class: "form-control w-50 justify-content-center",
-      placeholder: "What do you want to do before you die?" %>
+      placeholder: "What do you want to do before you die?",
+      autocomplete: "off" %>
       <%= button_to 'EXPLORE', root_path, role: 'button', class: "btn-main" %>
     <% end %>
 
