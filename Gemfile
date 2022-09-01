@@ -80,6 +80,7 @@ gem "pundit", "~> 2.2"
 gem "faker"
 gem "cloudinary"
 gem "pg_search", "~> 2.3"
-gem 'bullet', group: 'development'
+
+# gem 'bullet', group: 'development'
 
 gem "font-awesome-rails"

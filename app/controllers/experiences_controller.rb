@@ -1,5 +1,5 @@
 class ExperiencesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show test]
+  skip_before_action :authenticate_user!, only: %i[index show test results]
   before_action :set_experience, only: %i[show]
 
   def index

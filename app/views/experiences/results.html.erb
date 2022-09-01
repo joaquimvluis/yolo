@@ -1,4 +1,4 @@
-<div class="container text-left">
+<div class="container text-center">
   <h2 class= "d-inline">Your personalized results based on</h2>
 
   <% if params[:query].present? %>
@@ -10,57 +10,44 @@
   <% end %>
 
   <p class="text-grey">Select your experiences to add to your bucket list</p>
-
-  <div class="row experiences mt-4">
+  <div class="row experiences">
     <% @experiences[0..5].each do |experience| %>
-      <div class="col-12 col-lg-6 width: 300px;">
+      <div class="col-12 col-lg-6 p-3" style="height: 300px width: 500px;">
         <%= link_to experience_path(experience), class:"text-decoration-none" do %>
-          <div class="card-main mb-4 justify-content-center" style= "width: 450px;">
-            <%= cl_image_tag experience.photo.key, height: 300, width: 400 %>
-            <div class="card-main-infos text-black">
-              <div>
-                <h5><%=experience.title%></h5>
-              </div>
+          <div class="card-main fancy-card">
+            <%= cl_image_tag experience.photo.key, class: "fancy-photo", style:"filter: brightness(80%);"%>
+            <div class="content">
+              <h5 class="title text-white">
+                <%= experience.title %>
+              </h5>
+               <p class="copy text-body">
+                <%= truncate(experience.description, length: 200, omission: '...') %>
+              <p>
             </div>
           </div>
         <% end %>
       </div>
     <% end %>
   </div>
-
   <h2 class= "d-inline">Get inspirations from the community</h2>
     <p class="text-grey"></p>
 
-  <section id="features" class="container text-center">
+  <section id="features" class="container text-left">
     <div class="row">
-      <div class="card-menu col">
+      <div class="card-menu col text-left">
         <h3>Most loved bucket lists</h3>
-        <p></p>
-        <button type="btn-main" class="btn-main" data-bs-toggle="modal" data-bs-target="#new_booking_modal">
-          Browse the community
-        </button>
+          <p>20 Best activities to do with coworkers</p>
+          <p>30 Top things to do as a dog parent</p>
+            <button type="btn-main" class="btn-main" data-bs-toggle="modal" data-bs-target="#new_booking_modal">
+              Browse the community
+            </button>
       </div>
-
-      <div class="card-menu col">
+      <div class="card-menu col text-left">
         <h3>Your profile matches idol:</h3>
-        <p></p>
-        <button type="btn-main" class="btn-main" data-bs-toggle="modal" data-bs-target="#new_booking_modal">
-            See more idols
-        </button>
+          <p>RICHARD BRANSON</p>
+          <p>See his Top 40 things to do before are 40 list</p>
+            <button type="btn-main" class="btn-main" data-bs-toggle="modal" data-bs-target="#new_booking_modal">
+                See more idols
+            </button>
       </div>
-
-
-<%#PUG>
-- var cards = [{ title: 'Mountain View', copy: 'Check out all of these gorgeous mountain trips with beautiful views of, you guessed it, the mountains', button: 'View Trips' }, { title: 'To The Beach', copy: 'Plan your next beach trip with these fabulous destinations', button: 'View Trips' }, { title: 'Desert Destinations', copy: 'It\'s the desert you\'ve always dreamed of', button: 'Book Now' }, { title: 'Explore The Galaxy', copy: 'Seriously, straight up, just blast off into outer space today', button: 'Book Now' }]
-
-
-mixin card(title, copy, button)
-  .card
-    .content
-      h2.title= title
-      p.copy= copy
-      button.btn= button
-
-main.page-content
-  each card in cards
-    +card(card.title, card.copy, card.button)
+  </div>
