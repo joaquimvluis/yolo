@@ -1,27 +1,39 @@
-<div class="container">
-  <%= cl_image_tag @experience.photo.key, height: 300, width: 400, crop: :fill %>
-  <div class="row">
-    <div class="col-xs-12 col-sm-8">
-      <div class="card">
-        <h1><%= @experience.title %></h1>
-        <% @experience.categories.each do |category| %>
-        <p><%= category.name %></p>
-        <% end %>
-        <p><%= @experience.description %></p>
-
+<div class="container min-vh-100 px-5 overflow-hidden" id="show-experience">
+  <div class="detail-container shadow-lg rounded-4">
+    <div class="row pt-0 g-0">
+      <div class="col pe-0">
+        <%= cl_image_tag @experience.photo.key, class: "detail-img", style: "width: 600px;" %>
+      </div>
+      <div class="col px-3">
+        <div class="row h-50 pt-0">
+          <h2><%= @experience.title %></h2>
+        </div>
+        <div class="row h-50 g-0 align-items-center text-center">
+          <div>
+            <p><small class="text-muted">Can't wait to start this experience?</small></p>
+            <button type="button" class="btn btn-primary w-100 rounded-4 text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Add to your bucket!
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-8">
-      <div class="card">
-        <% if user_signed_in?%>
-          <%= render "experiences/taskform" %>
-        <% else %>
-          <%= form_with url: new_user_session_path, method: :get do |f| %>
-            <%= f.hidden_field :experience_id, value: @experience.id, class: "d-none" %>
-            <%= submit_tag "Please sign in first to add this experience to your bucketlist", class: "btn banner-btn mt-6" %>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+    <p class="p-3 ms-3"><%= @experience.description %></p>
   </div>
+  <% @experience.categories.each do |category| %>
+    <%= link_to results_path(category: category.id) do%>
+      <p class="position-absolute start-2 top-2 text-light"><%= category.name %></p>
+    <% end %>
+  <% end %>
 </div>
+
+<% if false %>
+  <% if user_signed_in?%>
+    <%= render "experiences/taskform" %>
+  <% else %>
+    <%= form_with url: new_user_session_path, method: :get do |f| %>
+      <%= f.hidden_field :experience_id, value: @experience.id, class: "d-none" %>
+      <%= submit_tag "Please sign in first to add this experience to your bucketlist", class: "btn banner-btn mt-6" %>
+    <% end %>
+  <% end %>
+<% end %>

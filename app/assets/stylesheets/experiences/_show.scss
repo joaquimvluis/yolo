@@ -1,0 +1,23 @@
+#show-experience {
+  p {
+    color: darkslategray;
+  }
+
+  h3 {
+    // color: #12A5C6;
+  }
+
+  .detail-img {
+    border-radius: var(--bs-border-radius-xl) 0 var(--bs-border-radius-xl) 0;
+    // var(--bs-border-radius-xl) !important
+  }
+
+  .detail-container {
+    // background-color:#ECFAFD ;
+    background: white;
+  }
+
+  .detail-text {
+    background: white;
+  }
+}
