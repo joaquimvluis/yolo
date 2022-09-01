@@ -5,7 +5,7 @@
     </div>
     <div class="col-6 card m-2">
       <h1>Here is your bucket-list:</h1>
-      <% @usertasks.each.with_index do |task, index| %>
+      <% @currentusertasks.each.with_index do |task, index| %>
         <h4>Item <%=index +1%></h4>
         <p><%= task.task.experience.title %></p>
         <p>Deadline: <%= task.task.deadline %></p>
