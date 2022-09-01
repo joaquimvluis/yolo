@@ -5,7 +5,7 @@
     </div>
     <div class="col-6 card m-2">
       <h1>Here is your bucket-list:</h1>
-      <% @currentusertasks.each.with_index do |task, index| %>
+      <% @usertasks.each.with_index do |task, index| %>
         <h4>Item <%=index +1%></h4>
         <p><%= task.task.experience.title %></p>
         <p>Deadline: <%= task.task.deadline %></p>
@@ -16,7 +16,7 @@
       <p class="d-flex justify-content-center">Welcome, <%= @user.first_name.nil? ? "User!" : @user.first_name %> </p>
       <div  class="d-flex justify-content-center">
         <%if @user.photo.key.present? %>
-          <img src=<%= cl_image_path(@user.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %> class="card-trip-user avatar-bordered" />
+          <img src=<%= cl_image_path(@user.photo.key, width: 200, height: 200, crop: :thumb, gravity: :face) %> class="card-trip-user avatar-bordered" />
         <%else%>
           <img src="https://picsum.photos/200?icon" class="card-trip-user avatar-bordered" />
         <%end %>
