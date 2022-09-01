@@ -3,6 +3,7 @@ class ExperiencesController < ApplicationController
   before_action :set_experience, only: %i[show]
 
   def index
+
     @experiences = policy_scope(Experience)
     @categories = policy_scope(Category)
   end
