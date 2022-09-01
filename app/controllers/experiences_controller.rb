@@ -3,6 +3,7 @@ class ExperiencesController < ApplicationController
   before_action :set_experience, only: %i[show]
 
   def index
+
     @experiences = policy_scope(Experience)
     @categories = policy_scope(Category)
   end
@@ -21,13 +22,14 @@ class ExperiencesController < ApplicationController
 
   def show
     @task = Task.new
-    authorize @tasks
+    authorize @task
   end
 
   private
 
   def set_experience
     @experience = Experience.find(params[:id])
+    authorize @experience
   end
 
   def task_params

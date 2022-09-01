@@ -1,11 +1,28 @@
-<div>
-  <h1>Here is your bucket-list:</h1>
-  <div class ="card">
-    <% @usertasks.each.with_index do |task, index| %>
-      <h4>Item <%=index +1%></h4>
-      <p><strong><%= task.task.experience.title %></p>
-      <p>Deadline: <%= task.task.deadline %></p>
-      <p><%= task.task.penalty %></p>
-    <% end %>
+<%# <div class="container"> %>
+  <div class="row justify-content-center">
+    <div class="col-2 card m-2">
+      <p>Here are the filter</p>
+    </div>
+    <div class="col-6 card m-2">
+      <h1>Here is your bucket-list:</h1>
+      <% @usertasks.each.with_index do |task, index| %>
+        <h4>Item <%=index +1%></h4>
+        <p><%= task.task.experience.title %></p>
+        <p>Deadline: <%= task.task.deadline %></p>
+        <p><%= task.task.penalty %></p>
+      <% end %>
+    </div>
+    <div class="col-2 card m-2 d-flex align-content-stretch">
+      <p class="d-flex justify-content-center">Welcome, <%= @user.first_name.nil? ? "User!" : @user.first_name %> </p>
+      <div  class="d-flex justify-content-center">
+        <%if @user.photo.key.present? %>
+          <img src=<%= cl_image_path(@user.photo.key, width: 200, height: 200, crop: :thumb, gravity: :face) %> class="card-trip-user avatar-bordered" />
+        <%else%>
+          <img src="https://picsum.photos/200?icon" class="card-trip-user avatar-bordered" />
+        <%end %>
+      </div>
+      <p class="d-flex justify-content-center"><%= @user.bio.nil? ? "Please add your bio!" : @user.bio %> </p>
+      <%= link_to "Update your profile", edit_user_path(@user) %>
+    </div>
   </div>
-</div>
+<%# </div> %>
