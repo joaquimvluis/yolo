@@ -1,15 +1,20 @@
 <%# <div class="container"> %>
   <div class="row justify-content-center">
     <div class="col-2 card m-2">
-      <p>Here are the filter</p>
+      <p>FILTER BY</p>
     </div>
     <div class="col-6 card m-2">
       <h1>Here is your bucket-list:</h1>
       <% @usertasks.each.with_index do |task, index| %>
-        <h4>Item <%=index +1%></h4>
-        <p><%= task.task.experience.title %></p>
+        <div class="card m-3">
+        <h4><%= task.task.experience.title %></h4>
+        <div>
+        <input type ="checkbox" id="completed">
+        <label for="completed">Completed?</label>
+        </div>
         <p>Deadline: <%= task.task.deadline %></p>
         <p><%= task.task.penalty %></p>
+        </div>
       <% end %>
     </div>
     <div class="col-2 card m-2 d-flex align-content-stretch">
