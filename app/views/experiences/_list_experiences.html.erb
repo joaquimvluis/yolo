@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row justify-content-center p-5 g-3">
+  <div class="row justify-content-center p-2 g-3">
     <% experiences.each do |experience| %>
-      <div class="col-12 col-lg-3 p-2">
+      <div class="col-12 col-lg-3 p-1">
           <%= link_to experience_path(experience), class: "text-decoration-none" do %>
         <div class="card-main fancy-card" style="height: 350px";>
             <%= cl_image_tag experience.photo.key, class: "fancy-photo", style:"filter: brightness(80%);"%>
