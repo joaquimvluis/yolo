@@ -1,6 +1,7 @@
 #show-experience {
   p {
     color: darkslategray;
+    font-size: 18px;
   }
 
   .detail-img {
@@ -16,15 +17,28 @@
     text-decoration: none;
     color: white;
     background: rgb(150,150,150);
-    padding: 5px;
+    padding: 7px;
+    font-size: 14px;
+  }
+
+  .detail-category:hover {
+    background: rgba(150,150,150, 0.6);
   }
 
   .detail-container {
     background: white;
+    height: 500px;
   }
 
   .detail-text {
     background: white;
     overflow: scroll;
+    height: 190px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+  }
+
+  .btn-main:hover {
+    background: #26AECC;
   }
 }
