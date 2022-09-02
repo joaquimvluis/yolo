@@ -26,10 +26,12 @@
   <div class="row g-0 align-items-center text-center">
     <% if user_signed_in? %>
       <p><small class="text-muted">Can't wait to start this experience?</small></p>
-      <button type="button" class="btn btn-main w-100 rounded-4 text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <button type="button" class="btn btn-main w-100 rounded-4 text-white" data-bs-toggle="modal" data-bs-target="#addExperienceModal">
         Add to your bucket!
       </button>
-      <%# <%= render "experiences/taskform" %>
+      <div class="modal fade" id="addExperienceModal" tabindex="-1" aria-labelledby="addExperienceModalLabel" aria-hidden="true">
+        <%= render "experiences/add_experience_modal" %>
+      </div>
     <% else %>
       <%= form_with url: new_user_session_path, method: :get do |f| %>
         <%= f.hidden_field :experience_id, value: @experience.id, class: "d-none" %>
