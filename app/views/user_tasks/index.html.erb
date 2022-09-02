@@ -1,11 +1,25 @@
 <%# <div class="container"> %>
   <div class="row justify-content-center">
-    <div class="col-2 card m-2 card-main">
-      <p>FILTER BY</p>
+    <div class="col-2 m-2 card-main">
+      <h4 class="m-3 p-3 border-bottom">FILTER BY</p>
+
     </div>
 
     <div class="col-6 card m-2 card-main">
-      <h1>Here is your bucket-list:</h1>
+      <h1 class="d-flex justify-content-center">Here is your bucket-list:</h1>
+      <main>
+        <% @usertasks.each.with_index do |task, index| %>
+          <div class="card-bucketlist">
+              <div class="inner">
+                <%= render "checkboxform", task: task %>
+                <p class="subtitle">Your Deadline: <%= task.task.deadline %><p>
+                <p class="subtitle">Your chosen penalty: <%= task.task.penalty %></p>
+              </div>
+          </div>
+        <% end %>
+      <main>
+
+
       <% @usertasks.each.with_index do |task, index| %>
         <div class="card m-3">
           <h4><%= task.task.experience.title %></h4>

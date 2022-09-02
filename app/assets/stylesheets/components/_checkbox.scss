@@ -1,0 +1,67 @@
+
+// <%# <div class="line">
+// <input type="checkbox" class="my-checkbox-x2" value="1" />
+// </div> %>
+
+.my-checkbox-x2 {
+  transform: scale(3);
+  margin: 40px 15px 0 0;
+  background-color: #F75508;
+}
+
+.my-checkbox-x2 .mybody{
+  margin: 100px 10%;
+  font-size: 1.2em;
+  font-family: arial;
+  background-color: #F75508;
+}
+
+.checkbox .body {
+  background-color: white;
+}
+.checkbox .label{
+  display:block;
+
+}
+.checkbox .h1{
+  color:white;
+}
+.checkbox .holder {
+  width:400px;
+  margin:0 auto;
+}
+.checkbox {
+  position:relative;
+  display:block;
+  width:100%;
+  height:60px;
+  background:#E0DCDC;
+  overflow:hidden;
+}
+.checkbox:not(:last-child){
+  border-bottom:2px solid white;
+}
+.check {
+  width:50px;
+  height:50px;
+  position:absolute;
+  opacity:0;
+  background-color: white;
+}
+.label span {
+  position:absolute;
+  margin-top:15px;
+}
+.path1{
+  stroke-dasharray:400;
+  stroke-dashoffset:400;
+  transition:.5s all;
+}
+.path2{
+  stroke-dasharray:1800;
+  stroke-dashoffset:1800;
+  transition:.5s all;
+}
+.check:checked + label svg g path {
+  stroke-dashoffset:0;
+}
