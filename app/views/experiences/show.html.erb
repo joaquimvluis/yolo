@@ -4,6 +4,17 @@
       <div class="col pe-0">
         <%= cl_image_tag @experience.photo.key, class: "detail-img" %>
       </div>
+      <div class="col px-3">
+        <div class="row h-50 pt-0" style="z-index:1">
+          <h2><%= @experience.title %></h2>
+        </div>
+        <div class="row h-50 g-0 align-items-center text-center">
+          <div>
+            <p><small class="text-muted">Can't wait to start this experience?</small></p>
+            <button type="button" class="btn-main", style="z-index:1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Add to your bucket!
+            </button>
+            </button>
       <div class="col px-3 position-relative">
         <div class="row p-0">
           <h2><%= @experience.title %></h2>
@@ -11,9 +22,11 @@
         <div class="row h-50 g-0 align-items-center text-center">
           <div>
             <p><small class="text-muted">Can't wait to start this experience?</small></p>
+
             <button type="button" class="btn-main" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Add to your bucket!
             </button>
+
           <div class="detail-text">
             <p class=""><%= @experience.description %></p>
           </div>
