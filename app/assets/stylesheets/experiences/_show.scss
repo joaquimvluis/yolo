@@ -21,6 +21,10 @@
     font-size: 14px;
   }
 
+  .detail-category:hover {
+    background: rgba(150,150,150, 0.6);
+  }
+
   .detail-container {
     background: white;
     height: 500px;
@@ -33,4 +37,5 @@
     margin-bottom: 30px;
     margin-top: 10px;
   }
+
 }
