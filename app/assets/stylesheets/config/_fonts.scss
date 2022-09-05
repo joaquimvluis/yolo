@@ -11,13 +11,19 @@
   src: url('Fonseca-Bold.woff') format('woff');
 }
 
-// @font-face {
-//   font-family: '';
-//   src: url('../fonts/Glegoo-Regular.woff2') format('woff2'),
-//        url('../fonts/Glegoo-Regular.woff') format('woff'),
-//        url('../fonts/Glegoo-Regular.ttf') format('truetype');
-// }
+@font-face {
+  font-family: 'Museo Sans 500';
+  src: url('Museo-Sans-500.woff2') format('woff2'),
+       url('Museo-Sans-500.woff') format('woff'),
+       url('Museo-Sans-500.ttf') format('truetype');
+}
 
+@font-face {
+  font-family: 'Museo Sans 700';
+  src: url('Museo-Sans-700.woff2') format('woff2'),
+       url('Museo-Sans-700.woff') format('woff'),
+       url('Museo-Sans-700.ttf') format('truetype');
+}
 
 // Define fonts for body and headers
 $body-font: "Museo Sans 500";
