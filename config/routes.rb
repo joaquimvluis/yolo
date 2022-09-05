@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root to: "experiences#index"
 
   get 'results', to: "experiences#results", as: :results
+  get 'test', to: "user_tasks#test", as: :test
 
   resources :experiences, only: %i[show new create] do
     resources :tasks, only: %i[show new create edit update]

@@ -1,0 +1,27 @@
+<!-- Modal -->
+<!-- The line bellow with the id should be on the page where model is rendered -->
+<%# <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> %>
+<%# Button for adding experience. Links to the modal with id addExperienceModal %>
+<button type="button" class="btn-main mb-3 w-100" ;" data-bs-toggle="modal" data-bs-target="#challengeFriendModal">
+  Challenge a friend!
+</button>
+
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="challengeFriendModal">Add to your bucket</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <%= form_with url: results_path, method: :get, class: "d-flex justify-content-center mb-1" do %>
+        <%= text_field_tag :query,
+      params[:query],
+
+      class: "form-control w-50 justify-content-center text-gray",
+      placeholder: "What do you want to do before you die?" %>
+
+        <%= button_to 'EXPLORE', root_path, role: 'button', class: "btn-main" %>
+      <% end %>
+    </div>
+  </div>
+</div>

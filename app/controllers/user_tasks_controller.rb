@@ -28,6 +28,10 @@ class UserTasksController < ApplicationController
     authorize @usertask
   end
 
+  def test
+    @users = policy_scope(User)
+  end
+
   private
 
   def user_task_params
