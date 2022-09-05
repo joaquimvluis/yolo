@@ -4,9 +4,9 @@
 </div>
 
 
-<div class="row justify-content-center" style="min-height:84vh">
+<div class="row pt-2 justify-content-center" style="min-height:84vh">
 
-    <div class="col-2 card m-2 card-main p-3 list-style: none ">
+    <div class="col-2 card m-1 card-main p-3 list-style: none rounded-3">
       <div class="filterby mb-4">
         <h3>FILTER BY</h3>
          <p>STATUS</p>
@@ -36,38 +36,38 @@
       <div class="mb-4">
         <p>CATEGORIES</p>
         <div class="filter" style="list-style: none;">
-            <a href="#"></a>
+            <a href="#"><i class="fal fa-square"></i></a>
              <span>Culture</span>
         </div>
 
         <div class="filter" style="list-style: none;">
-            <a href="#"></a>
+            <a href="#"><i class="fal fa-square"></i></a>
             <span>Food</span>
         </div>
 
         <div class="filter" style="list-style: none;">
-            <a href="#"></a>
+            <a href="#"><i class="fa-light fa-square"></i></a>
             <span>Outdoors</span>
         </div>
         <div class="filter" style="list-style: none;">
-            <a href="#"></a>
+            <a href="#"><i class="fa-light fa-square"></i></a>
             <span>Romance</span>
         </div>
         <div class="filter" style="list-style: none;">
-            <a href="#"></a>
+            <a href="#"><i class="fa-light fa-square"></i></a>
             <span>Wildlife</span>
         </div>
       </div>
     </div>
 
-    <div class="col-7 card m-1 card-main">
+    <div class="col-7 card m-1 card-main rounded-3 ">
       <%# <div class="m-2 card-main snip1336">
         <h4 class="p-2 justify-content-center border-bottom">FILTER BY</p>
       </div> %>
       <div>
         <h1 class="d-flex justify-content-center pt-4 ml-3 px-3 d-inline text-black"> your bucket-list</h1>
           <h3 class="d-inline ms-3 ">Current list:</h3>
-          <h6 class="d-inline ">#</h6>
+          <h6 class="d-inline ">33</h6>
           <h3 class="d-inline"> tasks </h3>
       </div>
        <div>
@@ -86,7 +86,7 @@
       </div>
     </div>
 
-    <div class="col-2 card m-2 d-flex p-3 text-center">
+    <div class="col-2 card m-1 d-flex p-3 rounded-3 text-center">
       <%# <figure class="snip1336 hover"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample74.jpg" alt="sample74" />
         <figcaption> %>
         <div>
@@ -97,13 +97,19 @@
           <% end %>
         </div>
 
-          <h2>Welcome, <%= @user.first_name.nil? ? "User!" : @user.first_name %></h2>
+          <h2>Hi, <%= @user.first_name.nil? ? "User!" : @user.first_name %></h2>
+          <div class="wavy-line small"></div>
           <div class="bio-text mt-4">
             <p><i class="fa-regular fa-address-card"></i>  <%= @user.bio.nil? ? "Please add your bio!" : "#{@user.bio}" %></p>
           </div>
 
           <% if @completed == 0 %>
-            <div> <p class="bio-text mt-4">Start working on your Bucket-List!</p> </div>
+            <div class="mb-">
+              <p class="bio-text mt-4">Your score:</p>
+              <h6>240</h6>
+            </div>
+
+
           <% else %>
             <div> <p class="bio-text mt-4"> <i class="fa-regular fa-party-horn"></i>Congrats! You have <%= pluralize @completed, "bucket-list-filter" %> completed!</p> </div>
           <% end %>

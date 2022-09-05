@@ -62,4 +62,9 @@
 
 #createtask{
   margin-right: 60px;
+
+  &:hover {
+    background: #26AECC;
+    border-color: #26AECC;
+  }
 }

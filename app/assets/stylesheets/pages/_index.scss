@@ -34,3 +34,38 @@ font-size: 30px;
   color: #F75508;
   // color: $turquoise;
 }
+
+.slash-3 {
+  height: 10px;
+  background-image: linear-gradient(45deg, rgba(13, 13, 13, 0), rgba(13, 13, 13, 0) 33.33%, #f75508 33.33%, #d6b209 66.67%, rgba(13, 13, 13, 0) 66.67%, rgba(13, 13, 13, 0) 100%);
+  background-size: 16px 100%;
+  width: 239px;
+}
+
+@mixin make-wavy-line($size, $thickness, $color) {
+  position: center;
+  $spacing: $size / 1.41421;
+  $color-begin: $spacing - $thickness / 2;
+  $color-end: $spacing + $thickness / 2;
+  width: 78px;
+  height: $size;
+  background:
+      linear-gradient(45deg,
+          transparent $color-begin,
+          $color $color-begin,
+          $color $color-end,
+          transparent $color-end
+      ),
+      linear-gradient(135deg,
+          transparent $color-begin,
+          $color $color-begin,
+          $color $color-end,
+          transparent $color-end
+      ) $size 0;
+  background-size: $size * 2 $size;
+}
+
+.small {
+  @include make-wavy-line(13px, 4px, #F75508
+      );
+}
