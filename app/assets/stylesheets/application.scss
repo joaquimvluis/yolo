@@ -37,7 +37,7 @@ h3 {
   color: #a3a2a2;
 }
 h4 {
-  font-size: 15px;
+  font-size: 16px;
   color: $dark-gray;
 }
 
@@ -88,4 +88,17 @@ p{
 
 .row{
 padding: 30px;
+}
+
+
+#icon{
+  &:hover {
+      // transform: scale3d(0, 0, 0);
+      transition: .25s ease-in;
+      cursor: pointer;
+      transform: scale(1.15);
+  }
+}
+.icon-link{
+  text-decoration: none;
 }

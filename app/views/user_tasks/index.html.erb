@@ -3,11 +3,11 @@
     <div class="col-2 card m-2 card-main p-3 list-style: none ">
       <div class="mb-3">
         <p>DEADLINE</p>
-        <div class="item" style="list-style: none;">
+        <div class="filter" style="list-style: none;">
             <a href="#"><i class="fa fa-calendar"></i></a>
           <span>This week</span>
         </div>
-        <div class="item" style="list-style: none;">
+        <div class="filter" style="list-style: none;">
             <a href="#"><i class="far fa-clock"></i></a>
           <span>This month</span>
         </div>
@@ -15,11 +15,11 @@
 
       <div class="mb-3">
         <p>STATUS</p>
-        <div class="item" style="list-style: none;">
+        <div class="filter" style="list-style: none;">
             <a href="#"><i class="fas fa-bullhorn"></i></a>
           <span>To do</span>
         </div>
-        <div class="item" style="list-style: none;">
+        <div class="filter" style="list-style: none;">
             <a href="#"><i class="far fa-check-circle"></i></a>
           <span>Done</span>
         </div>
@@ -27,25 +27,27 @@
 
       <div class="mb-3">
         <p>FILTER BY CATEGORIES</p>
-        <div class="item" style="list-style: none;">
-            <a href="#"><i class="fas fa-landmark"></i></a>
-          <span>Culture</span>
+        <div class="filter" style="list-style: none;">
+            <a href="#"></a>
+             <span>Culture</span>
         </div>
-        <div class="item" style="list-style: none;">
-            <a href="#"><i class="fas fa-hamburger"></i></a>
-          <span>Food</span>
+
+        <div class="filter" style="list-style: none;">
+            <a href="#"></a>
+            <span>Food</span>
         </div>
-        <div class="item" style="list-style: none;">
-            <a href="#"><i class="fas fa-sun"></i></a>
-          <span>Outdoors</span>
+
+        <div class="filter" style="list-style: none;">
+            <a href="#"></a>
+            <span>Outdoors</span>
         </div>
-        <div class="item" style="list-style: none;">
-            <a href="#"><i class="far fa-heart"></i></a>
-          <span>Romance</span>
+        <div class="filter" style="list-style: none;">
+            <a href="#"></a>
+            <span>Romance</span>
         </div>
-        <div class="item" style="list-style: none;">
-            <a href="#"><i class="fas fa-paw"></i></a>
-          <span>Wildlife</span>
+        <div class="filter" style="list-style: none;">
+            <a href="#"></a>
+            <span>Wildlife</span>
         </div>
       </div>
     </div>
@@ -89,7 +91,7 @@
           <% if @completed == 0 %>
             <div> <p class="mt-4"> <strong> Start working on your Bucket-List!</strong></p> </div>
           <% else %>
-            <div> <p class="mt-4"> <i class="fa-regular fa-party-horn"></i>Congrats! You have <%= pluralize @completed, "bucket-list-item" %> completed!</p> </div>
+            <div> <p class="mt-4"> <i class="fa-regular fa-party-horn"></i>Congrats! You have <%= pluralize @completed, "bucket-list-filter" %> completed!</p> </div>
           <% end %>
 
 
