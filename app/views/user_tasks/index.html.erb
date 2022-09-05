@@ -8,7 +8,7 @@
 
     <div class="col-2 card m-1 card-main p-3 list-style: none rounded-3">
       <div class="filterby mb-4">
-        <h3>FILTER BY</h3>
+        <h3 class="h3-dash">FILTER BY</h3>
          <p>STATUS</p>
         <div class="filter" style="list-style: none;">
             <a href="#"><i class="fas fa-bullhorn"></i></a>
@@ -65,10 +65,10 @@
         <h4 class="p-2 justify-content-center border-bottom">FILTER BY</p>
       </div> %>
       <div>
-        <h1 class="d-flex justify-content-center pt-4 ml-3 px-3 d-inline text-black"> your bucket-list</h1>
-          <h3 class="d-inline ms-3 ">Current list:</h3>
+        <h1 class="d-flex justify-content-center pt-4 ml-3 px-3 d-inline text-black"><%= @user.first_name.nil? ? "User!" : @user.first_name %>'s bucket-list</h1>
+          <h3 class="h3-dash d-inline ms-4">Current list:</h3>
           <h6 class="d-inline ">33</h6>
-          <h3 class="d-inline"> tasks </h3>
+          <h3 class="h3-dash d-inline"> tasks</h3>
       </div>
        <div>
         <main>
@@ -96,18 +96,19 @@
             <img src="https://media.istockphoto.com/photos/young-woman-ready-for-job-business-concept-picture-id1318482009" alt="profile-sample2" class="avatar-dash" />
           <% end %>
         </div>
-
-          <h2>Hi, <%= @user.first_name.nil? ? "User!" : @user.first_name %></h2>
+          <h2 class="mt-2">Hi, <%= @user.first_name.nil? ? "User!" : @user.first_name %></h2>
           <div class="wavy-line small"></div>
-          <div class="bio-text mt-4">
-            <p><i class="fa-regular fa-address-card"></i>  <%= @user.bio.nil? ? "Please add your bio!" : "#{@user.bio}" %></p>
+          <div class="bio-text mt-3"></i>  <%= @user.bio.nil? ? "Please add your bio!" : "#{@user.bio}" %>
           </div>
 
           <% if @completed == 0 %>
-            <div class="mb-">
-              <p class="bio-text mt-4">Your score:</p>
-              <h6>240</h6>
+            <div class="mb-5">
+              <p class="bio-text mt-3 mb-1">Your score:</p>
+              <h6 class="d-inline">240</h6>
+              <p class="bio-text mt-3 d-inline">points</p>
             </div>
+
+
 
 
           <% else %>
