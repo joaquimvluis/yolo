@@ -1,5 +1,5 @@
 <%# <div class="container"> %>
-<div class="row justify-content-center">
+<div class="row justify-content-center" data-controller="complete-task">
     <div class="col-2 card m-2 card-main p-3 list-style: none ">
       <div class="mb-3">
         <p>DEADLINE</p>
@@ -63,8 +63,15 @@
             <div class="card-bucketlist">
                 <div class="inner">
                   <%= render "checkboxform", task: task %>
-                  <i class="fa-regular fa-bullseye-arrow"></i><p class="subtitle"><%=  task.task.deadline.to_formatted_s(:long) %><p>
-                  <p class="subtitle"><i class="fa-solid fa-fire"></i>  <%= task.task.penalty %></p>
+                  <i class="fa-regular fa-bullseye-arrow"></i><p class="subtitle"><%=  task.task.deadline.to_formatted_s(:long) if task.task.deadline.present? %><p>
+                  <% if task.task.penalty.present? %>
+                    <p class="subtitle"><i class="fa-solid fa-fire"></i> <%= task.task.penalty%></p>
+                  <% end %>
+                  <%= link_to "See full experience", experience_path(task.task.experience) %>
+                  <%= link_to "Delete",
+                    task_path(task),
+                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                  %>
                 </div>
             </div>
           <% end %>

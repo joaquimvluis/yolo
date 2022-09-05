@@ -13,22 +13,39 @@ class TasksController < ApplicationController
     # authorize @task
     @task.save
     authorize @task
-    @usertask.save
+    # respond_to do |format|
+    #   if @task.save
+    #     format.html { redirect_to experience_url(@experience), notice: "Task was successfully created." }
+    #     # format.json { render :show, status: :created, location: @experience }
+    #   else
+    #     format.html { render "experiences/add_experience_modal", status: :unprocessable_entity }
+    #     # format.json { render json: @experience.errors, status: :unprocessable_entity }
+    #   end
     respond_to do |format|
       if @task.save
         format.html { redirect_to experience_url(@experience), notice: "Task was successfully created." }
-        # format.json { render :show, status: :created, location: @experience }
+        format.json { render :show, status: :created, location: @experience }
+        format.js { render :show, status: :created, location: @experience }
+        @usertask.save
       else
-        format.html { render "experiences/show", status: :unprocessable_entity }
-        # format.json { render json: @experience.errors, status: :unprocessable_entity }
+        format.html { render partial: "experiences/add_experience_modal", locals: {experience: @experience, task: @task}, notice: "Task was successfully created."}
+        format.json { render json: @experience.errors, status: :unprocessable_entity }
+        format.js   { render :show }
       end
     end
+  end
+
+  def destroy
+    @task = UserTask.find(params[:id])
+    @task.destroy
+    redirect_to user_user_tasks_path(current_user), status: :see_other
+    authorize @task
   end
 
   private
 
   def task_params
-    params.require(:task).permit(:deadline, :penalty)
+    params.require(:task).permit(:deadline, :penalty, :title)
   end
 
   def usertask_params
