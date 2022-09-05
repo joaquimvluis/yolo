@@ -89,3 +89,13 @@ p{
 .row{
 padding: 30px;
 }
+
+
+#icon{
+  &:hover {
+      // transform: scale3d(0, 0, 0);
+      transition: .25s ease-in;
+      cursor: pointer;
+      transform: scale(1.15);
+  }
+}
