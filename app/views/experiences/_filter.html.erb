@@ -1,11 +1,11 @@
 <div class="justify-content-center d-flex mt-5">
-  <div class="card rounded-3 p-2 px-3 mt-3" style="width: 46%">
+  <div class="card rounded-3 p-2 px-3 mt-3" style="width: 48%">
     <ul class="m-0 list-unstyled d-flex justify-content-between">
       <% categories.each do |category| %>
-        <li>
-          <%= link_to results_path(category: category.id) do %>
+        <li class="icon-link p-2 mt-1">
+          <%= link_to results_path(category: category.id), class: "text-decoration-none" do %>
             <%# <%= image_tag("categories/#{category.name.downcase}.png", width: 60) %>
-            <h4 id="icon"><%= category.name %></h4>
+            <h4 id="icon" class="mb-0"><%= category.name %></h4>
           <% end %>
         </li>
       <% end %>

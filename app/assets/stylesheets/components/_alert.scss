@@ -4,3 +4,10 @@
   right: 16px;
   z-index: 1000;
 }
+
+.alert-info{
+  --bs-alert-color: white;
+  --bs-alert-bg: #26AECC;
+  --bs-alert-border-color: #26AECC;
+  border-radius: 10px;
+}
