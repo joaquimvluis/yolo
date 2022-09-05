@@ -1,6 +1,5 @@
 <%# Main page container %>
 <div class="container p-5 overflow-hidden" id="show-experience">
-
   <%# Card container (includes image and text) %>
   <div class="detail-container shadow-lg rounded-4">
     <div class="row p-0 g-0">
@@ -32,7 +31,7 @@
             </button>
             <%# addExperienceModal, shows the modal. Inside this modal there will be partial for the form%>
             <div class="modal fade" id="addExperienceModal" tabindex="-1" aria-labelledby="addExperienceModalLabel" aria-hidden="true">
-              <%= render partial: "add_experience_modal", locals: {categories: @experience.categories, task: @task }%>
+              <%= render partial: "experiences/add_experience_modal", locals: {categories: @experience.categories, task: @task }%>
             </div>
           <% else %>
             <%= form_with url: new_user_session_path, method: :get do |f| %>
