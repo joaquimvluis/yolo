@@ -1,21 +1,15 @@
-<%# <div class="container"> %>
-<div class="row justify-content-center" style="min-height:84vh">
-    <div class="col-2 card m-2 card-main p-3 list-style: none ">
-      <div class="mt-3 mb-4">
-        <h3>FILTER BY</h3>
-        <p>DEADLINE</p>
-        <div class="filter" style="list-style: none;">
-            <a href="#"><i class="fa fa-calendar"></i></a>
-          <span>This week</span>
-        </div>
-        <div class="filter" style="list-style: none;">
-            <a href="#"><i class="far fa-clock"></i></a>
-          <span>This month</span>
-        </div>
-      </div>
+  <button class="btn-main p-3 float-end" id="createtask">Create a new task</button>
+<div class="background-dash">
+<div class="p-4">
+</div>
 
-      <div class="mb-4">
-        <p>STATUS</p>
+
+<div class="row justify-content-center" style="min-height:84vh">
+
+    <div class="col-2 card m-2 card-main p-3 list-style: none ">
+      <div class="filterby mb-4">
+        <h3>FILTER BY</h3>
+         <p>STATUS</p>
         <div class="filter" style="list-style: none;">
             <a href="#"><i class="fas fa-bullhorn"></i></a>
           <span>To do</span>
@@ -24,7 +18,20 @@
             <a href="#"><i class="far fa-check-circle"></i></a>
           <span>Done</span>
         </div>
+
+      <div class="mb-4">
+      </div><p>DEADLINE</p>
+        <div class="filter" style="list-style: none;">
+            <a href="#"></a>
+          <span>This week</span>
+        </div>
+        <div class="filter" style="list-style: none;">
+            <a href="#"></i></a>
+          <span>This month</span>
+        </div>
       </div>
+
+
 
       <div class="mb-4">
         <p>CATEGORIES</p>
@@ -58,8 +65,8 @@
         <h4 class="p-2 justify-content-center border-bottom">FILTER BY</p>
       </div> %>
       <div>
-        <h1 class="d-flex justify-content-center ml-3 px-3 d-inline"> your bucket-list</h1>
-          <h3 class="d-inline">Current list:</h3>
+        <h1 class="d-flex justify-content-center pt-4 ml-3 px-3 d-inline text-black"> your bucket-list</h1>
+          <h3 class="d-inline ms-3 ">Current list:</h3>
           <h6 class="d-inline ">#</h6>
           <h3 class="d-inline"> tasks </h3>
       </div>
@@ -69,7 +76,8 @@
             <div class="card-bucketlist">
                 <div class="inner">
                   <%= render "checkboxform", task: task %>
-                  <i class="fa-regular fa-bullseye-arrow"></i><p class="subtitle"><%=  task.task.deadline.to_formatted_s(:long) %><p>
+                  <i class="fa-regular fa-bullseye-arrow"></i>
+                  <p class="subtitle" id="deadline">Deadline: <%=  task.task.deadline.to_formatted_s(:long) %><p>
                   <p class="subtitle"><i class="fa-solid fa-fire"></i>  <%= task.task.penalty %></p>
                 </div>
             </div>
@@ -78,39 +86,41 @@
       </div>
     </div>
 
-    <div class="col-2 card m-2 d-flex card-main">
-      <figure class="snip1336 hover"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample74.jpg" alt="sample74" />
-        <figcaption>
+    <div class="col-2 card m-2 d-flex p-3 text-center">
+      <%# <figure class="snip1336 hover"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample74.jpg" alt="sample74" />
+        <figcaption> %>
+        <div>
           <% if @user.photo.key.present? %>
-             <img src=<%= cl_image_path(@user.photo.key, width: 500, height: 500, crop: :thumb, gravity: :face) %> alt="profile-sample2" class="profile" />
+             <img src=<%= cl_image_path(@user.photo.key, width: 500, height: 500, crop: :thumb, gravity: :face) %> alt="profile-sample2" class="avatar-dash" />
           <% else %>
-            <img src="https://media.istockphoto.com/photos/young-woman-ready-for-job-business-concept-picture-id1318482009" alt="profile-sample2" class="profile" />
+            <img src="https://media.istockphoto.com/photos/young-woman-ready-for-job-business-concept-picture-id1318482009" alt="profile-sample2" class="avatar-dash" />
           <% end %>
+        </div>
 
           <h2>Welcome, <%= @user.first_name.nil? ? "User!" : @user.first_name %></h2>
-          <div class="mt-4">
+          <div class="bio-text mt-4">
             <p><i class="fa-regular fa-address-card"></i>  <%= @user.bio.nil? ? "Please add your bio!" : "#{@user.bio}" %></p>
           </div>
 
           <% if @completed == 0 %>
-            <div> <p class="mt-4"> <strong> Start working on your Bucket-List!</strong></p> </div>
+            <div> <p class="bio-text mt-4">Start working on your Bucket-List!</p> </div>
           <% else %>
-            <div> <p class="mt-4"> <i class="fa-regular fa-party-horn"></i>Congrats! You have <%= pluralize @completed, "bucket-list-filter" %> completed!</p> </div>
+            <div> <p class="bio-text mt-4"> <i class="fa-regular fa-party-horn"></i>Congrats! You have <%= pluralize @completed, "bucket-list-filter" %> completed!</p> </div>
           <% end %>
 
 
           <div class="d-flex justify-content-end">
-            <%= link_to "Update Profile", edit_user_path(@user), class: "btn-main snip1336 btn-location" %>
+            <%= link_to "Update Profile", edit_user_path(@user), class: "btn-main snip1336 w-100 btn-location" %>
           </div>
 
-          <div class="d-flex p-1 justify-content-end">
-            <a class="border-0" href="#"><i class="fa-solid fa-twitter"></i></a>
-            <a class="border-0" href="#"><i class="fa-solid fa-linkedin"></i></a>
-            <a class="border-0" href="#"><i class="fa-solid fa-facebook"></i></a>
+          <div class="dash-icons d-flex p-3 justify-content-center">
+            <a class="border-0 p-2" href="#"><i class="fab fa-instagram"></i></a>
+            <a class="border-0 p-2" href="#"><i class="fab fa-facebook"></i></a>
+            <a class="border-0 p-2" href="#"><i class="fa fa-envelope"></i></a>
           </div>
 
         </figcaption>
       </figure>
     </div>
 </div>
-<%# </div> %>
+</div>
