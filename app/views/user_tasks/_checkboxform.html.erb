@@ -1,5 +1,5 @@
 <div data-controller="complete-task">
-  <%= form_for task, html: { data: { complete_task_target: "form" } } do |f| %>
+  <%= form_for task, html: { data: { complete_task_target: "form"} } do |f| %>
     <svg viewBox="0 0 0 0" style="position: absolute; z-index: -1; opacity: 0;">
       <defs>
         <linearGradient id="boxGradient" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="25" y2="25">
@@ -19,16 +19,27 @@
       </defs>
     </svg>
 
+    <div class="position-relative">
     <label class="todo">
-      <%= f.check_box :completed, data: { action: "change->complete-task#update" }, class: "todo__state", id: dom_id(task, :checkbox) %>
+      <%= f.check_box :completed, data: { action: "change->complete-task#update"}, class: "todo__state", id: dom_id(task, :checkbox) %>
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 25" class="todo__icon">
         <use xlink:href="#todo__line" class="todo__line"></use>
         <use xlink:href="#todo__box" class="todo__box"></use>
         <use xlink:href="#todo__check" class="todo__check"></use>
         <use xlink:href="#todo__circle" class="todo__circle"></use>
       </svg>
+      <div data-complete-task-target= "celebrate" class="d-none position-absolute top-50 start-0 translate-middle">
+        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+        <lord-icon
+          src="https://cdn.lordicon.com/xxdqfhbi.json"
+          trigger="loop"
+          colors="primary:#4bb3fd,secondary:#ffc738,tertiary:#f28ba8,quaternary:#f24c00,quinary:#121331"
+          style="width:170px;height:170px">
+        </lord-icon>
+      </div>
 
       <div class="todo__text, text-left" style="width: 600px; font-weight:bold; color: #393939"><%= task.task.title %></div>
     </label>
+    </div>
   <% end %>
 </div>

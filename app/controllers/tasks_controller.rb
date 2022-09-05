@@ -28,7 +28,7 @@ class TasksController < ApplicationController
         format.js { render :show, status: :created, location: @experience }
         @usertask.save
       else
-        format.html { render partial: "experiences/add_experience_modal", locals: {experience: @experience, task: @task}, notice: "Task was successfully created."}
+        format.html { render partial: "experiences/taskform", locals: {experience: @experience, task: @task}}
         # format.json { render json: @experience.errors, status: :unprocessable_entity }
         # format.js   { render :show }
       end
