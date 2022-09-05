@@ -9,10 +9,8 @@ Rails.application.routes.draw do
   get 'results', to: "experiences#results", as: :results
 
   resources :experiences, only: %i[show new create] do
-    resources :tasks, only: %i[show new create]
+    resources :tasks, only: %i[show new create edit update]
   end
-
-  resources :tasks, only: %i[destroy]
 
   resources :users, only: %i[show edit update] do
     resources :user_tasks, only: %i[show index new create]

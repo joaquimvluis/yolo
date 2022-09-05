@@ -29,18 +29,28 @@ class TasksController < ApplicationController
         @usertask.save
       else
         format.html { render partial: "experiences/add_experience_modal", locals: {experience: @experience, task: @task}, notice: "Task was successfully created."}
-        format.json { render json: @experience.errors, status: :unprocessable_entity }
-        format.js   { render :show }
+        # format.json { render json: @experience.errors, status: :unprocessable_entity }
+        # format.js   { render :show }
       end
     end
   end
 
-  def destroy
-    @task = UserTask.find(params[:id])
-    @task.destroy
-    redirect_to user_user_tasks_path(current_user), status: :see_other
-    authorize @task
+  def edit
+    @task = Task.find(params[:task_id])
   end
+
+  def update
+    @task = Task.find(params[:task_id])
+    @task.update(params[task_params])
+    redirect_to user_user_tasks_path(current_user)
+  end
+
+  # def destroy
+  #   @task = UserTask.find(params[:id])
+  #   @task.destroy
+  #   redirect_to user_user_tasks_path(current_user), status: :see_other
+  #   authorize @task
+  # end
 
   private
 
