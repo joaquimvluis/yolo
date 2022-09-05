@@ -1,8 +1,29 @@
-
 // Import Google fonts
-@import url(//db.onlinewebfonts.com/c/16697a764b01cdcc691b05f001046bc3?family=Museo+Sans+500);
-@import url('http://fonts.cdnfonts.com/css/fonseca');
-@import url(//db.onlinewebfonts.com/c/b1de76f2d448dcdf44d092114d6ba04a?family=Museo+Sans+700);
+// these lines are here just for reference, all fonts are stored locally in /app/assets/fonts
+// @import url(//db.onlinewebfonts.com/c/16697a764b01cdcc691b05f001046bc3?family=Museo+Sans+500);
+// @import url('http://fonts.cdnfonts.com/css/fonseca');
+// @import url(//db.onlinewebfonts.com/c/b1de76f2d448dcdf44d092114d6ba04a?family=Museo+Sans+700);
+
+@font-face {
+  font-family: 'Fonseca';
+  font-style: normal;
+  font-weight: 700;
+  src: url('Fonseca-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Museo Sans 500';
+  src: url('Museo-Sans-500.woff2') format('woff2'),
+       url('Museo-Sans-500.woff') format('woff'),
+       url('Museo-Sans-500.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Museo Sans 700';
+  src: url('Museo-Sans-700.woff2') format('woff2'),
+       url('Museo-Sans-700.woff') format('woff'),
+       url('Museo-Sans-700.ttf') format('truetype');
+}
 
 // Define fonts for body and headers
 $body-font: "Museo Sans 500";
@@ -12,9 +33,3 @@ $headers-font: 'Fonseca', sans-serif;
 .h2, h3, h4, h5, label, p, a{
   font-family: "Museo Sans 500";
 }
-
-// a {
-//   color: var(--bs-link-color);
-//   text-decoration: underline;
-//   font-family: 'Museo Sans 500';
-// }

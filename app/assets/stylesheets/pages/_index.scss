@@ -1,2 +1,20 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.filter {
+font-family: "Museo Sans 500";
+color: grey;
+line-height: 1.8;
+background-color: #f2f9fb;
+border-radius: 8px;
+margin-bottom: 7px;
+padding-left: 10px;
+
+
+
+  &:hover {
+    color: #26AECC;
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
