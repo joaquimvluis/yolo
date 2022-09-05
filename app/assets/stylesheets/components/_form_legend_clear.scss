@@ -13,3 +13,7 @@ legend ~ div.form-check:first-of-type {
   color: gray;
   font-family: "Museo Sans 500"
 }
+
+.form-control:focus {
+  color: $dark-gray;
+}
