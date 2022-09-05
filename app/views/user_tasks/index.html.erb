@@ -96,7 +96,7 @@
             <img src="https://media.istockphoto.com/photos/young-woman-ready-for-job-business-concept-picture-id1318482009" alt="profile-sample2" class="avatar-dash" />
           <% end %>
         </div>
-          <h2 class="mt-2">Hi, <%= @user.first_name.nil? ? "User!" : @user.first_name %></h2>
+          <h2 class="mt-2 mb-0">Hi, <%= @user.first_name.nil? ? "User!" : @user.first_name %></h2>
           <div class="wavy-line small"></div>
           <div class="bio-text mt-3"></i>  <%= @user.bio.nil? ? "Please add your bio!" : "#{@user.bio}" %>
           </div>
@@ -116,11 +116,12 @@
           <% end %>
 
 
-          <div class="d-flex justify-content-end">
+          <div class="d-flex justify-content-end mb-4">
             <%= link_to "Update Profile", edit_user_path(@user), class: "btn-main snip1336 w-100 btn-location" %>
           </div>
 
           <div class="dash-icons d-flex p-3 justify-content-center">
+          <p class="bio-text mt-3">Share</p>
             <a class="border-0 p-2" href="#"><i class="fab fa-instagram"></i></a>
             <a class="border-0 p-2" href="#"><i class="fab fa-facebook"></i></a>
             <a class="border-0 p-2" href="#"><i class="fa fa-envelope"></i></a>
