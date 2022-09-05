@@ -1,8 +1,23 @@
 
 // Import Google fonts
 @import url(//db.onlinewebfonts.com/c/16697a764b01cdcc691b05f001046bc3?family=Museo+Sans+500);
-@import url('http://fonts.cdnfonts.com/css/fonseca');
+// @import url('http://fonts.cdnfonts.com/css/fonseca');
 @import url(//db.onlinewebfonts.com/c/b1de76f2d448dcdf44d092114d6ba04a?family=Museo+Sans+700);
+
+@font-face {
+  font-family: 'Fonseca';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../../fonts/Fonseca-Bold.woff2') format('woff2'),
+}
+
+// @font-face {
+//   font-family: '';
+//   src: url('../fonts/Glegoo-Regular.woff2') format('woff2'),
+//        url('../fonts/Glegoo-Regular.woff') format('woff'),
+//        url('../fonts/Glegoo-Regular.ttf') format('truetype');
+// }
+
 
 // Define fonts for body and headers
 $body-font: "Museo Sans 500";
