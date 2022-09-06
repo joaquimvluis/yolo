@@ -1,27 +1,40 @@
-<!-- Modal -->
-<!-- The line bellow with the id should be on the page where model is rendered -->
-<%# <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> %>
-<%# Button for adding experience. Links to the modal with id addExperienceModal %>
-<button type="button" class="btn-main mb-3 w-100" ;" data-bs-toggle="modal" data-bs-target="#challengeFriendModal">
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Challenge a friend!
 </button>
 
-<div class="modal-dialog">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="challengeFriendModal">Add to your bucket</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-      <%= form_with url: results_path, method: :get, class: "d-flex justify-content-center mb-1" do %>
-        <%= text_field_tag :query,
-      params[:query],
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%# SEARCH FORM %>
+        <div data-controller="refresh-users-list">
 
-      class: "form-control w-50 justify-content-center text-gray",
-      placeholder: "What do you want to do before you die?" %>
-
-        <%= button_to 'EXPLORE', root_path, role: 'button', class: "btn-main" %>
-      <% end %>
+          <%= form_with url: user_user_tasks_path(current_user), method: :get, html: { class: "d-flex justify-content-center mb-1", data: { refresh_users_list_target: 'form' } } do %>
+            <%= text_field_tag :query,
+                               params[:query],
+                               class: "form-control w-25 justify-content-center text-gray",
+                               placeholder: "Type a email" ,
+                               data: {
+                                    refresh_users_list_target: 'searchInput',
+                                    action: "keyup->refresh-users-list#update"
+                               };
+            %>
+            <%= button_to 'Find', root_path, role: 'button', class: "btn-main" %>
+          <% end %>
+          <div data-refresh-users-list-target="list">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
   </div>
 </div>
