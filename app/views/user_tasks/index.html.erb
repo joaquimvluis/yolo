@@ -69,9 +69,13 @@
 
       <div>
         <h1 class="d-flex justify-content-center pt-4 ml-3 px-3 d-inline text-black"><%= @user.first_name.nil? ? "User!" : @user.first_name %>'s bucket-list</h1>
-          <h3 class="h3-dash d-inline ms-4">Current list:</h3>
-          <h6 class="d-inline ">33</h6>
-          <h3 class="h3-dash d-inline"> tasks</h3>
+        <div class="d-flex justify-content-center">
+          <%# <h6 class="d-inline" data-controller="kpi" data-action="adjust-kpi@window->kpi#adjustNumber"><%= @completed %></h6>
+          <%# <h3 class="h3-dash d-inline ms-2">Completed Tasks! </h3> %>
+
+          <h6 data-controller="kpi" data-action="adjust-kpi@window->kpi#adjustNumberOpen"><%= @open %></h6>
+          <h5 class="h3-dash d-inline ms-2"> Adventures waiting for you! </h5>
+        </div>
       </div>
        <div>
         <main>
@@ -112,22 +116,25 @@
         </div>
           <h2 class="mt-2 mb-0">Hi, <%= @user.first_name.nil? ? "User!" : @user.first_name %></h2>
           <div class="wavy-line small"></div>
-          <div class="bio-text mt-3"></i>  <%= @user.bio.nil? ? "Please add your bio!" : "#{@user.bio}" %>
-          </div>
+          <div class="bio-text mt-3"></i> <p><%= @user.bio.nil? ? "Please add your bio!" : "#{@user.bio}" %></p>
+        </div>
 
-          <% if @completed == 0 %>
-            <div class="mb-5">
-              <p class="bio-text mt-3 mb-1">Your score:</p>
-              <h6 class="d-inline">240</h6>
-              <p class="bio-text mt-3 d-inline">points</p>
+          <div data-controller="kpi" data-action="adjust-kpi@window->kpi#adjustText">
+            <div data-kpi-target="kpitext">
+            <% if @completed == 0 %>
+            <p class="bio-text mt-4">Start working on your bucketlist</p>
+            <% else %>
+              <p class="bio-text mt-4"> <i class="fa-regular fa-party-horn"></i>Congrats! You have <%= pluralize @completed, "adventure" %> completed!</p>
+              <div class="mb-5">
+                <p class="bio-text mt-3 mb-1">Your score:</p>
+                <h6 class="d-inline" ><%= @completed * 100 %></h6>
+                <p class="bio-text mt-3 d-inline">points</p>
+              </div>
+            <% end %>
             </div>
 
+          </div>
 
-
-
-          <% else %>
-            <div> <p class="bio-text mt-4"> <i class="fa-regular fa-party-horn"></i>Congrats! You have <%= pluralize @completed, "bucket-list-filter" %> completed!</p> </div>
-          <% end %>
 
           <%# data-action: "change->complete-task#update" %>
 
