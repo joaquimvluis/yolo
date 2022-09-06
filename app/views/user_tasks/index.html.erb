@@ -31,8 +31,6 @@
         </div>
       </div>
 
-
-
       <div class="mb-4">
         <p>CATEGORIES</p>
         <div class="filter" style="list-style: none;">
@@ -97,7 +95,7 @@
           <% end %>
         </div>
           <h2 class="mt-2 mb-0">Hi, <%= @user.first_name.nil? ? "User!" : @user.first_name %></h2>
-          <div class="wavy-line small"></div>
+          <div class="wavy-line small" style="width:100px; margin: auto;"></div>
           <div class="bio-text mt-3"></i>  <%= @user.bio.nil? ? "Please add your bio!" : "#{@user.bio}" %>
           </div>
 
