@@ -6,6 +6,10 @@ class UserTasksController < ApplicationController
     # authorize @usertasks
     # authorize @user
     @usertasks = policy_scope(UserTask).includes(task: :experience).order(:completed, 'tasks.deadline')
+    if params[:status].present?
+     @usertasks = @usertasks.where(user: current_user, completed: params[:status]=="true")
+    end
+
     @completed = UserTask.where(user: current_user, completed: true).count
     @alltasks = UserTask.where(user: current_user).count
     @open = @alltasks - @completed
