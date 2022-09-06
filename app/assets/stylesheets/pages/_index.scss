@@ -42,12 +42,8 @@ font-size: 30px;
   color: #818181;
 }
 
-
-.slash-3 {
-  height: 10px;
-  background-image: linear-gradient(45deg, rgba(13, 13, 13, 0), rgba(13, 13, 13, 0) 33.33%, #f75508 33.33%, #d6b209 66.67%, rgba(13, 13, 13, 0) 66.67%, rgba(13, 13, 13, 0) 100%);
-  background-size: 16px 100%;
-  width: 239px;
+#blueback{
+  background-color: #e1f0f4
 }
 
 @mixin make-wavy-line($size, $thickness, $color) {
@@ -76,4 +72,5 @@ font-size: 30px;
 .small {
   @include make-wavy-line(13px, 4px, #F75508
       );
+  margin: auto;
 }

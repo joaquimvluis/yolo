@@ -2,7 +2,7 @@
 
 <%# <div class="container"> %>
 
-<div class="row justify-content-center" data-controller="complete-task" style="min-height:84vh">
+<div class="row justify-content-center" id="blueback" data-controller="complete-task" style="min-height:84vh">
     <div class="col-2 card m-1 card-main p-3 list-style: none rounded-3">
       <div class="filterby mb-4">
         <h3 class="h3-dash">FILTER BY</h3>
@@ -122,7 +122,7 @@
 
 
           <% else %>
-            <div> <p class="bio-text mt-4"> <i class="fa-regular fa-party-horn"></i>Congrats! You have <%= pluralize @completed, "bucket-list-filter" %> completed!</p> </div>
+            <div> <p class="bio-text mt-4"> <i class="fa-regular fa-party-horn"></i>Congrats! You have <%= pluralize @completed, "bucket-list-tasks" %> completed!</p> </div>
           <% end %>
 
           <%# data-action: "change->complete-task#update" %>
