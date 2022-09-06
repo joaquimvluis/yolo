@@ -44,7 +44,8 @@ font-size: 30px;
 }
 
 #blueback{
-  background-color: #e1f0f4
+  background-color: #e1f0f4;
+  height: 84vh;
 }
 
 @mixin make-wavy-line($size, $thickness, $color) {
@@ -87,5 +88,5 @@ font-size: 30px;
 #togglebucket{
   align-items: flex-end;
   justify-content: flex-end;
-  
+
 }
