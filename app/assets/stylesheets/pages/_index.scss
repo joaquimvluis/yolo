@@ -5,15 +5,16 @@
   font-family: "Museo Sans 500";
   color: grey;
   line-height: 1.8;
-  background-color: #f2f9fb;
+  background-color: #eef7fa;
   border-radius: 8px;
   margin-bottom: 7px;
   padding-left: 10px;
 
   &:hover {
-    color: #26AECC;
+    color: white;
     cursor: pointer;
     text-decoration: none;
+    background-color: #222222;
   }
 }
 
