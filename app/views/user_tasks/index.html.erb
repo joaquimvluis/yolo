@@ -9,16 +9,35 @@
 <div class="row justify-content-center" data-controller="complete-task" style="min-height:84vh">
     <div class="col-2 card m-1 card-main p-3 list-style: none rounded-3">
       <div class="filterby mb-4">
+
+
+
         <h3 class="h3-dash">FILTER BY</h3>
+        <div class="mb-4">
+          <%= link_to user_user_tasks_path do %>
+            <div class="filter" style="list-style: none;">
+            <i class="fa-sharp fa-solid fa-rotate-left"></i>
+            <span>See all</span>
+          </div>
+          <% end %>
+        </div>
+
+        <div class="mb-4">
          <p>STATUS</p>
 
-        <div class="filter" style="list-style: none;">
-            <a href="#"><i class="fas fa-bullhorn"></i></a>
+        <%= link_to user_user_tasks_path(status: false) do %>
+          <div class="filter" style="list-style: none;">
+            <i class="fas fa-bullhorn"></i>
           <span>To do</span>
         </div>
-        <div class="filter" style="list-style: none;">
-            <a href="#"><i class="far fa-check-circle"></i></a>
+        <% end %>
+
+        <%= link_to user_user_tasks_path(status: true) do %>
+          <div class="filter" style="list-style: none;">
+            <i class="far fa-check-circle"></i>
           <span>Done</span>
+        </div>
+        <% end %>
         </div>
 
       <div class="mb-4">
@@ -73,8 +92,8 @@
           <%# <h6 class="d-inline" data-controller="kpi" data-action="adjust-kpi@window->kpi#adjustNumber"><%= @completed %></h6>
           <%# <h3 class="h3-dash d-inline ms-2">Completed Tasks! </h3> %>
 
-          <h6 data-controller="kpi" data-action="adjust-kpi@window->kpi#adjustNumberOpen"><%= @open %></h6>
-          <h5 class="h3-dash d-inline ms-2"> Adventures waiting for you! </h5>
+          <h5 class="h3-dash d-inline ms-2"> Your Open To Do: </h5>
+          <h6 class="d-inline ms-1" data-controller="kpi" data-action="adjust-kpi@window->kpi#adjustNumberOpen"><%=  @open %></h6>
         </div>
       </div>
        <div>
