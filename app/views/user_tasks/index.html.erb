@@ -66,11 +66,13 @@
       <div>
         <h1 class="d-flex justify-content-center pt-4 ml-3 px-3 d-inline text-black"><%= @user.first_name.nil? ? "User!" : @user.first_name %>'s bucket-list</h1>
           <h3 class="h3-dash d-inline ms-4">Current list:</h3>
-          <h6 class="d-inline ">33</h6>
+          <h6 class="d-inline ">3 "LINK"</h6>
           <h3 class="h3-dash d-inline"> tasks</h3>
       </div>
        <div>
+
         <main>
+        <div class="container p-0 m-0 overflow: hidden" id="show-bucket">
           <% @usertasks.each.with_index do |task, index| %>
             <div class="card-bucketlist">
                 <div class="inner">
@@ -95,7 +97,7 @@
         <main>
       </div>
     </div>
-
+ </div>
     <div class="col-2 card m-1 d-flex p-3 rounded-3 text-center">
       <%# <figure class="snip1336 hover"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample74.jpg" alt="sample74" />
         <figcaption> %>
@@ -107,7 +109,7 @@
           <% end %>
         </div>
           <h2 class="mt-2 mb-0">Hi, <%= @user.first_name.nil? ? "User!" : @user.first_name %></h2>
-          <div class="wavy-line small"></div>
+          <div class="wavy-line small mb-1 mt-0"></div>
           <div class="bio-text mt-3"></i>  <%= @user.bio.nil? ? "Please add your bio!" : "#{@user.bio}" %>
           </div>
 
