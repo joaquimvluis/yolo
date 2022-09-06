@@ -81,7 +81,9 @@
                   <%= render "checkboxform", task: task %>
 
                   <i class="fa-regular fa-bullseye-arrow"></i>
-                  <p class="subtitle" id="deadline">Deadline: <%=  task.task.deadline.to_formatted_s(:long) if task.task.deadline.present? %><p>
+                  <% if task.task.deadline.present? %>
+                    <p class="subtitle" id="deadline">Deadline: <%= task.task.deadline.to_formatted_s(:long) %> <p>
+                  <% end %>
                   <% if task.task.penalty.present? %>
                     <p class="subtitle"><i class="fa-solid fa-fire"></i> <%= task.task.penalty%></p>
                   <% end %>
