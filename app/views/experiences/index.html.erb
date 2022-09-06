@@ -1,26 +1,28 @@
 <%#https://www.youtube.com/watch?v=VL_GZMzJ-ig%>
 
-<section id="title">
-    <div class="banner d-flex align-items-center" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('<%= image_path "main3.jpg" %>');">
-      <div class="container text-center">
-        <h1>Add new experiences to your life</h1>
-  <%# SEARCH FORM %>
-  <%= form_with url: results_path, method: :get, class: "d-flex justify-content-center mb-1" do %>
-    <%= text_field_tag :query,
-      params[:query],
-      autocomplete: "off",
-      class: "form-control w-50 justify-content-center text-gray",
-      placeholder: "What do you want to do before you die?"%>
-      <%= button_to 'EXPLORE', root_path, role: 'button', class: "btn-main" %>
-    <% end %>
+<section id='hero-banner position-relative' style="height: 93vh; overflow: hidden;">
+    <video autoplay muted loop class="w-100" style="height: 100%; object-fit: cover;">
+      <source src="https://res.cloudinary.com/elmette/video/upload/v1662484277/videoplayback_1_online-video-cutter.com_hoqfxr.mp4" type="video/mp4">
+    </video>
 
-  <%# FILTER %>
-  <%= render partial: "filter", locals: {categories: @categories}%>
+  <div class="banner w-100 d-flex align-items-center mt-3 position-absolute top-0" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1));">
+    <div class="container text-center">
+      <h1>What do you want to do before you die?</h1>
+      <%# SEARCH FORM %>
+      <%= form_with url: results_path, method: :get, class: "d-flex justify-content-center mb-1" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          autocomplete: "off",
+          class: "form-control w-50 justify-content-center text-gray",
+          placeholder: "Add new experiences to your life"%>
+          <%= button_to 'EXPLORE', root_path, role: 'button', class: "btn-main" %>
+        <% end %>
+
+      <%# FILTER %>
+      <%= render partial: "filter", locals: {categories: @categories}%>
     </div>
   </div>
-
-  <%# CARDS WITH EXPERIENCES %>
-  <%= render partial: "list_experiences", locals: {experiences: @experiences} %>
-</div>
-
 </section>
+  <%# CARDS WITH EXPERIENCES %>
+
+  <%= render partial: "list_experiences", locals: {experiences: @experiences} %>
