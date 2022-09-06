@@ -1,5 +1,13 @@
-  <ul>
-    <% users.each do |user| %>
-      <li><%= "#{user.first_name} #{user.last_name}" %></li>
-    <% end %>
-  </ul>
+
+<ul class="list-group list-group-flush">
+  <% users.each do |user| %>
+    <li class="list-group-item">
+      <%= cl_image_tag user.photo.key,
+      class: "avatar me-1",
+      width: 40, height: 40,
+      crop: :thumb,
+      gravity: :face unless user.photo.key.nil? %>
+      <%= "#{user.first_name} #{user.last_name}" %>
+    </li>
+  <% end %>
+</ul>

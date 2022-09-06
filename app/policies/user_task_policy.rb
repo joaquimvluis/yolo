@@ -2,8 +2,7 @@ class UserTaskPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      raise
-      # scope.all
+      scope.all
     end
   end
 
@@ -18,5 +17,4 @@ class UserTaskPolicy < ApplicationPolicy
   def show?
     record.user == user
   end
-
 end

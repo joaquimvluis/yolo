@@ -18,14 +18,13 @@
           <%= form_with url: user_user_tasks_path(current_user), method: :get, html: { class: "d-flex justify-content-center mb-1", data: { refresh_users_list_target: 'form' } } do %>
             <%= text_field_tag :query,
                                params[:query],
-                               class: "form-control w-25 justify-content-center text-gray",
+                               class: "form-control w-100",
                                placeholder: "Type a email" ,
                                data: {
                                     refresh_users_list_target: 'searchInput',
                                     action: "keyup->refresh-users-list#update"
                                };
             %>
-            <%= button_to 'Find', root_path, role: 'button', class: "btn-main" %>
           <% end %>
           <div data-refresh-users-list-target="list">
           </div>

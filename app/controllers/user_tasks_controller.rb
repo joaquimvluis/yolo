@@ -7,6 +7,17 @@ class UserTasksController < ApplicationController
     # authorize @user
     @usertasks = policy_scope(UserTask).includes(task: :experience).order(:completed, 'tasks.deadline')
     @completed = UserTask.where(user: current_user, completed: true).count
+
+    @users = policy_scope(User.all)
+
+    if params[:query].present?
+      @users = User.search_by_email(params[:query])
+    end
+
+    respond_to do |format|
+      format.html
+      format.text { render partial: 'user_tasks/list', locals: { users: @users }, formats: [:html] }
+    end
   end
 
   def completed?
@@ -26,10 +37,6 @@ class UserTasksController < ApplicationController
     @usertask.destroy
     redirect_to user_user_tasks_path(current_user), status: :see_other
     authorize @usertask
-  end
-
-  def test
-    @users = policy_scope(User)
   end
 
   private

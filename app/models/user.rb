@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :tasks, through: :user_tasks
 
   has_one_attached :photo
+
   include PgSearch::Model
   pg_search_scope :search_by_email,
     against: [ :email ],
