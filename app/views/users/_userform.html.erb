@@ -1,8 +1,11 @@
-<%= simple_form_for (@user) do |f| %>
-<%= f.input :first_name %>
-<%= f.input :last_name %>
-<%= f.input :date_of_birth, html5: true %>
-<%= f.input :bio %>
- <%= f.input :photo, as: :file %>
-<%= f.button :submit %>
-<% end %>
+
+<div class="container w-50 p-5">
+  <%= simple_form_for (@user) do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :date_of_birth, html5: true %>
+  <%= f.input :bio %>
+  <%= f.input :photo, as: :file, class: "btn-main"  %>
+  <%= f.button :submit, class: "btn-main mb-5 w-100"  %>
+  <% end %>
+</div>
