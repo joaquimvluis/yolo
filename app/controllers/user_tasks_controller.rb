@@ -9,8 +9,13 @@ class UserTasksController < ApplicationController
     @completed = UserTask.where(user: current_user, completed: true).count
   end
 
-  def completed?
-    usertask.completed
+  def completed
+    # usertask.completed
+    @completed = UserTask.where(user: current_user, completed: true).count
+    authorize :user_task, :completed?
+    respond_to do |format|
+      format.json
+    end
   end
 
   def update

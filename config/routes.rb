@@ -16,5 +16,10 @@ Rails.application.routes.draw do
     resources :user_tasks, only: %i[show index new create]
   end
 
-  resources :user_tasks, only: %i[update destroy]
+  resources :user_tasks, only: %i[update destroy] do
+    collection do
+      get 'completed'
+    end
+  end
+
 end

@@ -6,7 +6,6 @@ export default class extends Controller {
   static targets = ["form", "celebrate"]
 
   connect() {
-    console.log(this.celebrateTarget)
   }
 
   update(event) {
@@ -34,8 +33,8 @@ export default class extends Controller {
       this.#displayCelebration(this.celebrateTarget)
     }
 
-
-
+    const updateEvent = new CustomEvent("adjust-kpi")
+    window.dispatchEvent(updateEvent)
   }
 
   #displayCelebration(target) {

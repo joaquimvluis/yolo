@@ -70,7 +70,7 @@
       <div>
         <h1 class="d-flex justify-content-center pt-4 ml-3 px-3 d-inline text-black"><%= @user.first_name.nil? ? "User!" : @user.first_name %>'s bucket-list</h1>
           <h3 class="h3-dash d-inline ms-4">Current list:</h3>
-          <h6 class="d-inline ">33</h6>
+          <h6 class="d-inline" data-controller="kpi" data-action="adjust-kpi@window->kpi#adjustNumber"><%= @completed %></h6>
           <h3 class="h3-dash d-inline"> tasks</h3>
       </div>
        <div>
@@ -126,7 +126,7 @@
 
 
           <% else %>
-            <div> <p class="bio-text mt-4"> <i class="fa-regular fa-party-horn"></i>Congrats! You have <%= pluralize @completed, "bucket-list-filter" %> completed!</p> </div>
+            <div> <p class="bio-text mt-4"> <i class="fa-regular fa-party-horn"></i>Congrats! You have <%= pluralize @completed, "bucket-list-item" %> completed!</p> </div>
           <% end %>
 
           <%# data-action: "change->complete-task#update" %>
