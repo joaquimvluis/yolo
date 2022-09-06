@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :user_tasks, only: %i[update destroy] do
     collection do
-      get 'completed'
+      get 'completed', 'open'
     end
   end
 

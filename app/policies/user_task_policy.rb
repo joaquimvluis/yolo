@@ -22,4 +22,8 @@ class UserTaskPolicy < ApplicationPolicy
   def completed?
     true
   end
+
+  def open?
+    true
+  end
 end
