@@ -25,20 +25,16 @@
         </div>
       </div>
 
-
-
       <div class="mb-4">
         <p>CATEGORIES</p>
         <div class="filter" style="list-style: none;">
             <a href="#"></a>
              <span>Culture</span>
         </div>
-
         <div class="filter" style="list-style: none;">
             <a href="#"></a>
             <span>Food</span>
         </div>
-
         <div class="filter" style="list-style: none;">
             <a href="#"></i></a>
             <span>Outdoors</span>
@@ -69,26 +65,40 @@
 
         <main>
         <div class="container p-0 m-0 overflow: hidden" id="show-bucket">
+
+
           <% @usertasks.each.with_index do |task, index| %>
             <div class="card-bucketlist">
                 <div class="inner">
+                    <nav class="navbar ms-auto" id="togglebucket">
+                      <div class="container-fluid" id="togglebucket">
+                        <button class="navbar-toggler p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                        </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">HTML</a></li>
+                            <li><a href="#">CSS</a></li>
+                          </ul>
+                      </div>
+                  <div class="collapse" id="navbarToggleExternalContent">
+                    <div class="bg-success p-2 ms-3">
+                        <%= link_to "More info", experience_path(task.task.experience) %><br>
+                        <%= link_to "Share", experience_path(task.task.experience) %><br>
+                        <%= link_to "Delete",user_task_path(task),
+                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+                    </div>
+                  </div>
+                    </nav>
                   <%= render "checkboxform", task: task %>
-
                   <i class="fa-regular fa-bullseye-arrow"></i>
-                  <% if task.task.deadline.present? %>
+                  <%# if task.task.deadline.present? %>
                     <p class="subtitle" id="deadline">Deadline: <%= task.task.deadline.to_formatted_s(:long) %> <p>
-                  <% end %>
-                  <% if task.task.penalty.present? %>
+                  <%# end %>
+                  <%# if task.task.penalty.present? %>
                     <p class="subtitle"><i class="fa-solid fa-fire"></i> <%= task.task.penalty%></p>
-                  <% end %>
-                  <%= link_to "See full experience", experience_path(task.task.experience) %>
-                  <%= link_to "Delete",
-                    user_task_path(task),
-                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                  %>
-
-                </div>
-            </div>
+                  <%# end %>
+                  </div>
+              </div>
           <% end %>
         <main>
       </div>
@@ -142,3 +152,4 @@
     </div>
 </div>
 </div>
+z
