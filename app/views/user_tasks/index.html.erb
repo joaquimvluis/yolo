@@ -1,15 +1,17 @@
+
   <button class="btn-main p-3 float-end" id="createtask">Create a new task</button>
 <div class="background-dash">
 <div class="p-4">
 </div>
 
-
-<div class="row pt-2 justify-content-center" style="min-height:84vh">
+<%# <div class="container"> %>
+<div class="row pt-2 justify-content-center" data-controller="complete-task" style="min-height:84vh">
 
     <div class="col-2 card m-1 card-main p-3 list-style: none rounded-3">
       <div class="filterby mb-4">
         <h3 class="h3-dash">FILTER BY</h3>
          <p>STATUS</p>
+
         <div class="filter" style="list-style: none;">
             <a href="#"><i class="fas fa-bullhorn"></i></a>
           <span>To do</span>
@@ -76,9 +78,18 @@
             <div class="card-bucketlist">
                 <div class="inner">
                   <%= render "checkboxform", task: task %>
+
                   <i class="fa-regular fa-bullseye-arrow"></i>
-                  <p class="subtitle" id="deadline">Deadline: <%=  task.task.deadline.to_formatted_s(:long) %><p>
-                  <p class="subtitle"><i class="fa-solid fa-fire"></i>  <%= task.task.penalty %></p>
+                  <p class="subtitle" id="deadline">Deadline: <%=  task.task.deadline.to_formatted_s(:long) if task.task.deadline.present? %><p>
+                  <% if task.task.penalty.present? %>
+                    <p class="subtitle"><i class="fa-solid fa-fire"></i> <%= task.task.penalty%></p>
+                  <% end %>
+                  <%= link_to "See full experience", experience_path(task.task.experience) %>
+                  <%= link_to "Delete",
+                    user_task_path(task),
+                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                  %>
+
                 </div>
             </div>
           <% end %>

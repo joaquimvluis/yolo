@@ -3,7 +3,6 @@ class ExperiencesController < ApplicationController
   before_action :set_experience, only: %i[show]
 
   def index
-
     @experiences = policy_scope(Experience)
     @categories = policy_scope(Category)
   end
@@ -16,6 +15,7 @@ class ExperiencesController < ApplicationController
       @experiences = Experience.includes(:experience_categories).where(experience_categories: { category_id: params[:category] })
     else
       @experiences = policy_scope(Experience)
+      redirect_to root_path
     end
     authorize @experiences
   end

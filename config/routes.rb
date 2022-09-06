@@ -9,13 +9,12 @@ Rails.application.routes.draw do
   get 'results', to: "experiences#results", as: :results
 
   resources :experiences, only: %i[show new create] do
-    resources :tasks, only: %i[show new create]
+    resources :tasks, only: %i[show new create edit update]
   end
-
 
   resources :users, only: %i[show edit update] do
-    resources :user_tasks, only: %i[index show new create]
+    resources :user_tasks, only: %i[show index new create]
   end
 
-  resources :user_tasks, only: %i[update]
+  resources :user_tasks, only: %i[update destroy]
 end

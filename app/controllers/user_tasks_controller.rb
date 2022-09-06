@@ -21,6 +21,13 @@ class UserTasksController < ApplicationController
     head :ok
   end
 
+  def destroy
+    @usertask = UserTask.find(params[:id])
+    @usertask.destroy
+    redirect_to user_user_tasks_path(current_user), status: :see_other
+    authorize @usertask
+  end
+
   private
 
   def user_task_params

@@ -4,5 +4,5 @@ class Task < ApplicationRecord
   has_many :user_tasks
   has_many :users, through: :user_tasks
 
-  validates :deadline, presence: true
+  validates :title, presence: true, length: { maximum: 50 }
 end
