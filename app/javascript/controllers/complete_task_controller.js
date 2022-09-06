@@ -1,10 +1,12 @@
 import { Controller } from "@hotwired/stimulus"
+// import { LibManifestPlugin } from "webpack";
 
 // Connects to data-controller="complete-task"
 export default class extends Controller {
-  static targets = ["form"]
+  static targets = ["form", "celebrate"]
+
   connect() {
-    console.log("CONNECTED")
+    console.log(this.celebrateTarget)
   }
 
   update(event) {
@@ -16,7 +18,7 @@ export default class extends Controller {
     const url = this.formTarget.action
     // const data = new FormData(this.formTarget)
     const value = event.target.checked
-    raise
+
 
     // //Rails.fire(this.element, 'change')
     fetch(url, {
@@ -27,5 +29,20 @@ export default class extends Controller {
       },
       body: JSON.stringify({ user_task: { completed: value }})
     })
-}
+
+    if (value == true) {
+      this.#displayCelebration(this.celebrateTarget)
+    }
+
+
+
+  }
+
+  #displayCelebration(target) {
+    target.classList.remove("d-none")
+    setTimeout(() => {
+      target.classList.add("d-none")
+    }, 2000);
+  }
+
 }

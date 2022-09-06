@@ -1,9 +1,9 @@
   <%=simple_form_for ([experience, task]) do |f| %>
     <%= f.error_notification %>
   <div class="form-actions">
-    <%= f.input :title, input_html: { value: @experience.title }, class:'form-font-color', hint: 'Please mind the limit of 50 Characters'%>
-    <%= f.input :deadline, html5: true, input_html: { class:'form-control'} %>
-    <%= f.input :penalty, hint: "Add a penalty to help you kickstart!", input_html: { class:'form-control'} %>
+    <%= f.input :title, input_html: { value: @experience.title }, hint: 'Please mind the limit of 50 Characters',  error: "Please check the length"%>
+    <%= f.input :deadline, html5: true, input_html: { class:'form-control, form-input'} %>
+    <%= f.input :penalty, hint: "Add a penalty to help you kickstart!", error: "Please add a date"%>
   </div>
   <%= f.button :submit, class: "btn-main" %>
 <% end %>
