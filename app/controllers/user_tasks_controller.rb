@@ -11,6 +11,34 @@ class UserTasksController < ApplicationController
     end
 
     @completed = UserTask.where(user: current_user, completed: true).count
+    @open = UserTask.where(user: current_user, completed: false).count
+
+    @users = policy_scope(User.all)
+
+    if params[:query].present?
+      @users = User.search_by_email(params[:query])
+    end
+
+    respond_to do |format|
+      format.html
+      format.text { render partial: 'user_tasks/list', locals: { users: @users }, formats: [:html] }
+    end
+  end
+
+  def new
+    create
+  end
+
+  def create
+    if params[:task_id].present? && params[:user_id].present?
+      @task = Task.find(:task_id.to_i)
+      @challengee = User.find(:user_id.to_i)
+      UserTask.new(task: @task, user: @challengee, completed: false, owner: false)
+    end
+  end
+
+  def completed?
+    usertask.completed
     @alltasks = UserTask.where(user: current_user).count
     @open = @alltasks - @completed
   end

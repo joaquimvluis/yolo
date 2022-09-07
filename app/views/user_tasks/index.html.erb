@@ -1,166 +1,147 @@
-<div class="row justify-content-center py-3 m-0" id="blueback-dash" data-controller="complete-task">
-    <div class="col-2 card m-1 card-main p-3 list-style: none rounded-3">
-      <div class="filterby mb-4">
-
-
-
-        <h3 class="h3-dash">FILTER BY</h3>
-        <div class="mb-4">
-          <%= link_to user_user_tasks_path do %>
-            <div class="filter" style="list-style: none;">
-            <i class="fa-sharp fa-solid fa-rotate-left"></i>
-            <span>See all</span>
-          </div>
-          <% end %>
-        </div>
-
-        <div class="mb-4">
-         <p>STATUS</p>
-
-        <%= link_to user_user_tasks_path(status: false) do %>
-          <div class="filter" style="list-style: none;">
-            <i class="fas fa-bullhorn"></i>
-          <span>To do</span>
-        </div>
-        <% end %>
-
-        <%= link_to user_user_tasks_path(status: true) do %>
-          <div class="filter" style="list-style: none;">
-            <i class="far fa-check-circle"></i>
-          <span>Done</span>
-        </div>
-        <% end %>
-        </div>
-
-      <div class="mb-4">
-      </div><p>DEADLINE</p>
-        <div class="filter" style="list-style: none;">
-            <a href="#"></a>
-          <span>This week</span>
-        </div>
-        <div class="filter" style="list-style: none;">
-            <a href="#"></i></a>
-          <span>This month</span>
-        </div>
-      </div>
-
-      <div class="mb-4">
-        <p>CATEGORIES</p>
-        <div class="filter" style="list-style: none;">
-            <a href="#"></a>
-             <span>Culture</span>
-        </div>
-        <div class="filter" style="list-style: none;">
-            <a href="#"></a>
-            <span>Food</span>
-        </div>
-        <div class="filter" style="list-style: none;">
-            <a href="#"></i></a>
-            <span>Outdoors</span>
-        </div>
-        <div class="filter" style="list-style: none;">
-            <a href="#"></i></a>
-            <span>Romance</span>
-        </div>
-        <div class="filter" style="list-style: none;">
-            <a href="#"></i></a>
-            <span>Wildlife</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-7 card m-1 card-main rounded-3 ">
-      <div>
-        <h1 class="d-flex justify-content-center pt-4 ml-3 px-3 d-inline text-black"><%= @user.first_name.nil? ? "User!" : @user.first_name %>'s bucket-list</h1>
-
-        <div class="d-flex justify-content-center">
-          <%# <h6 class="d-inline" data-controller="kpi" data-action="adjust-kpi@window->kpi#adjustNumber"><%= @completed %></h6>
-          <%# <h3 class="h3-dash d-inline ms-2">Completed Tasks! </h3> %>
-
-          <h5 class="h3-dash d-inline ms-2"> Your Open To Do: </h5>
-          <h6 class="d-inline ms-1" data-controller="kpi" data-action="adjust-kpi@window->kpi#adjustNumberOpen"><%=  @open %></h6>
-        </div>
-
-      </div>
-    <div>
-        <main>
-
-      <div class="container p-0 m-0 overflow: hidden" id="show-bucket">
-          <% @usertasks.each.with_index do |task, index| %>
-            <div class="card-bucketlist">
-                <div class="inner">
-                    <nav class="navbar ms-auto p-0" id="togglebucket" style="position: absolute; top: 10px; right: 10px;">
-                      <div class="container-fluid" id="togglebucket" index>
-                        <button class="navbar-toggler p-0" style="border: 0px" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent-<%=task.id%>" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                          <span class="navbar-toggler-icon" id="togglebucket-icon"></span>
-                        </button>
-                      </div>
-                        <div class="collapse" id="navbarToggleExternalContent-<%=task.id%>">
-                          <div class="bg-success p-2 ms-3">
-                              <%= link_to "More info", experience_path(task.task.experience) %><br>
-                              <%= link_to "Share", experience_path(task.task.experience) %><br>
-                              <%= link_to "Delete",user_task_path(task),
-                          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-                          </div>
-                        </div>
-                    </nav>
-                        <%= render "checkboxform", task: task %>
-                        <i class="fa-regular fa-bullseye-arrow"></i>
-                        <% if task.task.deadline.present? %>
-                          <p class="subtitle" id="deadline">Deadline: <%= task.task.deadline.to_formatted_s(:long) %> <p>
-                        <% end %>
-                        <% if task.task.penalty.present? %>
-                          <p class="subtitle"><i class="fa-solid fa-fire"></i> <%= task.task.penalty%></p>
-                        <% end %>
-                  </div>
-              </div>
-          <% end %>
-        <main>
-      </div>
-    </div>
- </div>
-    <div class="col-2 card m-1 d-flex p-3 rounded-3 text-center">
-      <%# <figure class="snip1336 hover"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample74.jpg" alt="sample74" />
-        <figcaption> %>
-        <div>
-          <% if @user.photo.key.present? %>
-             <img src=<%= cl_image_path(@user.photo.key, width: 500, height: 500, crop: :thumb, gravity: :face) %> alt="profile-sample2" class="avatar-dash" />
-          <% else %>
-            <img src="https://media.istockphoto.com/photos/young-woman-ready-for-job-business-concept-picture-id1318482009" alt="profile-sample2" class="avatar-dash" />
-          <% end %>
-        </div>
-          <h2 class="mt-2 mb-0">Hi, <%= @user.first_name.nil? ? "User!" : @user.first_name %></h2>
-          <div class="wavy-line small mb-1 mt-0"></div>
-          <div class="bio-text mt-3"></i>  <%= @user.bio.nil? ? "Please add your bio!" : "#{@user.bio}" %>
-          </div>
-
-          <div data-controller="kpi" data-action="adjust-kpi@window->kpi#adjustText">
-            <div data-kpi-target="kpitext">
+<div class="background-dash">
+  <div class="row justify-content-center" style="min-height:84vh">
+    <div class="col-2 card m-1 card-main p-3 d-flex list-style: none rounded-3">
+      <%# <div style="height:100px; width:100%; clear:both;">
+      <%# <i class="fa-solid fa-list-check text-center" style="font-size: 6em"></i> %>
+      <%# </div> %>
+      <div class="filterby mb-4 mt-5">
+        <div style="height:30px"></div>
+        <div class="wavy-line small my-4"></div>
+        <div data-controller="kpi" data-action="adjust-kpi@window->kpi#adjustText">
+          <div data-kpi-target="kpitext">
             <% if @completed == 0 %>
-            <p class="bio-text mt-4">Start working on your bucketlist</p>
+              <h4 class="bio-text text-center mt-1">Start working on your bucket list!</h4>
             <% else %>
-              <p class="bio-text mt-4"> <i class="fa-regular fa-party-horn"></i>Congrats! You have <%= pluralize @completed, "adventure" %> completed!</p>
-              <div class="mb-5">
-                <p class="bio-text mt-3 mb-1">Your score:</p>
-                <h6 class="d-inline" ><%= @completed * 100 %></h6>
-                <p class="bio-text mt-3 mb-0 d-inline">points</p>
+              <p class="text-center mb-3">
+                <i class="fa-regular fa-party-horn"></i>Congrats! You have <%= pluralize @completed, "adventure" %> completed!
+              </p>
+              <div class="mb-2 mt-2 text-center card">
+                <h3 class=" mt-4 mb-1">Your score:</h3>
+                <h6 class="d-inline text-center" ><%= @completed * 100 %></h6>
+                <h3 class="mt-3 d-inline">points</h3>
               </div>
             <% end %>
+          </div>
+          <% if @completed > 4 %>
+            <div style="height:160px">
+              <%# <%= image_tag "trophy.jpeg", alt: "Le Wagon", width: 180, class: "img-center" %>
+              <img src="https://res.cloudinary.com/elmette/image/upload/v1662562895/0794B1B6-58D0-44E2-A522-1135E53B3BEC_1_105_c_re5kll.jpg" alt="trophy", width: 180, class="img-center">
+            </div>
+            <h3 class="text-center">You're a real adventurer!</h3>
+          <% else %>
+            <div style="height:160px">
+              <img src="https://res.cloudinary.com/elmette/image/upload/v1662561898/firststep_dl2eak.png" alt="firststep", width: 150, class="img-center-steps">
+            </div>
+            <h3 class="text-center m-0">You're getting started!</h3>
+          <% end %>
+        </div>
+        <div class="wavy-line small my-4 position-sticky"></div>
+      </div>
+    </div>
+    <div class="col-7 card m-1 card-main rounded-3 ">
+      <div>
+        <h1 class="d-flex justify-content-center pt-4 ml-3 px-3 d-inline text-black"><%= @user.first_name.nil? ? "User!" : @user.first_name %>'s bucket list</h1>
+        <div class ="d-flex d-inline justify-content-center ms-4">
+          <%= link_to user_user_tasks_path do %>
+            <div class="border filter px-3 me-1" style="list-style: none;">
+              <i class="fa-sharp fa-solid fa-rotate-left"></i>
+              <span>See all</span>
+            </div>
+          <% end %>
+
+          <%= link_to user_user_tasks_path(status: false) do %>
+            <div class="border filter px-3 me-1" style="list-style: none;">
+              <i class="fas fa-bullhorn"></i>
+              <span>To do</span>
+            </div>
+          <% end %>
+
+          <%= link_to user_user_tasks_path(status: true) do %>
+            <div class="border filter px-3 me-1" style="list-style: none;">
+              <i class="far fa-check-circle"></i>
+              <span>Done</span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <main>
+
+        <div class="container p-0 m-0 overflow: hidden" id="show-bucket">
+          <% @usertasks.each.with_index do |task, index| %>
+        <p>task:<%= task.id %> task.task<%= task.task.id %></p>
+            <div class="card-bucketlist">
+              <div class="inner">
+                <nav class="navbar ms-auto p-0" id="togglebucket" style="position: absolute; top: 10px; right: 10px;">
+                  <div class="container-fluid" id="togglebucket" index>
+                    <button class="navbar-toggler p-0" style="border: 0px" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent-<%=task.id%>" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon" id="togglebucket-icon"></span>
+                    </button>
+                  </div>
+                  <div class="collapse" id="navbarToggleExternalContent-<%=task.id%>">
+                    <div class="bg-success p-2 ms-3">
+                      <%= link_to "More info", experience_path(task.task.experience) %><br>
+                      <%= link_to "Share", experience_path(task.task.experience) %><br>
+                      <%= link_to "Delete",user_task_path(task),
+                          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+                    </div>
+                  </div>
+                </nav>
+                <%= render "checkboxform", task: task %>
+                <i class="fa-regular fa-bullseye-arrow"></i>
+                <% if task.task.deadline.present? %>
+                  <p class="subtitle" id="deadline">Deadline: <%= task.task.deadline.to_formatted_s(:long) %>
+                    <p>
+                    <% end %>
+                    <% if task.task.penalty.present? %>
+                      <p class="subtitle"><i class="fa-solid fa-fire"></i> <%= task.task.penalty%></p>
+                    <% end %>
+                  </div>
+                </div>
+                 <%= render partial: 'user_tasks/challenge_friend_modal',locals: { task: task.task } %>
+                      <%# = render 'user_tasks/challenge_friend_modal', task: task.task %>
+              <% end %>
+              <main>
+
+              </div>
+            </div>
+
+            <div class="col-2 card m-1 card-main d-flex p-3 rounded-3 text-center">
+              <div style="height:160px">
+                <% if @user.photo.key.present? %>
+                  <img src=<%= cl_image_path(@user.photo.key, width: 500, height: 500, crop: :thumb, gravity: :face) %> alt="profile-sample2" class="avatar-dash mt-4" />
+                <% else %>
+                  <img src="https://media.istockphoto.com/photos/young-woman-ready-for-job-business-concept-picture-id1318482009" alt="profile-sample2" class="avatar-dash" />
+                <% end %>
+              </div>
+              <h2 class="mt-4 mb-2">Hi, <%= @user.first_name.nil? ? "User!" : @user.first_name %></h2>
+              <div class="mb-2 text-center">
+                <h3> Welcome Back! </h3>
+              </div>
+              <div class="wavy-line small mb-4">
+              </div>
+              <h3 class="mt-2"> Tasks waiting </h3>
+              <div class="d-flex align-items-baseline justify-content-center">
+                <h3 class=""> for you: </h3>
+                <h6 class="ms-2" data-controller="kpi" data-action="adjust-kpi@window->kpi#adjustNumberOpen"><%=@open %></h6>
+              </div>
+
+              <div style="height:10px"></div>
+              <div class="bio-text text-center">
+                <i class="fa-regular fa-id-card mt-3" style="font-size: 1.5em"></i>
+                <div class="mt-3">
+                  <p class="text-center mb-3"><%= @user.bio.nil? ? "Please add your bio!" : "#{@user.bio}" %></p>
+                </div>
+              </div>
+              <div class="dash-icons d-flex p-3 justify-content-center">
+                <p class="bio-text mt-3">Share</p>
+                <a class="border-0 p-2" href="#"><i class="fab fa-instagram"></i></a>
+                <a class="border-0 p-2" href="#"><i class="fab fa-facebook"></i></a>
+                <a class="border-0 p-2" href="#"><i class="fa fa-envelope"></i></a>
+              </div>
+              <div class="d-flex justify-content-end mb-4">
+                <%= link_to "Update Profile", edit_user_path(@user), class: "btn-main snip1336 w-100 btn-location" %>
+              </div>
             </div>
           </div>
-
-          <div class="d-flex justify-content-end mb-0">
-            <%= link_to "Update Profile", edit_user_path(@user), class: "btn-main" %>
-          </div>
-
-          <div class="dash-icons d-flex p-3 justify-content-center">
-          <p class="bio-text mt-0">Share</p>
-            <a class="border-0 p-2" href="#"><i class="fab fa-instagram"></i></a>
-            <a class="border-0 p-2" href="#"><i class="fab fa-facebook"></i></a>
-            <a class="border-0 p-2" href="#"><i class="fa fa-envelope"></i></a>
-          </div>
-        </figcaption>
-      </figure>
-    </div>
-</div>
-</div>
+        </div>

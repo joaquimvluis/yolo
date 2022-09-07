@@ -18,7 +18,6 @@ export default class extends Controller {
     // const data = new FormData(this.formTarget)
     const value = event.target.checked
 
-
     // //Rails.fire(this.element, 'change')
     fetch(url, {
       method: "PATCH",

@@ -78,7 +78,8 @@ font-size: 30px;
 .small {
   @include make-wavy-line(13px, 4px, #F75508
       );
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #show-bucket{
