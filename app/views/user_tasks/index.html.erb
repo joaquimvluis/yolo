@@ -1,11 +1,14 @@
+
 <div class="background-dash">
   <div class="row justify-content-center" style="min-height:84vh">
+
     <div class="col-2 card m-1 card-main p-3 list-style: none rounded-3">
       <div style="height:100px; width:100%; clear:both;"></div>
       <div class="filterby mb-4">
       <h2 class="">Your Rewards</h2>
       <div class="wavy-line small">
       </div>
+
 
         <div data-controller="kpi" data-action="adjust-kpi@window->kpi#adjustText">
             <div data-kpi-target="kpitext">
@@ -29,12 +32,12 @@
           <h5 class="bio-text d-inline ms-2"> Your Open To Do: </h5>
           <h5 class="d-inline ms-2" data-controller="kpi" data-action="adjust-kpi@window->kpi#adjustNumberOpen"><%=  @open %></h5>
         </div>
-        </div>
-      </div>
+
  </div>
     <div class="col-7 card m-1 card-main rounded-3 ">
       <div>
         <h1 class="d-flex justify-content-center pt-4 ml-3 px-3 d-inline text-black"><%= @user.first_name.nil? ? "User!" : @user.first_name %>'s bucket-list</h1>
+
         <div class ="d-flex d-inline justify-content-center ms-4">
             <%= link_to user_user_tasks_path do %>
               <div class="border filter px-3 me-1" style="list-style: none;">
@@ -42,6 +45,7 @@
               <span>See all</span>
               </div>
             <% end %>
+
 
             <%= link_to user_user_tasks_path(status: false) do %>
               <div class="border filter px-3 me-1" style="list-style: none;">
@@ -59,32 +63,45 @@
         </div>
 
       </div>
+
       <div>
+
         <main>
+
+      <div class="container p-0 m-0 overflow: hidden" id="show-bucket">
           <% @usertasks.each.with_index do |task, index| %>
             <div class="card-bucketlist">
                 <div class="inner">
-                  <%= render "checkboxform", task: task %>
-
-                  <i class="fa-regular fa-bullseye-arrow"></i>
-                  <% if task.task.deadline.present? %>
-                    <p class="subtitle" id="deadline">Deadline: <%= task.task.deadline.to_formatted_s(:long) %> <p>
-                  <% end %>
-                  <% if task.task.penalty.present? %>
-                    <p class="subtitle"><i class="fa-solid fa-fire"></i> <%= task.task.penalty%></p>
-                  <% end %>
-                  <%= link_to "See full experience", experience_path(task.task.experience) %>
-                  <%= link_to "Delete",
-                    user_task_path(task),
-                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                  %>
-
-                </div>
-            </div>
+                    <nav class="navbar ms-auto p-0" id="togglebucket">
+                      <div class="container-fluid" id="togglebucket" index>
+                        <button class="navbar-toggler p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon" id="togglebucket-icon"></span>
+                        </button>
+                      </div>
+                          <div class="collapse" id="navbarToggleExternalContent">
+                            <div class="bg-success p-2 ms-3">
+                                <%= link_to "More info", experience_path(task.task.experience) %><br>
+                                <%= link_to "Share", experience_path(task.task.experience) %><br>
+                                <%= link_to "Delete",user_task_path(task),
+                            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+                            </div>
+                          </div>
+                    </nav>
+                          <%= render "checkboxform", task: task %>
+                          <i class="fa-regular fa-bullseye-arrow"></i>
+                          <% if task.task.deadline.present? %>
+                            <p class="subtitle" id="deadline">Deadline: <%= task.task.deadline.to_formatted_s(:long) %> <p>
+                          <% end %>
+                          <% if task.task.penalty.present? %>
+                            <p class="subtitle"><i class="fa-solid fa-fire"></i> <%= task.task.penalty%></p>
+                          <% end %>
+                      </div>
+              </div>
           <% end %>
         <main>
       </div>
     </div>
+
 
     <div class="col-2 card m-1 card-main d-flex p-3 rounded-3 text-center">
       <div style="height:160px">
@@ -95,7 +112,7 @@
         <% end %>
       </div>
       <h2 class="mt-3 mb-0">Hi, <%= @user.first_name.nil? ? "User!" : @user.first_name %></h2>
-      <div class="wavy-line small">
+      <div class="wavy-line small mb-1 mt-0">
       </div>
       <div class="bio-text mt-3"></i> <p><%= @user.bio.nil? ? "Please add your bio!" : "#{@user.bio}" %></p>
       </div>
@@ -109,6 +126,7 @@
       <div class="d-flex justify-content-end mb-4">
         <%= link_to "Update Profile", edit_user_path(@user), class: "btn-main snip1336 w-100 btn-location" %>
       </div>
+
     </div>
   </div>
 </div>
