@@ -8,6 +8,10 @@ export default class extends Controller {
 
   static targets = ["form", "list", "searchInput"]
 
+  connect() {
+    console.log(this.taskValue);
+  }
+
   update(){
     const url = `${this.formTarget.action}?query=${this.searchInputTarget.value}`
     fetch(url, { headers: { 'Accept': 'text/plain' } })

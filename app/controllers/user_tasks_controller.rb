@@ -25,17 +25,17 @@ class UserTasksController < ApplicationController
     end
   end
 
-  # def new
-  #   create
-  # end
+  def new
+    create
+  end
 
-  # def create
-  #   if params[:task_id].present? && params[:user_id].present?
-  #     @task = Task.find(:task_id.to_i)
-  #     @challengee = User.find(:user_id.to_i)
-  #     UserTask.new(task: @task, user: @challengee, completed: false, owner: false)
-  #   end
-  # end
+  def create
+    if params[:task_id].present? && params[:user_id].present?
+      @task = Task.find(:task_id.to_i)
+      @challengee = User.find(:user_id.to_i)
+      UserTask.new(task: @task, user: @challengee, completed: false, owner: false)
+    end
+  end
 
   def completed?
     usertask.completed
