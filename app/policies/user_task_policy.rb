@@ -19,4 +19,11 @@ class UserTaskPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def completed?
+    true
+  end
+
+  def open?
+    true
+  end
 end
