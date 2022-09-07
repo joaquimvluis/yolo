@@ -13,7 +13,7 @@
       </div>
       <div class="modal-body">
         <%# SEARCH FORM %>
-        <div data-controller="refresh-users-list">
+        <div data-controller="refresh-users-list" data-refresh-users-list-task-value="<%= task.id %>">
 
           <%= form_with url: user_user_tasks_path(current_user), method: :get, html: { class: "d-flex justify-content-center mb-1", data: { refresh_users_list_target: 'form' } } do %>
             <%= text_field_tag :query,

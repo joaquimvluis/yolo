@@ -80,7 +80,7 @@
                     user_task_path(task),
                     data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
                   %>
-                  <%= render 'user_tasks/challenge_friend_modal' %>
+                  <%= render 'user_tasks/challenge_friend_modal', task: task %>
                 </div>
               </div>
             <% end %>
