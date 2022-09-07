@@ -11,6 +11,7 @@ class UserTasksController < ApplicationController
     end
 
     @completed = UserTask.where(user: current_user, completed: true).count
+    @open = UserTask.where(user: current_user, completed: false).count
 
     @users = policy_scope(User.all)
 
