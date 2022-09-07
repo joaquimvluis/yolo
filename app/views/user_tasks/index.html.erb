@@ -70,20 +70,20 @@
           <% @usertasks.each.with_index do |task, index| %>
             <div class="card-bucketlist">
                 <div class="inner">
-                    <nav class="navbar ms-auto p-0" id="togglebucket">
+                    <nav class="navbar ms-auto p-0" id="togglebucket" style="position: absolute; top: 10px; right: 10px;">
                       <div class="container-fluid" id="togglebucket" index>
-                        <button class="navbar-toggler p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler p-0" style="border: 0px" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent-<%=task.id%>" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                           <span class="navbar-toggler-icon" id="togglebucket-icon"></span>
                         </button>
                       </div>
-                          <div class="collapse" id="navbarToggleExternalContent">
-                            <div class="bg-success p-2 ms-3">
-                                <%= link_to "More info", experience_path(task.task.experience) %><br>
-                                <%= link_to "Share", experience_path(task.task.experience) %><br>
-                                <%= link_to "Delete",user_task_path(task),
-                            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-                            </div>
+                        <div class="collapse" id="navbarToggleExternalContent-<%=task.id%>">
+                          <div class="bg-success p-2 ms-3">
+                              <%= link_to "More info", experience_path(task.task.experience) %><br>
+                              <%= link_to "Share", experience_path(task.task.experience) %><br>
+                              <%= link_to "Delete",user_task_path(task),
+                          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
                           </div>
+                        </div>
                     </nav>
                           <%= render "checkboxform", task: task %>
                           <i class="fa-regular fa-bullseye-arrow"></i>
@@ -121,7 +121,7 @@
             <h6 class="ms-2" data-controller="kpi" data-action="adjust-kpi@window->kpi#adjustNumberOpen"><%=  @open %></h6>
           </div>
 
-      <div style="height:20px"></div>
+      <div style="height:10px"></div>
       <div class="bio-text text-center">
         <i class="fa-regular fa-id-card mt-3" style="font-size: 1.5em"></i>
         <div class="mt-3">
