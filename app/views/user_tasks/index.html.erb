@@ -69,7 +69,6 @@
 
         <div class="container p-0 m-0 overflow: hidden" id="show-bucket">
           <% @usertasks.each.with_index do |task, index| %>
-        <p>task:<%= task.id %> task.task<%= task.task.id %></p>
             <div class="card-bucketlist">
               <div class="inner">
                 <nav class="navbar ms-auto p-0" id="togglebucket" style="position: absolute; top: 10px; right: 10px;">
@@ -99,7 +98,6 @@
                   </div>
                 </div>
                  <%= render partial: 'user_tasks/challenge_friend_modal',locals: { task: task.task } %>
-                      <%# = render 'user_tasks/challenge_friend_modal', task: task.task %>
               <% end %>
               <main>
 
