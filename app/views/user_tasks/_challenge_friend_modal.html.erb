@@ -1,20 +1,19 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#task-<%=task.id %>">
   Challenge a friend!
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="task-<%=task.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Modal title <%= task.id %></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <%# SEARCH FORM %>
         <div data-controller="refresh-users-list" data-refresh-users-list-task-value="<%= task.id %>">
-
           <%= form_with url: user_user_tasks_path(current_user), method: :get, html: { class: "d-flex justify-content-center mb-1", data: { refresh_users_list_target: 'form' } } do %>
             <%= text_field_tag :query,
                                params[:query],
