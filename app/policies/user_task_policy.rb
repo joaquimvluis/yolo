@@ -17,4 +17,12 @@ class UserTaskPolicy < ApplicationPolicy
   def show?
     record.user == user
   end
+
+  def completed?
+    true
+  end
+
+  def open?
+    true
+  end
 end

@@ -1,10 +1,11 @@
 import { Controller } from "@hotwired/stimulus"
+// import { LibManifestPlugin } from "webpack";
 
 // Connects to data-controller="complete-task"
 export default class extends Controller {
-  static targets = ["form"]
+  static targets = ["form", "celebrate"]
+
   connect() {
-    console.log("CONNECTED")
   }
 
   update(event) {
@@ -26,5 +27,20 @@ export default class extends Controller {
       },
       body: JSON.stringify({ user_task: { completed: value }})
     })
-}
+
+    if (value == true) {
+      this.#displayCelebration(this.celebrateTarget)
+    }
+
+    const updateEvent = new CustomEvent("adjust-kpi")
+    window.dispatchEvent(updateEvent)
+  }
+
+  #displayCelebration(target) {
+    target.classList.remove("d-none")
+    setTimeout(() => {
+      target.classList.add("d-none")
+    }, 2000);
+  }
+
 }

@@ -2,19 +2,97 @@
 @import "home";
 
 .filter {
-font-family: "Museo Sans 500";
-color: grey;
-line-height: 1.8;
-background-color: #f2f9fb;
-border-radius: 8px;
-margin-bottom: 7px;
-padding-left: 10px;
-
-
+  font-family: "Museo Sans 500";
+  color: grey;
+  line-height: 1.8;
+  background-color: #eef7fa;
+  border-radius: 8px;
+  margin-bottom: 7px;
+  padding-left: 10px;
 
   &:hover {
-    color: #26AECC;
+    color: white;
     cursor: pointer;
     text-decoration: none;
+    background-color: #222222;
   }
+}
+
+.filterby{
+  margin-top: 4.7rem;
+}
+
+#icon-dash{
+font-size: 30px;
+}
+
+.bio-text{
+  font-size: 16px;
+  color: #8F8F8F;
+  font-family: "Museo Sans 500";
+}
+
+#deadline{
+  color: #F75508;
+  // color: $turquoise;
+}
+
+.h3-dash {
+  font-weight: bold;
+  font-size: 22px;
+  color: #818181;
+}
+
+#blueback{
+  background-color: #e1f0f4;
+  height: 84vh;
+}
+
+@mixin make-wavy-line($size, $thickness, $color) {
+  position: center;
+  $spacing: $size / 1.41421;
+  $color-begin: $spacing - $thickness / 2;
+  $color-end: $spacing + $thickness / 2;
+  width: 78px;
+  height: $size;
+  background:
+      linear-gradient(45deg,
+          transparent $color-begin,
+          $color $color-begin,
+          $color $color-end,
+          transparent $color-end
+      ),
+      linear-gradient(135deg,
+          transparent $color-begin,
+          $color $color-begin,
+          $color $color-end,
+          transparent $color-end
+      ) $size 0;
+  background-size: $size * 2 $size;
+}
+
+.small {
+  @include make-wavy-line(13px, 4px, #F75508
+      );
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#show-bucket{
+  background: white;
+  overflow: scroll;
+  height: 500px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+#togglebucket{
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+#togglebucket-icon{
+  background-color: #e1f0f4;
+  border-color: #e1f0f4;
+  border-radius: 2px;
 }

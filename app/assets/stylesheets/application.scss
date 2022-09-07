@@ -15,6 +15,9 @@
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 h1 {
@@ -36,6 +39,7 @@ h3 {
   font-size: 22px;
   color: #a3a2a2;
 }
+
 h4 {
   font-size: 16px;
   color: $dark-gray;
@@ -56,7 +60,6 @@ h6 {
 p{
   font-size: 20px;
   color: #8F8F8F;
-
 }
 
 .container_banner{
@@ -101,4 +104,20 @@ padding: 30px;
 }
 .icon-link{
   text-decoration: none;
+}
+
+
+.img-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.img-center-steps {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -10;
+  width: 90%;
 }
