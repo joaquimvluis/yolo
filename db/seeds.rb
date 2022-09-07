@@ -8,8 +8,8 @@
 require 'faker'
 require "open-uri"
 
-Task.destroy_all
 UserTask.destroy_all
+Task.destroy_all
 ExperienceCategory.destroy_all
 User.destroy_all
 Experience.destroy_all
