@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :tasks, only: %i[show new create edit update]
   end
 
-  resources :users, only: %i[show edit update] do
+  resources :users, only: %i[index show edit update] do
     resources :user_tasks, only: %i[show index new create]
   end
 

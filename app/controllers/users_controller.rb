@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update]
 
+  def index
+    @users = User.all
+    authorize @users
+
+  end
+
   def edit
   end
 
