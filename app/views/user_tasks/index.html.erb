@@ -10,7 +10,7 @@
         <div data-controller="kpi" data-action="adjust-kpi@window->kpi#adjustText">
           <div data-kpi-target="kpitext">
             <% if @completed == 0 %>
-              <h4 class="bio-text text-center mt-1">Start working on your bucketlist!</h4>
+              <h4 class="bio-text text-center mt-1">Start working on your bucket list!</h4>
             <% else %>
               <p class="text-center mb-3">
               <i class="fa-regular fa-party-horn"></i>Congrats! You have <%= pluralize @completed, "adventure" %> completed!
@@ -39,7 +39,7 @@
  </div>
     <div class="col-7 card m-1 card-main rounded-3 ">
       <div>
-        <h1 class="d-flex justify-content-center pt-4 ml-3 px-3 d-inline text-black"><%= @user.first_name.nil? ? "User!" : @user.first_name %>'s bucket-list</h1>
+        <h1 class="d-flex justify-content-center pt-4 ml-3 px-3 d-inline text-black"><%= @user.first_name.nil? ? "User!" : @user.first_name %>'s bucket list</h1>
         <div class ="d-flex d-inline justify-content-center ms-4">
             <%= link_to user_user_tasks_path do %>
               <div class="border filter px-3 me-1" style="list-style: none;">
