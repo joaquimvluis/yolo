@@ -5,15 +5,16 @@
   font-family: "Museo Sans 500";
   color: grey;
   line-height: 1.8;
-  background-color: #f2f9fb;
+  background-color: #eef7fa;
   border-radius: 8px;
   margin-bottom: 7px;
   padding-left: 10px;
 
   &:hover {
-    color: #26AECC;
+    color: white;
     cursor: pointer;
     text-decoration: none;
+    background-color: #222222;
   }
 }
 
@@ -42,12 +43,8 @@ font-size: 30px;
   color: #818181;
 }
 
-
-.slash-3 {
-  height: 10px;
-  background-image: linear-gradient(45deg, rgba(13, 13, 13, 0), rgba(13, 13, 13, 0) 33.33%, #f75508 33.33%, #d6b209 66.67%, rgba(13, 13, 13, 0) 66.67%, rgba(13, 13, 13, 0) 100%);
-  background-size: 16px 100%;
-  width: 239px;
+#blueback{
+  background-color: #e1f0f4
 }
 
 @mixin make-wavy-line($size, $thickness, $color) {
@@ -76,4 +73,13 @@ font-size: 30px;
 .small {
   @include make-wavy-line(13px, 4px, #F75508
       );
+  margin: auto;
+}
+
+#show-bucket{
+  background: white;
+  overflow: scroll;
+  height: 500px;
+  margin-bottom: 30px;
+  margin-top: 10px;
 }

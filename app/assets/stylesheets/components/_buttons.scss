@@ -27,6 +27,7 @@
 
 .btn-main:after {
   background-color:#26AECC;
+  color: white;
   border-radius: 8px;
   content: "";
   display: block;
@@ -56,15 +57,18 @@
 
 @media (min-width: 768px) {
   .btn-main {
-    padding: 0 40px;
+    // padding: 0 40px;
   }
 }
 
-#createtask{
-  margin-right: 70px;
+.btnprofile{
+  background-color: #222222;
+  border: 2px solid #222222;
+  color: white;
 
   &:hover {
     background: #26AECC;
     border-color: #26AECC;
+    color: white;
   }
 }
