@@ -9,3 +9,6 @@ application.register("complete-task", CompleteTaskController)
 
 import KpiController from "./kpi_controller"
 application.register("kpi", KpiController)
+
+import NotificationController from "./notification_controller"
+application.register("notification", NotificationController)
