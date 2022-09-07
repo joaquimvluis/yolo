@@ -48,6 +48,10 @@ font-size: 30px;
   height: 84vh;
 }
 
+#blueback-dash{
+  background-color: #e1f0f4;
+}
+
 @mixin make-wavy-line($size, $thickness, $color) {
   position: center;
   $spacing: $size / 1.41421;
@@ -80,7 +84,7 @@ font-size: 30px;
 #show-bucket{
   background: white;
   overflow: scroll;
-  height: 500px;
+  height: 520px;
 }
 
 #togglebucket{
