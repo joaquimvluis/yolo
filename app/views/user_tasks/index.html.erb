@@ -1,4 +1,4 @@
-<div class="row justify-content-center p-3" id="blueback" data-controller="complete-task" style="min-height:84vh">
+<div class="row justify-content-center py-3 m-0" id="blueback" data-controller="complete-task" style="min-height:84vh">
     <div class="col-2 card m-1 card-main p-3 list-style: none rounded-3">
       <div class="filterby mb-4">
         <h3 class="h3-dash">FILTER BY</h3>
@@ -64,13 +64,13 @@
           <% @usertasks.each.with_index do |task, index| %>
             <div class="card-bucketlist">
                 <div class="inner">
-                    <nav class="navbar ms-auto p-0" id="togglebucket">
+                    <nav class="navbar ms-auto p-0" id="togglebucket" style="position: absolute; top: 10px; right: 10px;">
                       <div class="container-fluid" id="togglebucket" index>
-                        <button class="navbar-toggler p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler p-0" style="border: 0px" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent-<%=task.id%>" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                           <span class="navbar-toggler-icon" id="togglebucket-icon"></span>
                         </button>
                       </div>
-                          <div class="collapse" id="navbarToggleExternalContent">
+                          <div class="collapse" id="navbarToggleExternalContent-<%=task.id%>">
                             <div class="bg-success p-2 ms-3">
                                 <%= link_to "More info", experience_path(task.task.experience) %><br>
                                 <%= link_to "Share", experience_path(task.task.experience) %><br>

@@ -81,17 +81,16 @@ font-size: 30px;
   background: white;
   overflow: scroll;
   height: 500px;
-  margin-bottom: 30px;
-  margin-top: 10px;
 }
 
 #togglebucket{
   align-items: flex-end;
   justify-content: flex-end;
+  top: 10px;
+  right: 10px;
 }
 
 #togglebucket-icon{
-  background-color: #e1f0f4;
-  border-color: #e1f0f4;
   border-radius: 2px;
+  border: 0px;
 }
