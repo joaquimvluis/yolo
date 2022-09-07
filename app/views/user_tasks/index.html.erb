@@ -1,4 +1,4 @@
-<div class="row justify-content-center" id="blueback" data-controller="complete-task" style="min-height:84vh">
+<div class="row justify-content-center p-3" id="blueback" data-controller="complete-task" style="min-height:84vh">
     <div class="col-2 card m-1 card-main p-3 list-style: none rounded-3">
       <div class="filterby mb-4">
         <h3 class="h3-dash">FILTER BY</h3>
@@ -51,53 +51,43 @@
     </div>
 
     <div class="col-7 card m-1 card-main rounded-3 ">
-      <%# <div class="m-2 card-main snip1336">
-        <h4 class="p-2 justify-content-center border-bottom">FILTER BY</p>
-      </div> %>
-
       <div>
         <h1 class="d-flex justify-content-center pt-4 ml-3 px-3 d-inline text-black"><%= @user.first_name.nil? ? "User!" : @user.first_name %>'s bucket-list</h1>
           <h3 class="h3-dash d-inline ms-4">Current list:</h3>
           <h6 class="d-inline ">3 "LINK"</h6>
           <h3 class="h3-dash d-inline"> tasks</h3>
       </div>
-       <div>
-
+    <div>
         <main>
-        <div class="container p-0 m-0 overflow: hidden" id="show-bucket">
 
-
+      <div class="container p-0 m-0 overflow: hidden" id="show-bucket">
           <% @usertasks.each.with_index do |task, index| %>
             <div class="card-bucketlist">
                 <div class="inner">
-                    <nav class="navbar ms-auto" id="togglebucket">
-                      <div class="container-fluid" id="togglebucket">
+                    <nav class="navbar ms-auto p-0" id="togglebucket">
+                      <div class="container-fluid" id="togglebucket" index>
                         <button class="navbar-toggler p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                          <span class="navbar-toggler-icon"></span>
+                          <span class="navbar-toggler-icon" id="togglebucket-icon"></span>
                         </button>
-                          <ul class="dropdown-menu">
-                            <li><a href="#">HTML</a></li>
-                            <li><a href="#">CSS</a></li>
-                          </ul>
                       </div>
-                  <div class="collapse" id="navbarToggleExternalContent">
-                    <div class="bg-success p-2 ms-3">
-                        <%= link_to "More info", experience_path(task.task.experience) %><br>
-                        <%= link_to "Share", experience_path(task.task.experience) %><br>
-                        <%= link_to "Delete",user_task_path(task),
-                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-                    </div>
-                  </div>
+                          <div class="collapse" id="navbarToggleExternalContent">
+                            <div class="bg-success p-2 ms-3">
+                                <%= link_to "More info", experience_path(task.task.experience) %><br>
+                                <%= link_to "Share", experience_path(task.task.experience) %><br>
+                                <%= link_to "Delete",user_task_path(task),
+                            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+                            </div>
+                          </div>
                     </nav>
-                  <%= render "checkboxform", task: task %>
-                  <i class="fa-regular fa-bullseye-arrow"></i>
-                  <%# if task.task.deadline.present? %>
-                    <p class="subtitle" id="deadline">Deadline: <%= task.task.deadline.to_formatted_s(:long) %> <p>
-                  <%# end %>
-                  <%# if task.task.penalty.present? %>
-                    <p class="subtitle"><i class="fa-solid fa-fire"></i> <%= task.task.penalty%></p>
-                  <%# end %>
-                  </div>
+                          <%= render "checkboxform", task: task %>
+                          <i class="fa-regular fa-bullseye-arrow"></i>
+                          <%# if task.task.deadline.present? %>
+                            <p class="subtitle" id="deadline">Deadline: <%= task.task.deadline.to_formatted_s(:long) %> <p>
+                          <%# end %>
+                          <%# if task.task.penalty.present? %>
+                            <p class="subtitle"><i class="fa-solid fa-fire"></i> <%= task.task.penalty%></p>
+                          <%# end %>
+                      </div>
               </div>
           <% end %>
         <main>
@@ -120,21 +110,12 @@
           </div>
 
           <% if @completed == 0 %>
-            <div class="mb-5">
-              <p class="bio-text mt-3 mb-1">Your score:</p>
-              <h6 class="d-inline">240</h6>
-              <p class="bio-text mt-3 d-inline">points</p>
             </div>
-
-
-
-
           <% else %>
             <div> <p class="bio-text mt-4"> <i class="fa-regular fa-party-horn"></i>Congrats! You have <%= pluralize @completed, "bucket-list-tasks" %> completed!</p> </div>
           <% end %>
 
           <%# data-action: "change->complete-task#update" %>
-
 
           <div class="d-flex justify-content-end mb-4">
             <%= link_to "Update Profile", edit_user_path(@user), class: "btn-main" %>
@@ -146,10 +127,8 @@
             <a class="border-0 p-2" href="#"><i class="fab fa-facebook"></i></a>
             <a class="border-0 p-2" href="#"><i class="fa fa-envelope"></i></a>
           </div>
-
         </figcaption>
       </figure>
     </div>
 </div>
 </div>
-z
