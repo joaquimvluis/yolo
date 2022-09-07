@@ -85,7 +85,7 @@ font-size: 30px;
 #show-bucket{
   background: white;
   overflow: scroll;
-  height: 520px;
+  height: 62vh;
 }
 
 #togglebucket{
@@ -93,9 +93,19 @@ font-size: 30px;
   justify-content: flex-end;
   top: 10px;
   right: 10px;
+
+  &:hover{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  }
 }
 
 #togglebucket-icon{
   border-radius: 2px;
   border: 0px;
+}
+
+#link-plain{
+text-decoration: none;
 }

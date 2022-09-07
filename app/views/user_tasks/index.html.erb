@@ -42,21 +42,21 @@
       <div>
         <h1 class="d-flex justify-content-center pt-4 ml-3 px-3 d-inline text-black"><%= @user.first_name.nil? ? "User!" : @user.first_name %>'s bucket list</h1>
         <div class ="d-flex d-inline justify-content-center ms-4">
-          <%= link_to user_user_tasks_path do %>
+           <%= link_to user_user_tasks_path, style:"text-decoration: none" do %>
             <div class="border filter px-3 me-1" style="list-style: none;">
               <i class="fa-sharp fa-solid fa-rotate-left"></i>
               <span>See all</span>
             </div>
           <% end %>
 
-          <%= link_to user_user_tasks_path(status: false) do %>
+          <%= link_to user_user_tasks_path(status: false), style:"text-decoration: none" do %>
             <div class="border filter px-3 me-1" style="list-style: none;">
               <i class="fas fa-bullhorn"></i>
               <span>To do</span>
             </div>
           <% end %>
 
-          <%= link_to user_user_tasks_path(status: true) do %>
+           <%= link_to user_user_tasks_path(status: true), style:"text-decoration: none" do %>
             <div class="border filter px-3 me-1" style="list-style: none;">
               <i class="far fa-check-circle"></i>
               <span>Done</span>
@@ -70,13 +70,13 @@
         <div class="container p-0 m-0 overflow: hidden" id="show-bucket">
           <% @usertasks.each.with_index do |task, index| %>
         <p>task:<%= task.id %> task.task<%= task.task.id %></p>
-            <div class="card-bucketlist">
+            <div class="card-bucketlist px-0">
               <div class="inner">
-                <nav class="navbar ms-auto p-0" id="togglebucket" style="position: absolute; top: 10px; right: 10px;">
-                  <div class="container-fluid" id="togglebucket" index>
+                <nav class="navbar ms-auto p-0" id="togglebucket" style="z-index:1000; position: absolute; top: 10px; right: 10px;">
                     <button class="navbar-toggler p-0" style="border: 0px" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent-<%=task.id%>" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon" id="togglebucket-icon"></span>
                     </button>
+                  <div class="container-fluid" id="togglebucket" index>
                   </div>
                   <div class="collapse" id="navbarToggleExternalContent-<%=task.id%>">
                     <div class="bg-success p-2 ms-3">
