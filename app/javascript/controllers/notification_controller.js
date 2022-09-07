@@ -6,6 +6,9 @@ export default class extends Controller {
   static targets = ["notification"]
 
   connect() {
-    console.log(`connected bitch`)
+    this.channel = createConsumer().subscriptions.create(
+      { channel: "NotificationChannel", id: this.userIdValue },
+      { received: data => console.log(data) }
+    )
   }
 }

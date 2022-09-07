@@ -1,4 +1,4 @@
-<div class="notifications" data-controller="notification">
-
-
-</div>
+<% if current_user.present? %>
+  <div class="notifications" data-controller="notification" data-notification-user-id-value="<%= current_user.id %>">
+  </div>
+<% end %>
