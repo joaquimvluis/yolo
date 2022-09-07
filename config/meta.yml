@@ -1,0 +1,5 @@
+meta_product_name: "YOLO"
+meta_title: "YOLO - What do you want to do before you die?"
+meta_description: "Get your bucket list going. Choose from a variety of experiences, set a deadline and a penalty to actually make you do it, and start living to the fullest"
+meta_image: "main.jpg" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
