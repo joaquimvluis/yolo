@@ -44,28 +44,28 @@ export default class extends Controller {
 
   #generateTextInHTML(number) {
     if (number == 0) {
-      this.kpitextTarget.insertAdjacentHTML("afterbegin", '<p class="bio-text mt-4">Start working on your bucketlist</p>')
+      this.kpitextTarget.insertAdjacentHTML("afterbegin", '<h4 class="bio-text text-center mt-1">Start working on your bucketlist!</h4>')
     } else if (number == 1) {
       this.kpitextTarget.insertAdjacentHTML("afterbegin", (
-        `<p class="bio-text mt-4">
+        `<p class="text-center mb-3">
           <i class="fa-regular fa-party-horn"></i>
           Congrats! You have 1 adventure completed!
         </p>
-        <div class="mb-5">
-          <p class="bio-text mt-3 mb-1">Your score:</p>
-          <h6 class="d-inline" >${number * 100}</h6>
-          <p class="bio-text mt-3 d-inline">points</p>
+        <div class="mb-2 mt-2 text-center card">
+          <h3 class="mt-4 mb-1">Your score:</h3>
+          <h6 class="d-inline text-center" >${number * 100}</h6>
+          <h3 class="mt-3 d-inline">points</h3>
         </div>`))
     } else {
       this.kpitextTarget.insertAdjacentHTML("afterbegin", (
-        `<p class="bio-text mt-4">
-          <i class="fa-regular fa-party-horn"></i>
+        `<p class="text-center mb-3">
+        <i class="fa-regular fa-party-horn"></i>
           Congrats! You have ${number} adventures completed!
         </p>
-        <div class="mb-5">
-          <p class="bio-text mt-3 mb-1">Your score:</p>
-          <h6 class="d-inline" >${number * 100}</h6>
-          <p class="bio-text mt-3 d-inline">points</p>
+        <div class="mb-2 mt-2 text-center card">
+          <h3 class="mt-4 mb-1">Your score:</h3>
+          <h6 class="d-inline text-center" >${number * 100}</h6>
+          <h3 class="mt-3 d-inline">points</h3>
         </div>`));
     }
   }
