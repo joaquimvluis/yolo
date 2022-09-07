@@ -106,12 +106,12 @@
                     </nav>
                           <%= render "checkboxform", task: task %>
                           <i class="fa-regular fa-bullseye-arrow"></i>
-                          <%# if task.task.deadline.present? %>
+                          <% if task.task.deadline.present? %>
                             <p class="subtitle" id="deadline">Deadline: <%= task.task.deadline.to_formatted_s(:long) %> <p>
-                          <%# end %>
-                          <%# if task.task.penalty.present? %>
+                          <% end %>
+                          <% if task.task.penalty.present? %>
                             <p class="subtitle"><i class="fa-solid fa-fire"></i> <%= task.task.penalty%></p>
-                          <%# end %>
+                          <% end %>
                       </div>
               </div>
           <% end %>
