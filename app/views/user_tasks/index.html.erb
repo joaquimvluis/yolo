@@ -66,19 +66,19 @@
             </div>
           <% end %>
 
-          <%= link_to user_user_tasks_path(status: false), style:"text-decoration: none" do %>
-            <div class="border filter px-3 me-1" style="list-style: none;">
-              <i class="fas fa-bullhorn"></i>
-              <span>To do</span>
-            </div>
-          <% end %>
+            <%= link_to user_user_tasks_path(status: false), style:"text-decoration: none" do %>
+              <div class="border filter px-3 me-1 <%= 'filteractive' if params[:status] == 'false' %>" style="list-style: none;">
+                <i class="fas fa-bullhorn"></i>
+                <span>To do</span>
+              </div>
+            <% end %>
 
-           <%= link_to user_user_tasks_path(status: true), style:"text-decoration: none" do %>
-            <div class="border filter px-3 me-1" style="list-style: none;">
-              <i class="far fa-check-circle"></i>
-              <span>Done</span>
-            </div>
-          <% end %>
+            <%= link_to user_user_tasks_path(status: true), style:"text-decoration: none" do %>
+              <div class="border filter px-3 me-1 <%= 'filteractive' if params[:status] == 'true' %>" style="list-style: none;">
+                <i class="far fa-check-circle"></i>
+                <span>Done</span>
+              </div>
+            <% end %>
         </div>
       </div>
 
