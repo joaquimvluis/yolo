@@ -96,10 +96,10 @@ export default class extends Controller {
         <h3 class="text-center mt-4">Let's get started!</h3>`))
     } else if (number == 1) {
     this.badgeTarget.insertAdjacentHTML("afterbegin", (
-      `<div style="height:160px">
+      `<div style="height:130px">
           <img src="https://res.cloudinary.com/elmette/image/upload/v1662561898/firststep_dl2eak.png" alt="firststep", width: 150, class="img-center-steps">
         </div>
-        <h3 class="text-center mt-2 ">1st Task done, keep it up!</h3>`))
+        <h3 class="text-center mt-4 ">1st Task done, keep it up!</h3>`))
     } else if (number > 4) {
       this.badgeTarget.insertAdjacentHTML("afterbegin", (
         `<div style="height:160px">
@@ -111,7 +111,7 @@ export default class extends Controller {
         `<div style="height:160px">
           <img src="https://res.cloudinary.com/elmette/image/upload/v1662626625/download_t1xn2f.png" alt="wizard", width: 150, class="img-center-steps">
         </div>
-        <h3 class="text-center mt-2 ">You're rolling!</h3>`));
+        <h3 class="text-center mt-4 ">You're rolling!</h3>`));
     }
   }
 }
