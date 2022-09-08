@@ -1,4 +1,8 @@
 <% if current_user.present? %>
-  <div class="notifications" data-controller="notification" data-notification-user-id-value="<%= current_user.id %>">
+<%#this element is the data-controller(notification) %>
+  <div class="notification" data-controller="notification" data-notification-user-id-value="<%= current_user.id %>">
+    <button class="btn-main float-end d-none" data-action="notification#clear" data-notification-target="close">CLOSE</button>
+    <div data-notification-target="body">
+    </div>
   </div>
 <% end %>

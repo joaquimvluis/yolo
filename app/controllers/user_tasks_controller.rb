@@ -7,7 +7,7 @@ class UserTasksController < ApplicationController
     # authorize @user
     @usertasks = policy_scope(UserTask).includes(task: :experience).order(:completed, 'tasks.deadline').where(user: current_user)
     if params[:status].present?
-     @usertasks = @usertasks.where(user: current_user, completed: params[:status]=="true")
+      @usertasks = @usertasks.where(user: current_user, completed: params[:status]=="true")
     end
 
     @completed = UserTask.where(user: current_user, completed: true).count
@@ -37,14 +37,17 @@ class UserTasksController < ApplicationController
 
       authorize @usertask
 
-      respond_to do |format|
-        if @usertask.save
-          format.html { redirect_to user_user_tasks_path(current_user) }
-          format.json # Follow the classic Rails flow and look for a create.json view
-        else
-          format.html { render user_user_tasks_path(current_user), status: :unprocessable_entity }
-          format.json # Follow the classic Rails flow and look for a create.json view
-        end
+
+      if @usertask.save
+        NotificationChannel.broadcast_to(
+          @challengee,
+          render_to_string(partial: "notifications/invite", locals: {challenger: current_user.first_name})
+        )
+
+        redirect_to user_user_tasks_path(current_user)
+        #to do add notification here
+
+
       end
     end
   end

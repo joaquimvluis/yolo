@@ -13,7 +13,7 @@
       </div>
       <div class="modal-body">
         <%# SEARCH FORM %>
-        <div data-controller="refresh-users-list" data-refresh-users-list-task-value="<%= task.id %>">
+        <div data-controller="refresh-users-list" style="link-plain" data-refresh-users-list-task-value="<%= task.id %>">
           <%= form_with url: user_user_tasks_path(current_user), method: :get, html: { class: "d-flex justify-content-center mb-1", data: { refresh_users_list_target: 'form' } } do %>
             <%= text_field_tag :query,
                                params[:query],
@@ -30,8 +30,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn-profile" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn-profile">Save changes</button>
       </div>
     </div>
   </div>

@@ -4,7 +4,7 @@
       <source src="https://res.cloudinary.com/elmette/video/upload/v1662484277/videoplayback_1_online-video-cutter.com_hoqfxr.mp4" type="video/mp4">
     </video>
 
-  <div class="banner w-100 d-flex align-items-center mt-3 position-absolute top-0" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1));">
+  <div class="banner w-100 d-flex align-items-center mt-3 position-absolute top-0">
     <div class="container text-center">
       <h1>What do you want to do before you die?</h1>
       <%# SEARCH FORM %>
@@ -17,8 +17,8 @@
           <%= button_to 'EXPLORE', root_path, role: 'button', class: "btn-main" %>
         <% end %>
 
-      <%# FILTER %>
       <%= render partial: "filter", locals: {categories: @categories}%>
+      <%# FILTER %>
     </div>
   </div>
 </section>
