@@ -100,9 +100,6 @@
                       <%= link_to "Delete",user_task_path(task),
                           data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"icon-link"%>
 
-                      <br>
-                      <%= render partial: 'user_tasks/challenge_friend_modal',locals: { task: task.task } %>
-
                     </div>
                   </div>
                 </nav>
