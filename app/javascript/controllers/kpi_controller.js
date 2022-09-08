@@ -5,7 +5,7 @@ import complete_task_controller from "./complete_task_controller"
 // Connects to data-controller="kpi"
 export default class extends Controller {
 
-  static targets =["kpitext"]
+  static targets =["kpitext", "badge"]
   connect() {
     console.log("KPI Controller connected")
   }
@@ -42,46 +42,76 @@ export default class extends Controller {
       })
     }
 
+  adjustBadge(){
+    console.log("I will adjust badge")
+    const url = "/user_tasks/completed"
+    // this.element.innerText = parseInt(this.element.innerText)++
+    fetch(url, {headers: {"Accept": "application/json"}})
+      .then(response => response.json())
+      .then((data) => {
+        this.badgeTarget.innerHTML = ""
+        this.#generateTextForBadgeInHTML(data["completed"])
+      })
+  }
+
   #generateTextInHTML(number) {
     if (number == 0) {
-      this.kpitextTarget.insertAdjacentHTML("afterbegin", '<h4 class="bio-text text-center mt-1">Start working on your bucketlist!</h4>')
+      this.kpitextTarget.insertAdjacentHTML("afterbegin", (
+        `<h4 class="text-center mt-2 mb-4">
+        No tasks <br> completed <br>  yet!</h4>
+        <div class="mb-2 text-center card rounded-3">
+          <h3 class="mt-3 mb-1">Your score:</h3>
+          <h6 class="d-inline text-center" id="accent-info">${number * 100}</h6>
+          <h3 class="mt-1 mb-2 d-inline">points</h3>
+        </div>`))
     } else if (number == 1) {
       this.kpitextTarget.insertAdjacentHTML("afterbegin", (
-        `<p class="text-center mb-3">
-          <i class="fa-regular fa-party-horn"></i>
-          Congrats! You have 1 adventure completed!
-        </p>
-        <div class="mb-2 mt-2 text-center card">
-          <h3 class="mt-4 mb-1">Your score:</h3>
-          <h6 class="d-inline text-center" >${number * 100}</h6>
-          <h3 class="mt-3 d-inline">points</h3>
+        `<h4 class="text-center mt-2 mb-4">
+          Congrats! You completed <br> 1 adventure!
+        </h4>
+        <div class="mb-2 text-center card rounded-3">
+          <h3 class="mt-3 mb-1">Your score:</h3>
+          <h6 class="d-inline text-center" id="accent-info">${number * 100}</h6>
+          <h3 class="mt-1 mb-2 d-inline">points</h3>
         </div>`))
     } else {
       this.kpitextTarget.insertAdjacentHTML("afterbegin", (
-        `<p class="text-center mb-3">
-        <i class="fa-regular fa-party-horn"></i>
-          Congrats! You have ${number} adventures completed!
-        </p>
-        <div class="mb-2 mt-2 text-center card">
-          <h3 class="mt-4 mb-1">Your score:</h3>
-          <h6 class="d-inline text-center" >${number * 100}</h6>
-          <h3 class="mt-3 d-inline">points</h3>
+        `<h4 class="text-center mt-2 mb-4">
+          Congrats! You completed <br> ${number} adventures!
+        </h4>
+        <div class="mb-2 text-center card rounded-3">
+          <h3 class="mt-3 mb-1">Your score:</h3>
+          <h6 class="d-inline text-center" id="accent-info">${number * 100}</h6>
+          <h3 class="mt-1 mb-2 d-inline">points</h3>
         </div>`));
     }
   }
 
-
-    // <% if @completed == 0 %>
-    // <p class="bio-text mt-4">Start working on your bucketlist</p>
-    // <% else %>
-    //   <p class="bio-text mt-4"> <i class="fa-regular fa-party-horn"></i>Congrats! You have <%= pluralize @completed, "bucket-list-item" %> completed!</p>
-    //   <div class="mb-5">
-    //     <p class="bio-text mt-3 mb-1">Your score:</p>
-    //     <h6 class="d-inline" ><%= @completed * 100 %></h6>
-    //     <p class="bio-text mt-3 d-inline">points</p>
-    //   </div>
-    // <% end %>
-
-
-
+  #generateTextForBadgeInHTML(number) {
+    if (number == 0) {
+      this.badgeTarget.insertAdjacentHTML("afterbegin", (
+        `<div style="height:150px d-flex justify-content-center">
+        <img src="https://res.cloudinary.com/elmette/image/upload/v1662626891/4266181_oj41pv.png" alt="getstarted", width: 150, class="img-center-steps">
+        </div>
+        <h3 class="text-center mt-4">Let's get started!</h3>`))
+    } else if (number == 1) {
+    this.badgeTarget.insertAdjacentHTML("afterbegin", (
+      `<div style="height:130px">
+          <img src="https://res.cloudinary.com/elmette/image/upload/v1662561898/firststep_dl2eak.png" alt="firststep", width: 150, class="img-center-steps">
+        </div>
+        <h3 class="text-center mt-4 ">1st Task done, keep it up!</h3>`))
+    } else if (number > 4) {
+      this.badgeTarget.insertAdjacentHTML("afterbegin", (
+        `<div style="height:160px">
+          <img src="https://res.cloudinary.com/elmette/image/upload/v1662562895/0794B1B6-58D0-44E2-A522-1135E53B3BEC_1_105_c_re5kll.jpg" alt="trophy", width: 180, class="img-center">
+          </div>
+          <h3 class="text-center">You're a real adventurer!</h3>`))
+    } else {
+      this.badgeTarget.insertAdjacentHTML("afterbegin", (
+        `<div style="height:160px">
+          <img src="https://res.cloudinary.com/elmette/image/upload/v1662626625/download_t1xn2f.png" alt="wizard", width: 150, class="img-center-steps">
+        </div>
+        <h3 class="text-center mt-4 ">You're rolling!</h3>`));
+    }
+  }
 }
