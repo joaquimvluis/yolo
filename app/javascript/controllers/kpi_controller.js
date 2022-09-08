@@ -90,28 +90,28 @@ export default class extends Controller {
   #generateTextForBadgeInHTML(number) {
     if (number == 0) {
       this.badgeTarget.insertAdjacentHTML("afterbegin", (
-        `<div style="height:150px d-flex justify-content-center">
+      `<div style="height:150px d-flex justify-content-center">
         <img src="https://res.cloudinary.com/elmette/image/upload/v1662626891/4266181_oj41pv.png" alt="getstarted", width: 150, class="img-center-steps">
-        </div>
-        <h3 class="text-center mt-4">Let's get started!</h3>`))
+      </div>
+      <h3 class="text-center mt-4" style="background-color: white">Let's get started!</h3>`))
     } else if (number == 1) {
     this.badgeTarget.insertAdjacentHTML("afterbegin", (
-      `<div style="height:130px">
-          <img src="https://res.cloudinary.com/elmette/image/upload/v1662561898/firststep_dl2eak.png" alt="firststep", width: 150, class="img-center-steps">
-        </div>
-        <h3 class="text-center mt-4 ">1st Task done, keep it up!</h3>`))
+    `<div style="height:130px">
+      <img src="https://res.cloudinary.com/elmette/image/upload/v1662561898/firststep_dl2eak.png" alt="firststep", width: 150, class="img-center-steps">
+    </div>
+    <h3 class="text-center mt-4 " style="background-color: white">1st Task done, keep it up!</h3>`))
     } else if (number > 4) {
       this.badgeTarget.insertAdjacentHTML("afterbegin", (
-        `<div style="height:160px">
-          <img src="https://res.cloudinary.com/elmette/image/upload/v1662562895/0794B1B6-58D0-44E2-A522-1135E53B3BEC_1_105_c_re5kll.jpg" alt="trophy", width: 180, class="img-center">
-          </div>
-          <h3 class="text-center">You're a real adventurer!</h3>`))
+      `<div style="height:160px">
+        <img src="https://res.cloudinary.com/elmette/image/upload/v1662626625/download_t1xn2f.png" alt="wizard", width: 150, class="img-center-steps">
+      </div>
+      <h3 class="text-center mt-4 ">You're real Wizard!</h3>`))
     } else {
       this.badgeTarget.insertAdjacentHTML("afterbegin", (
-        `<div style="height:160px">
-          <img src="https://res.cloudinary.com/elmette/image/upload/v1662626625/download_t1xn2f.png" alt="wizard", width: 150, class="img-center-steps">
-        </div>
-        <h3 class="text-center mt-4 ">You're rolling!</h3>`));
+      `<div style="height:160px">
+        <img src="https://res.cloudinary.com/elmette/image/upload/v1662562895/0794B1B6-58D0-44E2-A522-1135E53B3BEC_1_105_c_re5kll.jpg" alt="trophy", width: 180, class="img-center">
+      </div>
+      <h3 class="text-center" style="background-color: white">You're a real adventurer!</h3>`));
     }
   }
 }
