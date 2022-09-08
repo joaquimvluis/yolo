@@ -1,48 +1,48 @@
 <%# Main page container %>
-<div class ="main-content" id="blueback">
-<div class="container p-5 overflow-hidden" id="show-experience">
-  <%# Card container (includes image and text) %>
-  <div class="detail-container shadow-lg rounded-4">
-    <div class="row p-0 g-0">
-      <%# Column for the image %>
-      <div class="col pe-0">
-        <%= cl_image_tag @experience.photo.key, class: "detail-img" %>
-      </div>
-      <%# Column for title, description %>
-      <div class="col px-5 py-4">
-        <div class="row p-0">
-          <h2><%= @experience.title %></h2>
-          <%# Categories/tags listing, positioned to show at the bottom %>
-          <ul class="list-inline">
-            <% @experience.categories.each do |category| %>
-              <li class="list-inline-item">
-                <%= link_to results_path(category: category.id), class: "detail-category" do%>
-                  <%= category.name %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-          <div class="detail-text">
-            <p class=""><%= @experience.description %></p>
-          </div>
-          <% if user_signed_in? %>
-            <%# Button for adding experience. Links to the modal with id addExperienceModal %>
-            <button type="button" class="btn-main mb-3 w-100" ;" data-bs-toggle="modal" data-bs-target="#addExperienceModal">
-              Add to your bucket!
-            </button>
-            <%# addExperienceModal, shows the modal. Inside this modal there will be partial for the form%>
-            <div class="modal fade" id="addExperienceModal" tabindex="-1" aria-labelledby="addExperienceModalLabel" aria-hidden="true">
-              <%= render partial: "experiences/add_experience_modal", locals: {categories: @experience.categories, task: @task }%>
+<div class="blueback">
+  <div class="container p-5 overflow-hidden" id="show-experience">
+    <%# Card container (includes image and text) %>
+    <div class="detail-container shadow-lg rounded-4">
+      <div class="row p-0 g-0">
+        <%# Column for the image %>
+        <div class="col pe-0">
+          <%= cl_image_tag @experience.photo.key, class: "detail-img" %>
+        </div>
+        <%# Column for title, description %>
+        <div class="col px-5 py-4">
+          <div class="row p-0">
+            <h2><%= @experience.title %></h2>
+            <%# Categories/tags listing, positioned to show at the bottom %>
+            <ul class="list-inline">
+              <% @experience.categories.each do |category| %>
+                <li class="list-inline-item">
+                  <%= link_to results_path(category: category.id), class: "detail-category" do%>
+                    <%= category.name %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+            <div class="detail-text">
+              <p class=""><%= @experience.description %></p>
             </div>
-          <% else %>
-            <%= form_with url: new_user_session_path, method: :get do |f| %>
-              <%= f.hidden_field :experience_id, value: @experience.id, class: "d-none" %>
-              <%= submit_tag "Please sign in first to add this experience to your bucketlist", class: "btn btn-outline-secondary rounded-4" %>
+            <% if user_signed_in? %>
+              <%# Button for adding experience. Links to the modal with id addExperienceModal %>
+              <button type="button" class="btn-main mb-3 w-100" ;" data-bs-toggle="modal" data-bs-target="#addExperienceModal">
+                Add to your bucket!
+              </button>
+              <%# addExperienceModal, shows the modal. Inside this modal there will be partial for the form%>
+              <div class="modal fade" id="addExperienceModal" tabindex="-1" aria-labelledby="addExperienceModalLabel" aria-hidden="true">
+                <%= render partial: "experiences/add_experience_modal", locals: {categories: @experience.categories, task: @task }%>
+              </div>
+            <% else %>
+              <%= form_with url: new_user_session_path, method: :get do |f| %>
+                <%= f.hidden_field :experience_id, value: @experience.id, class: "d-none" %>
+                <%= submit_tag "Please sign in first to add this experience to your bucketlist", class: "btn btn-outline-secondary rounded-4" %>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>
