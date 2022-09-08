@@ -1,0 +1,19 @@
+.notification {
+  background-color: #26AECC;
+  position: absolute;
+  color: white;
+  border-radius: 4px;
+  border-color: #26AECC;
+  bottom: 0;
+  right: 20px;
+  border-radius: 10px;
+  transition: 5s;
+  scale: 1.25;
+}
+
+.img-notification {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
