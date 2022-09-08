@@ -42,7 +42,7 @@
       <div>
         <h1 class="d-flex justify-content-center pt-4 ml-3 px-3 d-inline text-black"><%= @user.first_name.nil? ? "User!" : @user.first_name %>'s bucket list</h1>
         <div class ="d-flex d-inline justify-content-center ms-4">
-           <%= link_to user_user_tasks_path, style:"text-decoration: none" do %>
+          <%= link_to user_user_tasks_path, style:"text-decoration: none" do %>
             <div class="border filter px-3 me-1" style="list-style: none;">
               <i class="fa-sharp fa-solid fa-rotate-left"></i>
               <span>See all</span>
@@ -56,7 +56,7 @@
             </div>
           <% end %>
 
-           <%= link_to user_user_tasks_path(status: true), style:"text-decoration: none" do %>
+          <%= link_to user_user_tasks_path(status: true), style:"text-decoration: none" do %>
             <div class="border filter px-3 me-1" style="list-style: none;">
               <i class="far fa-check-circle"></i>
               <span>Done</span>
@@ -72,9 +72,9 @@
             <div class="card-bucketlist px-0">
               <div class="inner">
                 <nav class="navbar ms-auto p-0" id="togglebucket" style="z-index:1000; position: absolute; top: 10px; right: 12px;">
-                    <button class="navbar-toggler p-0" style="border: 0px" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent-<%=task.id%>" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon" id="togglebucket-icon"></span>
-                    </button>
+                  <button class="navbar-toggler p-0" style="border: 0px" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent-<%=task.id%>" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon" id="togglebucket-icon"></span>
+                  </button>
                   <div class="container-fluid" id="togglebucket" index>
                   </div>
                   <div class="collapse" id="navbarToggleExternalContent-<%=task.id%>">
@@ -83,7 +83,7 @@
                       <%= link_to "More info", experience_path(task.task.experience), class:"icon-link"%><br>
                       <%= link_to "Delete",user_task_path(task),
                           data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"icon-link"%>
-                          <br>
+                      <br>
                       <%= render partial: 'user_tasks/challenge_friend_modal',locals: { task: task.task } %>
                     </div>
                   </div>
@@ -91,68 +91,73 @@
                 <%= render "checkboxform", task: task %>
                 <i class="fa-regular fa-bullseye-arrow"></i>
 
-              <div class="row w-100 p-0">
-                <div class="col-6">
-                  <% if task.task.deadline.present? %>
-                    <p class="subtitle" id="deadline">Deadline: <%= task.task.deadline.to_formatted_s(:long) %><p>
+                <div class="row w-100 p-0">
+                  <div class="col-6">
+                    <% if task.task.deadline.present? %>
+                      <p class="subtitle" id="deadline">Deadline: <%= task.task.deadline.to_formatted_s(:long) %></p>
                     <% end %>
                   </div>
                 </div>
-              <div class="row w-100 p-0">
-                <div class="col-6">
-                  <% if task.task.penalty.present? %>
-                    <p class="subtitle d-inline">Penalty: <i class="fa-solid fa-fire d-inline"></i>&nbsp;<%= task.task.penalty%></p>
+                <div class="row w-100 p-0">
+                  <div class="col-6">
+                    <% if task.task.penalty.present? %>
+                      <p class="subtitle d-inline">Penalty: <i class="fa-solid fa-fire d-inline"></i>&nbsp;<%= task.task.penalty%></p>
                     <% end %>
                   </div>
-                <div class="col-6">
-                  <p style="display: inline">Shared with: $Invitee</p> <img src=<%= cl_image_path(@user.photo.key, width: 40, height: 40) %> class="avatar-challenger" />
+                  <div class="col-6">
+            <p style="display: inline">Shared with</p>
+                    <% task.task.users.each do |user| %>
+                      <% if user != current_user %>
+                        <%= cl_image_tag user.photo.key, width: 40, height: 40, class:"avatar-challenger" %>
+                      <% end %>
+                    <% end %>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-                 <%= render partial: 'user_tasks/challenge_friend_modal',locals: { task: task.task } %>
-              <% end %>
-              <main>
+            <%= render partial: 'user_tasks/challenge_friend_modal',locals: { task: task.task } %>
+          <% end %>
+          <main>
 
-              </div>
-            </div>
-
-            <div class="col-2 card m-1 card-main d-flex p-3 rounded-3 text-center">
-              <div style="height:160px">
-                <% if @user.photo.key.present? %>
-                  <img src=<%= cl_image_path(@user.photo.key, width: 500, height: 500, crop: :thumb, gravity: :face) %> alt="profile-sample2" class="avatar-dash mt-4" />
-                <% else %>
-                  <img src="https://media.istockphoto.com/photos/young-woman-ready-for-job-business-concept-picture-id1318482009" alt="profile-sample2" class="avatar-dash" />
-                <% end %>
-              </div>
-              <h2 class="mt-4 mb-2">Hi, <%= @user.first_name.nil? ? "User!" : @user.first_name %></h2>
-              <div class="mb-2 text-center">
-                <h3> Welcome Back! </h3>
-              </div>
-              <div class="wavy-line small mb-4">
-              </div>
-              <h3 class="mt-2"> Tasks waiting </h3>
-              <div class="d-flex align-items-baseline justify-content-center">
-                <h3 class=""> for you: </h3>
-                <h6 class="ms-2" data-controller="kpi" id="accent-info" data-action="adjust-kpi@window->kpi#adjustNumberOpen"><%=@open %></h6>
-              </div>
-
-              <div style="height:10px"></div>
-              <div class="bio-text text-center">
-                <i class="fa-regular fa-id-card mt-3" style="font-size: 1.5em"></i>
-                <div class="mt-3">
-                  <p class="text-center mb-3"><%= @user.bio.nil? ? "Please add your bio!" : "#{@user.bio}" %></p>
-                </div>
-              </div>
-              <div class="dash-icons d-flex p-3 justify-content-center">
-                <p class="bio-text mt-3">Share</p>
-                <a class="border-0 p-2" href="#"><i class="fab fa-instagram"></i></a>
-                <a class="border-0 p-2" href="#"><i class="fab fa-facebook"></i></a>
-                <a class="border-0 p-2" href="#"><i class="fa fa-envelope"></i></a>
-              </div>
-              <div class="d-flex justify-content-end mb-4">
-                <%= link_to "Update Profile", edit_user_path(@user), class: "btn-main snip1336 w-100 btn-location" %>
-              </div>
-            </div>
           </div>
         </div>
+
+        <div class="col-2 card m-1 card-main d-flex p-3 rounded-3 text-center">
+          <div style="height:160px">
+            <% if @user.photo.key.present? %>
+              <img src=<%= cl_image_path(@user.photo.key, width: 500, height: 500, crop: :thumb, gravity: :face) %> alt="profile-sample2" class="avatar-dash mt-4" />
+            <% else %>
+              <img src="https://media.istockphoto.com/photos/young-woman-ready-for-job-business-concept-picture-id1318482009" alt="profile-sample2" class="avatar-dash" />
+            <% end %>
+          </div>
+          <h2 class="mt-4 mb-2">Hi, <%= @user.first_name.nil? ? "User!" : @user.first_name %></h2>
+          <div class="mb-2 text-center">
+            <h3> Welcome Back! </h3>
+          </div>
+          <div class="wavy-line small mb-4">
+          </div>
+          <h3 class="mt-2"> Tasks waiting </h3>
+          <div class="d-flex align-items-baseline justify-content-center">
+            <h3 class=""> for you: </h3>
+            <h6 class="ms-2" data-controller="kpi" id="accent-info" data-action="adjust-kpi@window->kpi#adjustNumberOpen"><%=@open %></h6>
+          </div>
+
+          <div style="height:10px"></div>
+          <div class="bio-text text-center">
+            <i class="fa-regular fa-id-card mt-3" style="font-size: 1.5em"></i>
+            <div class="mt-3">
+              <p class="text-center mb-3"><%= @user.bio.nil? ? "Please add your bio!" : "#{@user.bio}" %></p>
+            </div>
+          </div>
+          <div class="dash-icons d-flex p-3 justify-content-center">
+            <p class="bio-text mt-3">Share</p>
+            <a class="border-0 p-2" href="#"><i class="fab fa-instagram"></i></a>
+            <a class="border-0 p-2" href="#"><i class="fab fa-facebook"></i></a>
+            <a class="border-0 p-2" href="#"><i class="fa fa-envelope"></i></a>
+          </div>
+          <div class="d-flex justify-content-end mb-4">
+            <%= link_to "Update Profile", edit_user_path(@user), class: "btn-main snip1336 w-100 btn-location" %>
+          </div>
+        </div>
+      </div>
+    </div>
