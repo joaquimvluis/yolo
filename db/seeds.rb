@@ -52,7 +52,7 @@ puts '5 Categories have been created!'
 
 # --------------------EXPERIENCES---------------------------------------
 
-puts 'Creating 20 experiences...'
+puts 'Creating 30 experiences...'
 
 filepath_title = "db/experiencetitle.txt"
 title = File.read(filepath_title).split("\n")
@@ -64,7 +64,7 @@ filepath_description = "db/experiencedescription.txt"
 description = File.read(filepath_description).split("\n")
 
 
-20.times do |index|
+30.times do |index|
   file = URI.open(picture[index])
 
   experience = Experience.new(
@@ -75,9 +75,10 @@ description = File.read(filepath_description).split("\n")
   experience.save!
 end
 
-puts '20 experiences have been created!'
+puts '30 experiences have been created!'
 
 # --------------------EXPERIENCE_CATEGORIES---------------------------------------
+
 filepath_category = "db/experiencecategory.txt"
 category2 = File.read(filepath_category).split("\n")
 
