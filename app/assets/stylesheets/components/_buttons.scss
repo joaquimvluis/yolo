@@ -61,10 +61,28 @@
   }
 }
 
-.btnprofile{
+.btn-profile{
+  align-items: center;
   background-color: #222222;
   border: 2px solid #222222;
+  border-radius: 8px;
+  font-family: 'Museo Sans 500';
+  box-sizing: border-box;
   color: white;
+  cursor: pointer;
+  display: flex;
+  font-size: 18px;
+  height: 40px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 10px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 
   &:hover {
     background: #26AECC;

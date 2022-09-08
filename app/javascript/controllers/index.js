@@ -7,11 +7,11 @@ import { application } from "./application"
 import CompleteTaskController from "./complete_task_controller"
 application.register("complete-task", CompleteTaskController)
 
-import RefreshUsersListController from "./refresh_users_list_controller"
-application.register("refresh-users-list", RefreshUsersListController)
-
 import KpiController from "./kpi_controller"
 application.register("kpi", KpiController)
 
 import NotificationController from "./notification_controller"
 application.register("notification", NotificationController)
+
+import RefreshUsersListController from "./refresh_users_list_controller"
+application.register("refresh-users-list", RefreshUsersListController)
