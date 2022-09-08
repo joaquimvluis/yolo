@@ -17,7 +17,6 @@ Category.destroy_all
 
 puts "deleted the previous records"
 
-
 # --------------------USERS---------------------------------------
 
 puts 'Creating 10 fake users...'
@@ -62,7 +61,6 @@ picture = File.read(filepath_picture).split("\n")
 
 filepath_description = "db/experiencedescription.txt"
 description = File.read(filepath_description).split("\n")
-
 
 31.times do |index|
   puts "Creating experience no #{index}"

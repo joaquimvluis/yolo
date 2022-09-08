@@ -50,8 +50,9 @@ font-size: 30px;
   color: #818181;
 }
 
-#blueback{
+.blueback{
   background-color: #e1f0f4;
+  min-height: calc(100vh - 123px);
   // height: 84vh;
 }
 
