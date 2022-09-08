@@ -5,7 +5,7 @@ class UserTasksController < ApplicationController
     @user = current_user
     # authorize @usertasks
     # authorize @user
-    @usertasks = policy_scope(UserTask).includes(task: :experience).order(:completed, 'tasks.deadline')
+    @usertasks = policy_scope(UserTask).includes(task: :experience).order(:completed, 'tasks.deadline').where(user: current_user)
     if params[:status].present?
      @usertasks = @usertasks.where(user: current_user, completed: params[:status]=="true")
     end
@@ -31,9 +31,21 @@ class UserTasksController < ApplicationController
 
   def create
     if params[:task_id].present? && params[:user_id].present?
-      @task = Task.find(:task_id.to_i)
-      @challengee = User.find(:user_id.to_i)
-      UserTask.new(task: @task, user: @challengee, completed: false, owner: false)
+      @task = Task.find(params[:task_id])
+      @challengee = User.find(params[:user_id])
+      @usertask = UserTask.new(task: @task, user: @challengee, completed: false, owner: false)
+
+      authorize @usertask
+
+      respond_to do |format|
+        if @usertask.save
+          format.html { redirect_to user_user_tasks_path(current_user) }
+          format.json # Follow the classic Rails flow and look for a create.json view
+        else
+          format.html { render user_user_tasks_path(current_user), status: :unprocessable_entity }
+          format.json # Follow the classic Rails flow and look for a create.json view
+        end
+      end
     end
   end
 
