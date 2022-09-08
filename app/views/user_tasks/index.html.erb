@@ -117,11 +117,14 @@
                     <p class="subtitle d-inline">Penalty: <i class="fa-solid fa-fire d-inline"></i>&nbsp;<%= task.task.penalty%></p>
                     <% end %>
                   </div>
-                  <% if UserTask.where(task_id: task.id).count == 2 %>
-                    <div class="col-6">
-                      <p style="display: inline">Shared with: $Invitee</p> <img src=<%= cl_image_path(@user.photo.key, width: 40, height: 40) %> class="avatar-challenger" />
+                  <div class="col-6">
+                     <p style="display: inline">Shared with</p>
+                      <% task.task.users.each do |user| %>
+                        <% if user != current_user %>
+                          <%= cl_image_tag user.photo.key, width: 40, height: 40, class:"avatar-challenger" %>
+                        <% end %>
+                      <% end %>
                     </div>
-                  <% end %>
               </div>
             </div>
           </div>
