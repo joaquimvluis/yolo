@@ -12,3 +12,6 @@ application.register("refresh-users-list", RefreshUsersListController)
 
 import KpiController from "./kpi_controller"
 application.register("kpi", KpiController)
+
+import NotificationController from "./notification_controller"
+application.register("notification", NotificationController)
