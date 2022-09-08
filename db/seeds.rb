@@ -85,7 +85,7 @@ category2 = File.read(filepath_category).split("\n")
 filepath_title = "db/experiencetitle.txt"
 title = File.read(filepath_title).split("\n")
 
-20.times do |index|
+30.times do |index|
   category = ExperienceCategory.new
   category.experience = Experience.find_by(title: title[index])
   category.category = Category.find_by(name: category2[index])
