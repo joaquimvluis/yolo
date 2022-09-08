@@ -65,6 +65,7 @@ description = File.read(filepath_description).split("\n")
 
 
 30.times do |index|
+  puts "Creating experience no #{index}"
   file = URI.open(picture[index])
 
   experience = Experience.new(
@@ -73,6 +74,7 @@ description = File.read(filepath_description).split("\n")
   )
   experience.photo.attach(io: file, filename: "experience.png", content_type: "image/png")
   experience.save!
+  puts "Successfully created experience #{title}"
 end
 
 puts '30 experiences have been created!'
