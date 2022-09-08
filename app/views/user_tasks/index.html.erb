@@ -19,7 +19,7 @@
               <div class="mb-2 text-center card rounded-3">
                 <h3 class=" mt-3 mb-1">Your score:</h3>
                 <h6 class="d-inline text-center" id="accent-info"><%= @completed * 100 %></h6>
-                <h3 class="mt-1 mb-3 d-inline">points</h3>
+                <h3 class="mt-1 mb-2 d-inline">points</h3>
               </div>
             <% end %>
           </div>
@@ -66,19 +66,19 @@
             </div>
           <% end %>
 
-          <%= link_to user_user_tasks_path(status: false), style:"text-decoration: none" do %>
-            <div class="border filter px-3 me-1" style="list-style: none;">
-              <i class="fas fa-bullhorn"></i>
-              <span>To do</span>
-            </div>
-          <% end %>
+            <%= link_to user_user_tasks_path(status: false), style:"text-decoration: none" do %>
+              <div class="border filter px-3 me-1 <%= 'filteractive' if params[:status] == 'false' %>" style="list-style: none;">
+                <i class="fas fa-bullhorn"></i>
+                <span>To do</span>
+              </div>
+            <% end %>
 
-           <%= link_to user_user_tasks_path(status: true), style:"text-decoration: none" do %>
-            <div class="border filter px-3 me-1" style="list-style: none;">
-              <i class="far fa-check-circle"></i>
-              <span>Done</span>
-            </div>
-          <% end %>
+            <%= link_to user_user_tasks_path(status: true), style:"text-decoration: none" do %>
+              <div class="border filter px-3 me-1 <%= 'filteractive' if params[:status] == 'true' %>" style="list-style: none;">
+                <i class="far fa-check-circle"></i>
+                <span>Done</span>
+              </div>
+            <% end %>
         </div>
       </div>
 
@@ -116,7 +116,7 @@
               <div class="row w-100 p-0">
                 <div class="col-6">
                   <% if task.task.penalty.present? %>
-                    <p class="subtitle d-inline">Penalty: <i class="fa-solid fa-fire d-inline"></i>&nbsp;<%= task.task.penalty%></p>
+                    <i class="fa-solid fa-fire d-inline"></i><p class="subtitle d-inline"> Penalty:&nbsp;<%= task.task.penalty%></p>
                     <% end %>
                   </div>
                   <% if UserTask.where(task_id: task.id).count == 2 %>
@@ -130,8 +130,7 @@
               <%= render partial: 'user_tasks/challenge_friend_modal',locals: { task: task.task } %>
                       <%# = render 'user_tasks/challenge_friend_modal', task: task.task %>
               <% end %>
-
-              <main>
+      <main>
 
               </div>
             </div>
