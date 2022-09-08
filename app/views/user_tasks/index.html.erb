@@ -128,7 +128,9 @@
               </div>
             </div>
           </div>
-              <%= render partial: 'user_tasks/challenge_friend_modal',locals: { task: task.task } %>
+          <div class="d-flex justify-content-end me-4">
+            <%= render partial: 'user_tasks/challenge_friend_modal',locals: { task: task.task } %>
+          </div>
             <% end %>
 
               <main>
