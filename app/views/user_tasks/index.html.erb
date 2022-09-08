@@ -60,7 +60,7 @@
     <%# ------------ Middle column, bucketlist ----------------%>
     <div class="col-7 card m-1 card-main rounded-3 ">
       <div>
-        <h1 class="d-flex justify-content-center pt-4 ml-3 px-3 d-inline text-black"><%= @user.first_name.nil? ? "User!" : @user.first_name %>'s bucket list</h1>
+        <h1 class="d-flex justify-content-center pt-4 ml-3 px-3 d-inline text-black"><%= @user.first_name.blank? ? "Your" : @user.first_name+"'s" %> bucket list</h1>
         <div class ="d-flex d-inline justify-content-center ms-4">
           <%= link_to user_user_tasks_path, style:"text-decoration: none" do %>
             <div class="border filter px-3 me-1" style="list-style: none;">
