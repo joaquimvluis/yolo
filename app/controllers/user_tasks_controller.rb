@@ -46,8 +46,6 @@ class UserTasksController < ApplicationController
 
         redirect_to user_user_tasks_path(current_user)
         #to do add notification here
-
-
       end
     end
   end
