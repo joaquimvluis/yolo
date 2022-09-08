@@ -96,7 +96,6 @@
                   </div>
                   <div class="collapse" id="navbarToggleExternalContent-<%=task.id%>">
                     <div class="bg-success p-2 ms-3">
-                      <%= link_to "Challenge a friend", experience_path(task.task.experience), class:"icon-link"%><br>
                       <%= link_to "More info", experience_path(task.task.experience), class:"icon-link"%><br>
                       <%= link_to "Delete",user_task_path(task),
                           data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"icon-link"%>
@@ -130,6 +129,7 @@
               <%= render partial: 'user_tasks/challenge_friend_modal',locals: { task: task.task } %>
                       <%# = render 'user_tasks/challenge_friend_modal', task: task.task %>
               <% end %>
+
 
               <main>
 
