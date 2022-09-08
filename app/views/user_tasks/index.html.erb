@@ -15,10 +15,10 @@
               <p class="text-center mb-3">
                 <i class="fa-regular fa-party-horn"></i>Congrats! You have <%= pluralize @completed, "adventure" %> completed!
               </p>
-              <div class="mb-2 mt-2 text-center card">
-                <h3 class=" mt-4 mb-1">Your score:</h3>
-                <h6 class="d-inline text-center" ><%= @completed * 100 %></h6>
-                <h3 class="mt-3 d-inline">points</h3>
+              <div class="mb-2 mt-2 text-center card rounded-3">
+                <h3 class=" mt-3 mb-1">Your score:</h3>
+                <h6 class="d-inline text-center" id="accent-info"><%= @completed * 100 %></h6>
+                <h3 class="mt-1 mb-2 d-inline">points</h3>
               </div>
             <% end %>
           </div>
@@ -27,12 +27,12 @@
               <%# <%= image_tag "trophy.jpeg", alt: "Le Wagon", width: 180, class: "img-center" %>
               <img src="https://res.cloudinary.com/elmette/image/upload/v1662562895/0794B1B6-58D0-44E2-A522-1135E53B3BEC_1_105_c_re5kll.jpg" alt="trophy", width: 180, class="img-center">
             </div>
-            <h3 class="text-center">You're a real adventurer!</h3>
+            <h3 class="text-center mt-3">You're a real adventurer!</h3>
           <% else %>
             <div style="height:160px">
               <img src="https://res.cloudinary.com/elmette/image/upload/v1662561898/firststep_dl2eak.png" alt="firststep", width: 150, class="img-center-steps">
             </div>
-            <h3 class="text-center m-0">You're getting started!</h3>
+            <h3 class="text-center m-0">1st Task done, Keep it up!</h3>
           <% end %>
         </div>
         <div class="wavy-line small my-4 position-sticky"></div>
@@ -72,7 +72,7 @@
         <p>task:<%= task.id %> task.task<%= task.task.id %></p>
             <div class="card-bucketlist px-0">
               <div class="inner">
-                <nav class="navbar ms-auto p-0" id="togglebucket" style="z-index:1000; position: absolute; top: 10px; right: 10px;">
+                <nav class="navbar ms-auto p-0" id="togglebucket" style="z-index:1000; position: absolute; top: 10px; right: 12px;">
                     <button class="navbar-toggler p-0" style="border: 0px" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent-<%=task.id%>" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon" id="togglebucket-icon"></span>
                     </button>
@@ -80,26 +80,39 @@
                   </div>
                   <div class="collapse" id="navbarToggleExternalContent-<%=task.id%>">
                     <div class="bg-success p-2 ms-3">
-                      <%= link_to "More info", experience_path(task.task.experience) %><br>
-                      <%= link_to "Share", experience_path(task.task.experience) %><br>
+                      <%= link_to "Challenge friend", experience_path(task.task.experience), class:"icon-link"%><br>
+                      <%= link_to "More info", experience_path(task.task.experience), class:"icon-link"%><br>
                       <%= link_to "Delete",user_task_path(task),
-                          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+                          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"icon-link"%>
+                          <br>
+                      <%= render partial: 'user_tasks/challenge_friend_modal',locals: { task: task.task } %>
                     </div>
                   </div>
                 </nav>
                 <%= render "checkboxform", task: task %>
                 <i class="fa-regular fa-bullseye-arrow"></i>
-                <% if task.task.deadline.present? %>
-                  <p class="subtitle" id="deadline">Deadline: <%= task.task.deadline.to_formatted_s(:long) %>
-                    <p>
-                    <% end %>
-                    <% if task.task.penalty.present? %>
-                      <p class="subtitle"><i class="fa-solid fa-fire"></i> <%= task.task.penalty%></p>
+
+              <div class="row w-100 p-0">
+                <div class="col-6">
+                  <% if task.task.deadline.present? %>
+                    <p class="subtitle" id="deadline">Deadline: <%= task.task.deadline.to_formatted_s(:long) %><p>
                     <% end %>
                   </div>
                 </div>
-                 <%= render partial: 'user_tasks/challenge_friend_modal',locals: { task: task.task } %>
-                      <%# = render 'user_tasks/challenge_friend_modal', task: task.task %>
+              <div class="row w-100 p-0">
+                <div class="col-6">
+                  <% if task.task.penalty.present? %>
+                    <p class="subtitle d-inline">Penalty: <i class="fa-solid fa-fire d-inline"></i>&nbsp;<%= task.task.penalty%></p>
+                    <% end %>
+                  </div>
+                <div class="col-6">
+                  <p style="display: inline">Shared with: $Invitee</p> <img src=<%= cl_image_path(@user.photo.key, width: 40, height: 40) %> class="avatar-challenger" />
+                </div>
+              </div>
+            </div>
+          </div>
+                 <%#= render partial: 'user_tasks/challenge_friend_modal',locals: { task: task.task } %>
+                      <%#= render 'user_tasks/challenge_friend_modal', task: task.task %>
               <% end %>
               <main>
 
@@ -123,7 +136,7 @@
               <h3 class="mt-2"> Tasks waiting </h3>
               <div class="d-flex align-items-baseline justify-content-center">
                 <h3 class=""> for you: </h3>
-                <h6 class="ms-2" data-controller="kpi" data-action="adjust-kpi@window->kpi#adjustNumberOpen"><%=@open %></h6>
+                <h6 class="ms-2" data-controller="kpi" id="accent-info" data-action="adjust-kpi@window->kpi#adjustNumberOpen"><%=@open %></h6>
               </div>
 
               <div style="height:10px"></div>
