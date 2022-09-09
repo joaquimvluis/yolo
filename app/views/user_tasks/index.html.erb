@@ -121,11 +121,14 @@
                         <% end %>
                       </div>
                       <div class="col-6">
+                      <% if task.task.users.size > 1 %>
                         <p style="display: inline">Shared with</p>
                         <% task.task.users.each do |user| %>
                           <% if user != current_user %>
                             <%= cl_image_tag user.photo.key, width: 40, height: 40, class:"avatar-challenger" %>
+                            <% break %>
                           <% end %>
+                        <% end %>
                         <% end %>
                       </div>
                     </div>
