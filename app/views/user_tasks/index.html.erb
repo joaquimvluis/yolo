@@ -126,6 +126,7 @@
                         <% task.task.users.each do |user| %>
                           <% if user != current_user %>
                             <%= cl_image_tag user.photo.key, width: 40, height: 40, class:"avatar-challenger" %>
+                            <% break %>
                           <% end %>
                         <% end %>
                         <% end %>
